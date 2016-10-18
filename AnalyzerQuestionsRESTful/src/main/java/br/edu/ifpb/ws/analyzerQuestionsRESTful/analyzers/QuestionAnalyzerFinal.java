@@ -454,7 +454,8 @@ public class QuestionAnalyzerFinal {
 	 * executado antes para não ter que fazer conexão com a pagina toda vez.
 	 */
 	private void setClassesJava() {
-		javaClasses = ReaderFile.readerTxt("classJava.txt").toLowerCase();
+		ReaderFile rf = new ReaderFile();
+		javaClasses = rf.readerTxt("classJava.txt");
 	}
 
 	/**
@@ -462,7 +463,8 @@ public class QuestionAnalyzerFinal {
 	 * executado antes para não ter que fazer conexão com a pagina toda vez.
 	 */
 	private void setClassesJavaExceptions(){
-		javaClassesException = ReaderFile.readerTxt("classOnlyExceptionJava.txt");
+		ReaderFile rf = new ReaderFile();
+		javaClassesException = rf.readerTxt("classOnlyExceptionJava.txt");
 	}
 	
 	/**
