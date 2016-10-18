@@ -41,6 +41,17 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 		<!-- DEPENDENCIES ANALYZER -->
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
@@ -52,7 +63,7 @@
 			<artifactId>lucene-analyzers-common</artifactId>
 			<version>4.10.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.cogroo.lang.pt_br</groupId>
 			<artifactId>cogroo-ann-pt_br</artifactId>
