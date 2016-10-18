@@ -13,12 +13,12 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
  *
  */
 public class AnalyzerQuestionService {
-	
-	private List<String> messages = new ArrayList<String>();
-	private QuestionAnalyzerFinal questionAnalyzer;
 
-	public void analyse(Question question) {
-		messages.clear();
+	private QuestionAnalyzerFinal questionAnalyzer;
+	private List<String> suggestions = new ArrayList<String>();
+
+	public List<String> getSuggestions(Question question) {
+		suggestions.clear();
 
 		questionAnalyzer = new QuestionAnalyzerFinal();
 
@@ -30,78 +30,77 @@ public class AnalyzerQuestionService {
 		this.analyzerUnderstandableDescription(question.getTitle(), question.getDescription());
 		this.analyzerDetailAboutContext(question.getDescription());
 		this.analyzerBeEducated(question.getDescription());
-		this.analyzerUsingProperLanguage(question.getDescription());
-		
 		this.analyzerShortDescriptionQuestion(question.getDescription());
 		this.analyzerDoNotCreateHomeworkQuestions(question.getDescription());
+		this.analyzerUsingProperLanguage(question.getDescription());
 		
-		
+		return suggestions;
 	}
 
 	public void analyseUnderstandableTitle(String title, String description) {
 		if (questionAnalyzer.analyzerUnderstandableTitle(title, description) == 0)
-			messages.add(Messages.TITULO_BEM_DEFINIDO.getMsg());
+			suggestions.add(Messages.TITULO_BEM_DEFINIDO.getMsg());
 	}
 	
 	
 	public void analyseCoherencyBodyAndTitle(String title, String description){
 		if(questionAnalyzer.analyzerCoherencyBodyAndTitle(title, description) == 0)
-			messages.add(Messages.COERENCY_BODY_WITH_TITLE.getMsg());
+			suggestions.add(Messages.COERENCY_BODY_WITH_TITLE.getMsg());
 	}
 	
 	public void analyzerObjective(String description){
 		if(questionAnalyzer.analyzerObjective(description) == 0)
-			messages.add(Messages.UNDERSTANDABLE_DESCRIPTION.getMsg());
+			suggestions.add(Messages.IS_OBJECTIVE.getMsg());
 	}
 	
 	public void analyzerClarity(String title, String description){
 		if(questionAnalyzer.analyzerClarity(title, description) == 0)
-			messages.add(Messages.INCLUDING_VOCATIVE.getMsg());
+			suggestions.add(Messages.IS_CLARITY.getMsg());
 	}
 	
 	public void analyseShowingExample(String description){
 		if(questionAnalyzer.analyzerShowExample(description) == 0)
-			messages.add(Messages.SHOW_EXAMPLE.getMsg());
+			suggestions.add(Messages.SHOW_EXAMPLE.getMsg());
 	}
 	
 	
 	public void analyzerUnderstandableDescription(String title, String description){
 		if(questionAnalyzer.analyzerUnderstandableDescription(title, description) == 0)
-			messages.add(Messages.LONG_DESCRIPTION.getMsg());
+			suggestions.add(Messages.UNDESTANDABLE_DESCRTION.getMsg());
 	}
 	
 	public void analyzerDetailAboutContext(String description){
 		if(questionAnalyzer.analyzerDetailAboutContext(description) == 0)
-			messages.add(Messages.AVOIDING_MUCH_CODE.getMsg());
-	}
-	
-	public void analyzerBeEducated(String description){
-		if(questionAnalyzer.analyzerBeEducated(description) == 0)
-			messages.add(Messages.INCLUDING_GREETINGS.getMsg());
+			suggestions.add(Messages.DETAIL_CONTEXT.getMsg());
 	}
 	
 	public void analyzerUsingProperLanguage(String description){
 		if(questionAnalyzer.analyzerUsingProperLanguage(description) == 0)
-			messages.add(Messages.INCLUDING_GREETINGS.getMsg());
+			suggestions.add(Messages.USING_PROPER_LANGUAGE.getMsg());
+	}
+	
+	public void analyzerBeEducated(String description){
+		if(questionAnalyzer.analyzerBeEducated(description) == 0)
+			suggestions.add(Messages.BE_EDUCADED.getMsg());
 	}
 	
 	public void analyzerShortDescriptionQuestion(String description){
 		if(questionAnalyzer.analyzerShortDescriptionQuestion(description) == 0)
-			messages.add(Messages.INCLUDING_GREETINGS.getMsg());
+			suggestions.add(Messages.SHORT_DESCRIPTION.getMsg());
 	}
 	
 	public void analyzerDoNotCreateHomeworkQuestions(String description){
 		if(questionAnalyzer.analyzerDoNotCreateHomeworkQuestions(description) == 0)
-			messages.add(Messages.INCLUDING_GREETINGS.getMsg());
+			suggestions.add(Messages.HOME_WORK_QUESTION.getMsg());
 	}
 	
 	public List<String> getMessages() {
-		return messages;
+		return suggestions;
 	}
 
 	
 	public void setMessages(List<String> messages) {
-		this.messages = messages;
+		this.suggestions = messages;
 	}
 
 	public QuestionAnalyzerFinal getQuestionAnalyzer() {
@@ -112,12 +111,4 @@ public class AnalyzerQuestionService {
 		this.questionAnalyzer = questionAnalyzer;
 	}
 	
-	public static void main(String[] args) {
-		AnalyzerQuestionService a = new AnalyzerQuestionService();
-		Question q = new Question();
-		q.setTitle("efrfr");
-		q.setDescription("rfrfr");
-		a.analyse(q);
-	}
-
 }
