@@ -6,6 +6,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * @author <a href="https://github.com/JoseRafael97">José Rafael</a>	
+
  *
  */
 public class ServletInitializer extends SpringBootServletInitializer {

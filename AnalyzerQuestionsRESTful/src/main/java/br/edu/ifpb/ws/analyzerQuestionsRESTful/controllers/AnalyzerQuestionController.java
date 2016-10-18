@@ -37,4 +37,6 @@ public class AnalyzerQuestionController {
 		
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
 	}
+	
+	
 }
