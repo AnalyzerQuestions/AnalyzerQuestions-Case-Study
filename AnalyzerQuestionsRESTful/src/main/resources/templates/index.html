@@ -1,17 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="aqtApp">
 <head>
-<meta charset="UTF-8" />
-<title>AQT</title>
-<link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="/vendors/font-awesome-4.6.3/css/font-awesome.min.css" />
-
+	<base href="/" />
+	<meta charset="UTF-8" />
+	<title>AQT</title>
+	<link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/vendors/font-awesome-4.6.3/css/font-awesome.min.css" />
 </head>
 <body>
-	Hello!
 
+	<div ng-view="content"></div>
+
+
+
+	<!-- importações de modulos e controllers-->
 	<script src="/js/vendors/angular.min.js"></script>
 	<script src="/js/vendors/angular-route.min.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/config/route-config.js"></script>
+	<script src="/js/controllers/new-questions-controller.js"></script>
+	
+	
 	<script src="/vendors/jQuery/jquery-3.1.1.min.js"></script>
 	<script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
 </body>
