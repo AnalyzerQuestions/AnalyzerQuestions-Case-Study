@@ -34,6 +34,7 @@ public class AnalyzerQuestionController {
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question){
 		
+		System.out.println(question);
 		List<String> suggestions = service.getSuggestions(question);
 		
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);

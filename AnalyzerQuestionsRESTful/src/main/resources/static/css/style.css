@@ -1,0 +1,13 @@
+body{
+	font-family: 'Abel', sans-serif;
+	font-size: 19px;
+}
+.jumbotron {
+	width: 800px;
+	text-align: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
