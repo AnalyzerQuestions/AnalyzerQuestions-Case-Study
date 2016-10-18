@@ -3,6 +3,10 @@ aqtApp.controller('newQuestionController', function($scope, $http) {
 	$scope.suggestions = [];
 
 	$scope.newQuestion = function(question) {
+		
+		post = $('#editor-f').data('markdown').parseContent();
+	    console.log(post);
+	    
 		$http({
 
 			method : 'POST',
