@@ -1,4 +1,4 @@
 $("#editor-f").markdown({
-	language : 'ptBR'
+	language : 'ptBR',
 });
 

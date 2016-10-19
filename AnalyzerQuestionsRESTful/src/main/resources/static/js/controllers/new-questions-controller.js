@@ -8,7 +8,6 @@ aqtApp.controller('newQuestionController', function($scope, $http) {
 	    console.log(post);
 	    
 		$http({
-
 			method : 'POST',
 			url : 'http://localhost:8080/analyzer',
 			data : question,
@@ -17,10 +16,13 @@ aqtApp.controller('newQuestionController', function($scope, $http) {
 			$scope.suggestions = response.data;
 			console.log($scope.suggestions);
 			
-			
 		}, function onError(response) {
 			
 		});
 	};
-
+	
+	$scope.checkedSuggestion = function(suggestion){
+		var myEl = angular.element( document.querySelector( '#btn-suggestion' ) );
+		myEl.parent('div').addClass('alert-success'); 
+	};
 });
