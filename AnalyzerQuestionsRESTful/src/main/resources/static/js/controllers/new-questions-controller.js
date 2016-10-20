@@ -21,8 +21,14 @@ aqtApp.controller('newQuestionController', function($scope, $http) {
 		});
 	};
 	
-	$scope.checkedSuggestion = function(suggestion){
-		var myEl = angular.element( document.querySelector( '#btn-suggestion' ) );
-		myEl.parent('div').addClass('alert-success'); 
+	$scope.checkedSuggestion = function(suggestion, isChecked){
+		var index = $scope.suggestions.indexOf(suggestion);
+		var myEl = $(".aqt-close").eq(index);
+		if(isChecked){
+			myEl.addClass('alert-success'); 
+		}
+		else{
+			myEl.removeClass('alert-success');
+		}
 	};
 });

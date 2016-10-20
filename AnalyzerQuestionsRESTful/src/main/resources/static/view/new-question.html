@@ -20,12 +20,12 @@
 			</div>
 		</form>
 		<div class="col-sm-6" ng-repeat = "sug in suggestions">
-			<div class="alert  alert-danger  alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<i class="fa fa-times aqt-close"data-toggle="tooltip" title="Click aqui se esta sugestão NÃO foi importante para você" aria-hidden="true"></i>
+			<div class="alert  alert-info  alert-dismissible aqt-close" role="alert">
+				<button type="button" class="close btn-suggestion">
+					<i class="fa fa-times" ng-click="checkedSuggestion(sug, false)" data-toggle="tooltip" title="Click aqui se esta sugestão NÃO foi importante para você" aria-hidden="true"></i>
 				</button>
-				<button id="btn-suggestion" type="button" class="close">
-					<i class="fa fa-check aqt-close" ng-click="checkedSuggestion(sug)" data-toggle="tooltip" title="Click aqui se esta sugestão FOI importante para você" aria-hidden="true"></i>
+				<button type="button" class="close btn-suggestion">
+					<i class="fa fa-check" ng-click="checkedSuggestion(sug, true)" data-toggle="tooltip" title="Click aqui se esta sugestão FOI importante para você" aria-hidden="true"></i>
 				</button>
 				{{sug}}
 			</div>
