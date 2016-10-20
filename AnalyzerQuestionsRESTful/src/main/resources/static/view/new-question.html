@@ -16,7 +16,8 @@
 					<textarea id="editor-f" data-iconlibrary="fa" name="content" data-width="725" data-provide="markdown" rows="13" ng-model="question.description">
 					</textarea>
 				</div>
-				<button class="btn  btn-primary" type="submit" ng-click="newQuestion(question)">Obter Sugestões</button>
+				<button id="btn-get-sug" class="btn  btn-primary" type="submit" ng-click="getSuggestions(question)">Obter Sugestões</button>
+				<button id="btn-completter" class="btn  btn-danger" type="submit" disabled="true" ng-click="registerChosenSuggestions(question)">Finalizar</button>
 			</div>
 		</form>
 		<div class="col-sm-6" ng-repeat = "sug in suggestions">

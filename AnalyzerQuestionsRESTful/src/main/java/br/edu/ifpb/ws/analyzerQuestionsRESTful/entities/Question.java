@@ -13,6 +13,7 @@ public class Question implements Serializable {
 
 	private String title;
 	private String description;
+	private String markdownDescription;
 
 	public Question() {
 	}
@@ -33,9 +34,18 @@ public class Question implements Serializable {
 		this.description = description;
 	}
 
+	public String getMarkdownDescription() {
+		return markdownDescription;
+	}
+
+	public void setMarkdownDescription(String markdownDescription) {
+		this.markdownDescription = markdownDescription;
+	}
+
 	@Override
 	public String toString() {
-		return "Question [title=" + title + ", description=" + description + "]";
+		return "Question [title=" + title + ", description=" + description + ", markdownDescription="
+				+ markdownDescription + "]";
 	}
 
 }

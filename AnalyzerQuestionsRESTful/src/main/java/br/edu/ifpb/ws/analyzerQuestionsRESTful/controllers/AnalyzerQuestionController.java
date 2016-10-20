@@ -3,7 +3,6 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.AnalyzerQuestionService;
 
 /**
@@ -20,7 +20,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.AnalyzerQuestionService;
  *
  */
 @RestController
-@RequestMapping(AnalyzerQuestionController.BASE_URI)
+//@RequestMapping(AnalyzerQuestionController.BASE_URI)
 public class AnalyzerQuestionController {
 	
 	public static final String BASE_URI = "/analyzer";
@@ -31,13 +31,19 @@ public class AnalyzerQuestionController {
 		service = new AnalyzerQuestionService();
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question){
 		
-		System.out.println(question);
 		List<String> suggestions = service.getSuggestions(question);
-		
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value=BASE_URI+"/suggestions")
+	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper){
+		
+		System.out.println(questionWrapper);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	

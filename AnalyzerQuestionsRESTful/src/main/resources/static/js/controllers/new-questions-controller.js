@@ -1,24 +1,26 @@
 /**
  * Controller responsável pela manipulação do fragmento de  página new-question.html
  * 
- * @created by Franck Aragão 20-10-16.
+ * @created by Franck Aragão @date 20-10-16.
  */
 aqtApp.controller('newQuestionController', function($scope, $http) {
 	
-	$scope.suggestions = [];
+	const URI = 'http://localhost:8080';
 	var chosenSuggestions = [];
+	var buttonGetSug = $('#btn-get-sug');
+	var buttonCompletter = $('#btn-completter');
+	$scope.suggestions = [];
 
 	/**
-	 * Submete uma nova pergunta à API.
+	 * Submete uma nova pergunta à API e obtem sugestões.
 	 */
-	$scope.newQuestion = function(question) {
+	$scope.getSuggestions = function(question) {
 		
-		post = $('#editor-f').data('markdown').parseContent();
-	    console.log(post);
+		question.markdownDescription = post = $('#editor-f').data('markdown').parseContent();
 	    
 		$http({
 			method : 'POST',
-			url : 'http://localhost:8080/analyzer',
+			url : URI+'/analyzer',
 			data : question,
 
 		}).then(function onSucces(response) {
@@ -26,6 +28,7 @@ aqtApp.controller('newQuestionController', function($scope, $http) {
 			
 		}, function onError(response) {
 		});
+		
 	};
 	
 	/**
@@ -33,15 +36,52 @@ aqtApp.controller('newQuestionController', function($scope, $http) {
 	 */
 	$scope.checkedSuggestion = function(suggestion, isChecked){
 		var index = $scope.suggestions.indexOf(suggestion);
-		var myEl = $(".aqt-close").eq(index);
+		var elementClicked = $(".aqt-close").eq(index);
 		if(isChecked){
-			myEl.addClass('alert-success'); 
+			elementClicked.addClass('alert-success'); 
 			chosenSuggestions.push(suggestion);
+			anableButton(chosenSuggestions);
 		}
 		else{
-			myEl.removeClass('alert-success');
+			elementClicked.removeClass('alert-success');
 			var indexChoose = chosenSuggestions.indexOf(suggestion);
 			chosenSuggestions.splice(indexChoose, 1);
+			anableButton(chosenSuggestions);
+		}
+		
+	};
+	
+	/**
+	 * Registra na API as escolhas de sugestões do user.
+	 */
+	$scope.registerChosenSuggestions = function(question){
+		if(chosenSuggestions.length > 0){
+			
+			var questionWrapper = {};
+			questionWrapper.question = question;
+			questionWrapper.suggestions = chosenSuggestions;
+			
+			$http({
+				method : 'POST',
+				url : URI+'/analyzer/suggestions',
+				data : questionWrapper
+				
+			}).then(function onSuccess() {
+				
+			}, function onError() {
+				
+			});
 		}
 	};
+	
+	function anableButton(chosenSuggestions){
+		if(chosenSuggestions.length > 0){
+			buttonGetSug.prop('disabled', true)
+			buttonCompletter.prop('disabled', false);
+		}else{
+			buttonGetSug.prop('disabled', false)
+			buttonCompletter.prop('disabled', true);
+
+		}
+	}
 });
