@@ -1,5 +1,6 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -58,5 +59,26 @@ public class AnalyzerQuestionController {
 		System.out.println(questionWrapper);
 		
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value= BASE_URI+"/getQuestions")
+	public ResponseEntity<List<Question>> getQuestions(){
+		
+		List<Question> questions = new ArrayList<>();
+		
+		for (int i = 0; i < 10; i++) {
+			Question q = new Question();
+			q.setTitle("Titulo da pergunta de programação "+ i);
+			q.setDescription("Esta é uma descrição de uma pergunta de programação, utilizada como teste para o front-end desta aplicação."
+					+ "IFPB - Campus Monteiro - bla bla ...");
+			
+			q.setMarkdownDescription("<code>");
+			questions.add(q);
+		}
+		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
 	}
 }
