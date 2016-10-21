@@ -31,6 +31,13 @@ public class AnalyzerQuestionController {
 		service = new AnalyzerQuestionService();
 	}
 	
+	/**
+	 * Analisa a pergunta passada e retorna uma lista de sugestões
+	 * para esta perunta.
+	 * 
+	 * @param question
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question){
 		
@@ -38,6 +45,13 @@ public class AnalyzerQuestionController {
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
 	}
 	
+	/**
+	 * Obtém um wrapper de uma pergunta, contendo a pergunta e lista de sugestões desta pergunta.
+	 * 
+	 * @param questionWrapper
+	 * 
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value=BASE_URI+"/suggestions")
 	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper){
 		
@@ -45,6 +59,4 @@ public class AnalyzerQuestionController {
 		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-	
 }
