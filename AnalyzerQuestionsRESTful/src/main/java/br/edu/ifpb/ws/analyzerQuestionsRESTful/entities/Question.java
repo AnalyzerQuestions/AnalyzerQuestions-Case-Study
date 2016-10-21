@@ -1,6 +1,7 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 
@@ -14,6 +15,7 @@ public class Question implements Serializable {
 	private String title;
 	private String description;
 	private String markdownDescription;
+	private List<String> tags;
 
 	public Question() {
 	}
@@ -40,6 +42,14 @@ public class Question implements Serializable {
 
 	public void setMarkdownDescription(String markdownDescription) {
 		this.markdownDescription = markdownDescription;
+	}
+
+	public List<String> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<String> tags) {
+		this.tags = tags;
 	}
 
 	@Override

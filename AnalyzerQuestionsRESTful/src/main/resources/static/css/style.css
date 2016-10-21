@@ -1,6 +1,7 @@
 body {
 	font-family: 'Abel', sans-serif;
 	font-size: 19px;
+	padding-top: 50px;
 }
 
 .jumbotron {
@@ -38,4 +39,9 @@ body {
 .aqt-position-loading {
 	color: #ffffff;
 	font-size: 14px;
+}
+.aqt-tag{
+	font-size: 18px;
+	font-style: none;
+	padding: 2px;
 }

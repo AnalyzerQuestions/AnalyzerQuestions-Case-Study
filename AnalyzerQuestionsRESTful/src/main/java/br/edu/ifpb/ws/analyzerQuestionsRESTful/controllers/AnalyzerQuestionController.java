@@ -70,13 +70,18 @@ public class AnalyzerQuestionController {
 		
 		List<Question> questions = new ArrayList<>();
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			Question q = new Question();
 			q.setTitle("Titulo da pergunta de programação "+ i);
 			q.setDescription("Esta é uma descrição de uma pergunta de programação, utilizada como teste para o front-end desta aplicação."
 					+ "IFPB - Campus Monteiro - bla bla ...");
 			
 			q.setMarkdownDescription("<code>");
+			List<String> tags = new ArrayList<>();
+			tags.add("Java");
+			tags.add("Js");
+			tags.add("Spring");
+			q.setTags(tags);
 			questions.add(q);
 		}
 		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
