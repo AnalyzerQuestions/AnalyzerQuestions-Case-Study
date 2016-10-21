@@ -2,6 +2,7 @@ body {
 	font-family: 'Abel', sans-serif;
 	font-size: 19px;
 	padding-top: 50px;
+	background: #fdfdfd;
 }
 
 .jumbotron {
@@ -44,4 +45,12 @@ body {
 	font-size: 18px;
 	font-style: none;
 	padding: 2px;
+}
+
+.modal-dialog {
+  width: 55%;
+}
+
+.list-group {
+	margin: 5px;
 }

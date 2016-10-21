@@ -3,7 +3,7 @@
  * 
  * @created by Franck Aragão @date 21-10-16.
  */
-aqtApp.controller("listQuestionController", function($scope, $http) {
+aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 
 	const URI = 'http://localhost:8080';
 	$scope.questions = [];
@@ -32,18 +32,26 @@ aqtApp.controller("listQuestionController", function($scope, $http) {
 	 */
 	$scope.selectedQuestion = function(question) {
 		$scope.questionSelected = question;
-		var index = $scope.questions.indexOf(question);
-		
-		var elementClicked = $(".list-group-item").eq(index);
-		elementClicked.toggleClass("active");
-		
-		if(elementClicked.hasClass("active")){
-			console.log(index, 'TEM class');
-		}else{
-			console.log(index, 'Não tem class')
-		}
 		
 	};
 	
+	/**
+	 * Cronometro
+	 */
+	var startCronometer = function(){
+		timer = new Timer();
+		timer.start({countdown: true, startValues: {seconds: 180}});
+		$('.cronometer').html(timer.getTimeValues().toString());
+		timer.addEventListener('secondsUpdated', function (e) {
+			$('.cronometer').html(timer.getTimeValues().toString());
+		});
+		timer.addEventListener('targetAchieved', function (e) {
+			$('.cronometer').html('');
+			$('#end-time').modal('toggle')
+		});
+	}; 
+	
+	startCronometer();
 	$scope.getQuestions();
+	
 });
