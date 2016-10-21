@@ -7,23 +7,25 @@
 	<link rel="stylesheet" type="text/css" href="/vendors/font-awesome-4.6.3/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="/vendors/bootstrap-markdown/css/bootstrap-markdown.min.css"/>
+	<link rel='stylesheet' href='/vendors/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"/>
-
-
 </head>
 <body>
 
 	<div ng-include="'/view/fragments/navBar.html'"></div>
+	<div id="loading-bar-container"></div>
 	<div ng-view="content"></div>
-	
 	
 	<script src="/vendors/jQuery/jquery-3.1.1.min.js"></script>
 	<script src="/vendors/bootstrap/js/bootstrap.min.js"></script>
 	<script src="/js/vendors/angular.min.js"></script>
+	<script src="/js/vendors/angular-animate.min.js"></script>
 	<script src="/js/vendors/angular-route.min.js"></script>
+	<script src="/vendors/angular-loading-bar/build/loading-bar.min.js"></script>
 	
 	<script src="/js/app.js"></script>
 	<script src="/js/config/route-config.js"></script>
+	<script src="/js/config/loading-bar-config.js"></script>
 	<script src="/js/controllers/new-questions-controller.js"></script>
 	<script src="/js/controllers/list-questions-controller.js"></script>
 	<script src="/vendors/bootstrap-markdown/js/bootstrap-markdown.js"></script>
