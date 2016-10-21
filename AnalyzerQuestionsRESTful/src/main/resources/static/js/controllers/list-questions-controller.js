@@ -40,7 +40,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	 */
 	var startCronometer = function(){
 		timer = new Timer();
-		timer.start({countdown: true, startValues: {seconds: 180}});
+		timer.start({countdown: true, startValues: {seconds: 300}});
 		$('.cronometer').html(timer.getTimeValues().toString());
 		timer.addEventListener('secondsUpdated', function (e) {
 			$('.cronometer').html(timer.getTimeValues().toString());
