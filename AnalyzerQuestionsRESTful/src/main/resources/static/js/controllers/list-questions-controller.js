@@ -43,7 +43,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		timer.start({countdown: true, startValues: {seconds: 300}});
 		$('.cronometer').html(timer.getTimeValues().toString());
 		timer.addEventListener('secondsUpdated', function (e) {
-			$('.cronometer').html(timer.getTimeValues().toString());
+			$('.cronometer').html('<small class="label label-danger">'+timer.getTimeValues().toString()+'</smal');
 		});
 		timer.addEventListener('targetAchieved', function (e) {
 			$('.cronometer').html('');
