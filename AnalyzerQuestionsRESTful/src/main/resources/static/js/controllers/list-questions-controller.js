@@ -57,17 +57,26 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		chosenQuestion.clickedQuestions = clickedQuestions;
 		chosenQuestion.chosenQuestions = chosenQuestions;
 		
+		removeFocusModal();
+		
 		$http({
 			method: 'POST',
 			url : URI + '/analyzer/choices',
 			data : chosenQuestion
 			
 		}).then(function onSuccess(response) {
+			
 			$location.path('/responseQuestions')
 			
 		}, function onError(response) {
 			
 		});
+	}
+	
+	var removeFocusModal = function (){
+		$('#end-time').modal('hide');
+		$('body').removeClass('modal-open');
+		$('.modal-backdrop').remove();
 	}
 	
 	$scope.getQuestions();

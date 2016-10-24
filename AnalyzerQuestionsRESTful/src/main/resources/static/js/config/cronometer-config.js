@@ -7,7 +7,7 @@
 		});
 		timer.addEventListener('targetAchieved', function (e) {
 			$('.cronometer').html('');
-			$('#end-time').modal('toggle')
+			$('#end-time').modal('show')
 		});
 	}; 
 	
