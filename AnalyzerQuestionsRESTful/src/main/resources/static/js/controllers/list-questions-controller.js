@@ -8,7 +8,6 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	const URI = 'http://localhost:8080';
 	$scope.questions = [];
 	$scope.questionSelected = {};
-	$scope.checkboxChosenQuestion = false;
 	var chosenQuestions = [];
 	var clickedQuestions = [];
 	
@@ -54,6 +53,19 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var chosenQuestion = {};
 		chosenQuestion.clickedQuestions = clickedQuestions;
 		chosenQuestion.chosenQuestions = chosenQuestions;
+		
+		$http({
+			method: 'POST',
+			url : URI + '/analyzer/choices',
+			data : chosenQuestion
+			
+		}).then(function onSuccess(response) {
+			$location.path('/responseQuestions')
+			
+		}, function onError(response) {
+			
+		});
+		
 		console.log(chosenQuestion);
 	}
 	

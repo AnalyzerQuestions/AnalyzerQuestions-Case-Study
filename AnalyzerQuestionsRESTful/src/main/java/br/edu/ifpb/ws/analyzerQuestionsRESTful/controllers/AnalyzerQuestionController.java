@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.AnalyzerQuestionService;
@@ -87,4 +88,16 @@ public class AnalyzerQuestionController {
 		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
 	}
 	
+	/**
+	 * 
+	 * @param chosenQuestionW
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.POST, value=BASE_URI+"/choices")
+	public ResponseEntity<ChosenQuestionsWrapper> registerChosenQuestions(@RequestBody ChosenQuestionsWrapper chosenQuestionW){
+		
+		System.out.println(chosenQuestionW);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
