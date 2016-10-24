@@ -50,23 +50,13 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		$scope.questionSelected = {};
 	}
 	
-	/**
-	 * Cronometro
-	 */
-	var startCronometer = function(){
-		timer = new Timer();
-		timer.start({countdown: true, startValues: {seconds: 180}});
-		$('.cronometer').html(timer.getTimeValues().toString());
-		timer.addEventListener('secondsUpdated', function (e) {
-			$('.cronometer').html('<small class="label label-danger">'+timer.getTimeValues().toString()+'</smal');
-		});
-		timer.addEventListener('targetAchieved', function (e) {
-			$('.cronometer').html('');
-			$('#end-time').modal('toggle')
-		});
-	}; 
+	$scope.endChosenQuestion = function(){
+		var chosenQuestion = {};
+		chosenQuestion.clickedQuestions = clickedQuestions;
+		chosenQuestion.chosenQuestions = chosenQuestions;
+		console.log(chosenQuestion);
+	}
 	
-	startCronometer();
 	$scope.getQuestions();
 	
 });

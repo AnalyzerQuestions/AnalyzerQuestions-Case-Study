@@ -86,4 +86,5 @@ public class AnalyzerQuestionController {
 		}
 		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
 	}
+	
 }
