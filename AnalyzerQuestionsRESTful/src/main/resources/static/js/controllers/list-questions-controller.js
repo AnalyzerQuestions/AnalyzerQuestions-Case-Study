@@ -73,6 +73,9 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		});
 	};
 	
+	/**
+	 * inicia cronometro, quando a tela de lista de pergunta é iniciada.
+	 */
 	$scope.startCronometer = function(){
 		timer = new Timer();
 		timer.start({countdown: true, startValues: {seconds: 180}});
@@ -86,6 +89,11 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		});
 	};
 	
+	/**
+	 * Remove classes do componente modal do bootstrap.
+	 * Forma para resolver problema da chamada via router para
+	 * outra view.
+	 */
 	var removeFocusModal = function (){
 		$('#end-time').modal('hide');
 		$('body').removeClass('modal-open');
