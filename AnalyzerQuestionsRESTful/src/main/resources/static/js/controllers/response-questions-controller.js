@@ -5,4 +5,5 @@
  */
 aqtApp.controller("responseQuestionController", function($scope, $http, $location) {
 	
+	
 });

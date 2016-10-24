@@ -30,8 +30,7 @@ public class ChosenQuestionsWrapper {
 
 	@Override
 	public String toString() {
-		return "ChosenQuestionsWrapper [clickedQuestions=" + clickedQuestions + ", chosenQuestions=" + chosenQuestions
-				+ "]";
+		return "ChosenQuestionsWrapper [clickedQuestions=" + clickedQuestions + ", chosenQuestions=" + chosenQuestions + "]";
 	}
 
 }

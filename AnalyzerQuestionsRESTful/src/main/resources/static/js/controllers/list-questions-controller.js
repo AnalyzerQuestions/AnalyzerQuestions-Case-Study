@@ -49,6 +49,9 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		$scope.questionSelected = {};
 	}
 	
+	/**
+	 * Passa cliques e escolhas do user para o API.
+	 */
 	$scope.endChosenQuestion = function(){
 		var chosenQuestion = {};
 		chosenQuestion.clickedQuestions = clickedQuestions;
@@ -65,8 +68,6 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		}, function onError(response) {
 			
 		});
-		
-		console.log(chosenQuestion);
 	}
 	
 	$scope.getQuestions();
