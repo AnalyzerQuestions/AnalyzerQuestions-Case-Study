@@ -33,13 +33,16 @@ aqtApp.controller("responseQuestionController", function($scope, $http,
 
 	$scope.nextQuestion = {
 		cont : 0,
+
 		next : function() {
-			$scope.question = chosenQuestions[this.cont];
 			var elemetQuestion = $("#body-detail-description");
+			elemetQuestion.empty();
+			$scope.question = chosenQuestions[this.cont];
 			elemetQuestion.append($scope.question.descritptionHtml);
-			this.valor++;
+			this.cont++;
 		}
 	}
 
 	$scope.getSelectedQuestions();
+
 });
