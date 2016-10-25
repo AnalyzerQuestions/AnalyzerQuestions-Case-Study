@@ -36,7 +36,9 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	$scope.selectedQuestion = function(question) {
 		$scope.questionSelected = question;
 		clickedQuestions.push(question);
-		bodyDetail.append($scope.questionSelected.body);
+		
+		bodyDetail.append($scope.questionSelected.descritptionHtml);
+		console.log(bodyDetail);
 	};
 	
 	/**

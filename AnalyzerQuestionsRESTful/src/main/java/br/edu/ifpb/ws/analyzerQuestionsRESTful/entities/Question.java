@@ -14,7 +14,7 @@ public class Question implements Serializable {
 
 	private String title;
 	private String description;
-	private String markdownDescription;
+	private String descritptionHtml;
 	private List<String> tags;
 
 	public Question() {
@@ -36,12 +36,12 @@ public class Question implements Serializable {
 		this.description = description;
 	}
 
-	public String getMarkdownDescription() {
-		return markdownDescription;
+	public String getDescritptionHtml() {
+		return descritptionHtml;
 	}
 
-	public void setMarkdownDescription(String markdownDescription) {
-		this.markdownDescription = markdownDescription;
+	public void setDescritptionHtml(String descritptionHtml) {
+		this.descritptionHtml = descritptionHtml;
 	}
 
 	public List<String> getTags() {
@@ -54,8 +54,8 @@ public class Question implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Question [title=" + title + ", description=" + description + ", markdownDescription="
-				+ markdownDescription + "]";
+		return "Question [title=" + title + ", description=" + description + ", descritptionHtml=" + descritptionHtml
+				+ ", tags=" + tags + "]";
 	}
 
 }

@@ -79,6 +79,7 @@ public class AnalyzerQuestionController {
 		for (QuestionPojo questionPojo : soClient.getQuestions()) {
 			Question q = new  Question();
 			q.setDescription(questionPojo.getBodyMarkdown());
+			q.setDescritptionHtml(questionPojo.getBody());
 			q.setTitle(questionPojo.getTitle());
 			q.setTags(questionPojo.getTags());
 			questions.add(q);
