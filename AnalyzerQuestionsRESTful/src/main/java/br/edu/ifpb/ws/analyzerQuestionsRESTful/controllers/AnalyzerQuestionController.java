@@ -19,76 +19,95 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.SOClient;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
- * @author <a href="https://github.com/JoseRafael97">José Rafael</a>	
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ * @author <a href="https://github.com/JoseRafael97">José Rafael</a>
  *
  */
 @RestController
-//@RequestMapping(AnalyzerQuestionController.BASE_URI)
+// @RequestMapping(AnalyzerQuestionController.BASE_URI)
 public class AnalyzerQuestionController {
-	
+
 	public static final String BASE_URI = "/analyzer";
-	
+
+	// So para teste
+	private List<Question> choicesQuestions;
+
 	private AnalyzerQuestionService service;
 
 	public AnalyzerQuestionController() {
 		service = new AnalyzerQuestionService();
 	}
-	
+
 	/**
-	 * Analisa a pergunta passada e retorna uma lista de sugestões
-	 * para esta perunta.
+	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
+	 * perunta.
 	 * 
 	 * @param question
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
-	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question){
-		
+	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question) {
+
 		List<String> suggestions = service.getSuggestions(question);
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
 	}
-	
+
 	/**
-	 * Obtém um wrapper de uma pergunta, contendo a pergunta e lista de sugestões desta pergunta.
+	 * Obtém um wrapper de uma pergunta, contendo a pergunta e lista de
+	 * sugestões desta pergunta.
 	 * 
 	 * @param questionWrapper
 	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value=BASE_URI+"/suggestions")
-	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper){
-		
+	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/suggestions")
+	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper) {
+
 		System.out.println(questionWrapper);
-		
+
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, value= BASE_URI+"/getQuestions")
-	public ResponseEntity<List<QuestionPojo>> getQuestions(){
-		
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/getQuestions")
+	public ResponseEntity<List<QuestionPojo>> getQuestions() {
+
 		List<QuestionPojo> questions = new ArrayList<>();
 		SOClient soClient = new SOClient();
-		
+
 		questions = soClient.getQuestions();
-		
+
 		return new ResponseEntity<List<QuestionPojo>>(questions, HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @param chosenQuestionW
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value=BASE_URI+"/choices")
-	public ResponseEntity<ChosenQuestionsWrapper> registerChosenQuestions(@RequestBody ChosenQuestionsWrapper chosenQuestionW){
-		
+	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/choices")
+	public ResponseEntity<ChosenQuestionsWrapper> registerChosenQuestions(
+			@RequestBody ChosenQuestionsWrapper chosenQuestionW) {
+
 		System.out.println(chosenQuestionW);
+		choicesQuestions = chosenQuestionW.getChosenQuestions();
 		
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value=BASE_URI+"/getChoices")
+	public ResponseEntity<List<Question>> getChosenQuestions(){
+		
+		if(choicesQuestions == null){
+			choicesQuestions = new ArrayList<>();
+		}
+		return new ResponseEntity<>(choicesQuestions, HttpStatus.OK);
 	}
 }
