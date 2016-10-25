@@ -8,7 +8,36 @@
 		</div>
 
 		<div class="row">
-			
+
+			<div ng-repeat="question in questions">
+				<div class="list-group" style="cursor: pointer;" data-toggle="modal"
+					data-target="#myModal" ng-click="selectedQuestion(question)">
+					<a class="list-group-item">
+						<h3 class="list-group-item-heading">
+							<strong>{{question.title}}<strong>
+						</h3>
+						<hr>
+						<h5 class="list-group-item-heading">
+							{{question.description}}
+							</h5>
+
+							<div style="margin-top: 8px;">
+								<i class="aqt-tag" ng-repeat="tag in question.tags"> <span
+									class="label label-primary">{{tag}}</span>
+								</i> <span class="aqt-confirm"></span> <br>
+								<hr>
+								<div class="form-group">
+									<label for="comment">Resposta:</label>
+									<textarea class="form-control" rows="5" id="comment"></textarea>
+								</div>
+								<hr>
+								<button class="btn btn-primary">Responder</button>
+
+							</div>
+					</a>
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
