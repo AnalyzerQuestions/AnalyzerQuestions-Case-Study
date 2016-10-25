@@ -16,6 +16,7 @@ public class Question implements Serializable {
 	private String description;
 	private String descritptionHtml;
 	private List<String> tags;
+	private String answer;
 
 	public Question() {
 	}
@@ -50,6 +51,16 @@ public class Question implements Serializable {
 
 	public void setTags(List<String> tags) {
 		this.tags = tags;
+	}
+	
+	
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 	@Override

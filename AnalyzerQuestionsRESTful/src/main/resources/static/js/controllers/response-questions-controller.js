@@ -6,10 +6,7 @@
 aqtApp.controller("responseQuestionController", function($scope, $http, $location) {
 	
 	const URI = 'http://localhost:8080';
-	$scope.questions = [];
-	$scope.questionSelected = {};
-	var chosenQuestions = [];
-	var clickedQuestions = [];
+	$scope.chosenQuestions = [];
 	
 	/**
 	 * Obtém lista de perguntas ecolhidas do WS.
@@ -18,11 +15,11 @@ aqtApp.controller("responseQuestionController", function($scope, $http, $locatio
 
 		$http({
 			method : 'GET',
-			url : URI + '/analyzer/getChoices'
+			url : URI + '/analyzer/getChonseQuestions',
 
 		}).then(function onSuccess(response) {
-			$scope.questions = response.data;
-
+			$scope.chosenQuestion = response.data;
+			
 		}, function onError(response) {
 
 		});

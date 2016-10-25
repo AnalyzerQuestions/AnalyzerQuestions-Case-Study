@@ -31,6 +31,8 @@ public class AnalyzerQuestionController {
 
 
 	private AnalyzerQuestionService service;
+	
+	private List<Question> chosenQuestions;
 
 	public AnalyzerQuestionController() {
 		service = new AnalyzerQuestionService();
@@ -99,7 +101,20 @@ public class AnalyzerQuestionController {
 
 		System.out.println(chosenQuestionW);
 		
+		chosenQuestions = chosenQuestionW.getChosenQuestions();
+		
 		return new ResponseEntity<>(chosenQuestionW,HttpStatus.OK);
 	}
 	
+	
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/getChonseQuestions")
+	public ResponseEntity<List<Question>> getChosenQuestions() {
+
+		if (chosenQuestions == null)  {
+			chosenQuestions = new ArrayList<>();
+		}
+
+		return new ResponseEntity<List<Question>>(chosenQuestions, HttpStatus.OK);
+	}
+
 }
