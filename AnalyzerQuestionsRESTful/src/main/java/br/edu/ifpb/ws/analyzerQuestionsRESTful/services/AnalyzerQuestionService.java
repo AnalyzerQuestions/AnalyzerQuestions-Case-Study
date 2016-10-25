@@ -28,7 +28,6 @@ public class AnalyzerQuestionService {
 		this.analyzerClarity(question.getTitle(), question.getDescription());
 		this.analyseShowingExample(question.getDescription());
 		this.analyzerUnderstandableDescription(question.getTitle(), question.getDescription());
-		this.analyzerDetailAboutContext(question.getDescription());
 		this.analyzerBeEducated(question.getDescription());
 		this.analyzerShortDescriptionQuestion(question.getDescription());
 		this.analyzerDoNotCreateHomeworkQuestions(question.getDescription());
