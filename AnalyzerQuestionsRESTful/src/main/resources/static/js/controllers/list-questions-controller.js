@@ -37,7 +37,6 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		
 		var bodyDetail = $("#body-detail-description");
 		bodyDetail.append($scope.questionSelected.descritptionHtml);
-		console.log(bodyDetail);
 	};
 	
 	/**
@@ -49,15 +48,12 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var groupList = $(".aqt-confirm").eq(index);
 		groupList.append('<span class="label label-success">SELECIONADA</span>'); 
 		
-		var bodyDetail = $("#body-detail-description");
-		bodyDetail.empty();
-		$scope.questionSelected = {};
+		clearModal();
+		
 	}
 	
 	$scope.closeDetailQuestion = function() {
-		var bodyDetail = $("#body-detail-description");
-		bodyDetail.empty();
-		$scope.questionSelected = {};
+		clearModal();
 	};
 	
 	/**
@@ -109,6 +105,17 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		$('#end-time').modal('hide');
 		$('body').removeClass('modal-open');
 		$('.modal-backdrop').remove();
+	}
+	
+	/**
+	 * Limpa body do modal quando o mesmo é fechado.
+	 * Isto é necessário devido ao append de elementos html
+	 * que é adicionado no modal.
+	 */
+	var clearModal = function() {
+		var bodyDetail = $("#body-detail-description");
+		bodyDetail.empty();
+		$scope.questionSelected = {};
 	}
 	
 	$scope.getQuestions();
