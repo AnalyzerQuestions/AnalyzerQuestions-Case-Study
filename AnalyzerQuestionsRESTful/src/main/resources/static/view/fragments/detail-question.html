@@ -6,7 +6,7 @@
 				<h3>
 					<strong>{{questionSelected.title}}</strong>
 				</h3>
-				<p id="body-description">{{questionSelected.body}}
+				<p id="body-detail-description">
 				<div style="margin-top: 8px;">
 					<i class="aqt-tag" ng-repeat="tag in questionSelected.tags"> <span
 						class="label label-primary">{{tag}}</span>
@@ -16,7 +16,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="selectedChosenQuestion()">QUERO RESPONDER ESTA PERGUNTA</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeDetailQuestion()">Fechar</button>
 			</div>
 		</div>
 	</div>

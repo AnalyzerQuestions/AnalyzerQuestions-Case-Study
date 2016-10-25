@@ -10,6 +10,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	$scope.questionSelected = {};
 	var chosenQuestions = [];
 	var clickedQuestions = [];
+	var bodyDetail = $("#body-detail-description");
 	
 
 	/**
@@ -35,6 +36,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	$scope.selectedQuestion = function(question) {
 		$scope.questionSelected = question;
 		clickedQuestions.push(question);
+		bodyDetail.append($scope.questionSelected.body);
 	};
 	
 	/**
@@ -45,9 +47,14 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var index = $scope.questions.indexOf($scope.questionSelected);
 		var groupList = $(".aqt-confirm").eq(index);
 		groupList.append('<span class="label label-success">SELECIONADA</span>'); 
+		bodyDetail.append('');
 		
 		$scope.questionSelected = {};
 	}
+	
+	$scope.closeDetailQuestion = function() {
+		bodyDetail.append('');
+	};
 	
 	/**
 	 * Passa cliques e escolhas do user para o API.
