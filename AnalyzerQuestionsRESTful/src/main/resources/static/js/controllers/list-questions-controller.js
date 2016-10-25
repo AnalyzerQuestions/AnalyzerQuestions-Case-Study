@@ -10,8 +10,6 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	$scope.questionSelected = {};
 	var chosenQuestions = [];
 	var clickedQuestions = [];
-	var bodyDetail = $("#body-detail-description");
-	
 
 	/**
 	 * Obtém lista de perguntas do WS.
@@ -37,6 +35,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		$scope.questionSelected = question;
 		clickedQuestions.push(question);
 		
+		var bodyDetail = $("#body-detail-description");
 		bodyDetail.append($scope.questionSelected.descritptionHtml);
 		console.log(bodyDetail);
 	};
@@ -50,10 +49,14 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var groupList = $(".aqt-confirm").eq(index);
 		groupList.append('<span class="label label-success">SELECIONADA</span>'); 
 		
+		var bodyDetail = $("#body-detail-description");
+		bodyDetail.empty();
 		$scope.questionSelected = {};
 	}
 	
 	$scope.closeDetailQuestion = function() {
+		var bodyDetail = $("#body-detail-description");
+		bodyDetail.empty();
 		$scope.questionSelected = {};
 	};
 	
