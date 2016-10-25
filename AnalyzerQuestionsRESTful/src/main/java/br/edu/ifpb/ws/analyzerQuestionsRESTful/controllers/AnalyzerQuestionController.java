@@ -14,6 +14,8 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.AnalyzerQuestionService;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.QuestionPojo;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.SOClient;
 
 /**
  * 
@@ -67,25 +69,14 @@ public class AnalyzerQuestionController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value= BASE_URI+"/getQuestions")
-	public ResponseEntity<List<Question>> getQuestions(){
+	public ResponseEntity<List<QuestionPojo>> getQuestions(){
 		
-		List<Question> questions = new ArrayList<>();
+		List<QuestionPojo> questions = new ArrayList<>();
+		SOClient soClient = new SOClient();
 		
-		for (int i = 0; i < 20; i++) {
-			Question q = new Question();
-			q.setTitle("Titulo da pergunta de programação "+ i);
-			q.setDescription("Esta é uma descrição de uma pergunta de programação, utilizada como teste para o front-end desta aplicação."
-					+ "IFPB - Campus Monteiro - bla bla ...");
-			
-			q.setMarkdownDescription("<code>");
-			List<String> tags = new ArrayList<>();
-			tags.add("Java");
-			tags.add("Js");
-			tags.add("Spring");
-			q.setTags(tags);
-			questions.add(q);
-		}
-		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
+		questions = soClient.getQuestions();
+		
+		return new ResponseEntity<List<QuestionPojo>>(questions, HttpStatus.OK);
 	}
 	
 	/**
