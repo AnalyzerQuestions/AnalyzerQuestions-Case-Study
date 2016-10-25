@@ -73,14 +73,20 @@ public class AnalyzerQuestionController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/getQuestions")
-	public ResponseEntity<List<QuestionPojo>> getQuestions() {
+	public ResponseEntity<List<Question>> getQuestions() {
 
-		List<QuestionPojo> questions = new ArrayList<>();
+		List<Question> questions = new ArrayList<>();
 		SOClient soClient = new SOClient();
 
-		questions = soClient.getQuestions();
+		for (QuestionPojo questionPojo : soClient.getQuestions()) {
+			Question q = new  Question();
+			q.setDescription(questionPojo.getBodyMarkdown());
+			q.setTitle(questionPojo.getTitle());
+			q.setTags(questionPojo.getTags());
+			questions.add(q);
+		}
 
-		return new ResponseEntity<List<QuestionPojo>>(questions, HttpStatus.OK);
+		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
 	}
 
 	/**

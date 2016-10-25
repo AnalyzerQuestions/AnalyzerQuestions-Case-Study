@@ -47,13 +47,12 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var index = $scope.questions.indexOf($scope.questionSelected);
 		var groupList = $(".aqt-confirm").eq(index);
 		groupList.append('<span class="label label-success">SELECIONADA</span>'); 
-		bodyDetail.append('');
 		
 		$scope.questionSelected = {};
 	}
 	
 	$scope.closeDetailQuestion = function() {
-		bodyDetail.append('');
+		$scope.questionSelected = {};
 	};
 	
 	/**
