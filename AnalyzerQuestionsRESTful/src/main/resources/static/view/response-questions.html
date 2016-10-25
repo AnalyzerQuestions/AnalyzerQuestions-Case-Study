@@ -1,40 +1,22 @@
-<div>
-	<div class="container-fluid">
-		<div class="content-header">
-			<h2>
-				Responder Perguntas <small>Responda as perguntas escolhidas
-					na fase anterior</small>
-			</h2>
-		</div>
 
-		<div class="row">
-
-			<div ng-repeat="question in chosenQuestion">
-				<div class="list-group" style="cursor: pointer;" data-toggle="modal"
-					data-target="#myModal">
-					<a class="list-group-item">
-						<h3 class="list-group-item-heading">
-							<strong>{{question.title}}<strong>
-						</h3>
-						<hr>
-						<div>{{question.descritptionHtml}}</div>
-						<div style="margin-top: 8px;">
-							<i class="aqt-tag" ng-repeat="tag in question.tags"> <span
-								class="label label-primary">{{tag}}</span>
-							</i> <span class="aqt-confirm"></span> <br>
-							<hr>
-							<div class="form-group">
-								<label for="comment">Resposta:</label>
-								<textarea class="form-control" rows="5" id="comment"></textarea>
-							</div>
-							<hr>
-							<button class="btn btn-primary">Responder</button>
-
-						</div>
-					</a>
-
-				</div>
-			</div>
-		</div>
+<div class="container-fluid">
+	<div class="content-header">
+		<h2>
+			Responder Perguntas <small>Responda as perguntas escolhidas
+				na fase anterior</small>
+		</h2>
 	</div>
+
+
+	<h2>{{question.title}}</h2>
+
+	<div id="body-detail-description"></div>
+
+	<div style="margin-top: 8px;">
+		<button type="button" class="btn btn-primary" ng-click="">Responder</button>
+
+		<button type="button" class="btn btn-primary" ng-click="nextQuestion().next()">Proxima</button>
+	</div>
+
+</div>
 </div>
