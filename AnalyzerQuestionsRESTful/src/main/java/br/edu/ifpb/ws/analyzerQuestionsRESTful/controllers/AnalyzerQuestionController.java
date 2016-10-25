@@ -29,8 +29,6 @@ public class AnalyzerQuestionController {
 
 	public static final String BASE_URI = "/analyzer";
 
-	// So para teste
-	private List<Question> choicesQuestions;
 
 	private AnalyzerQuestionService service;
 
@@ -93,21 +91,8 @@ public class AnalyzerQuestionController {
 			@RequestBody ChosenQuestionsWrapper chosenQuestionW) {
 
 		System.out.println(chosenQuestionW);
-		choicesQuestions = chosenQuestionW.getChosenQuestions();
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(chosenQuestionW,HttpStatus.OK);
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.GET, value=BASE_URI+"/getChoices")
-	public ResponseEntity<List<Question>> getChosenQuestions(){
-		
-		if(choicesQuestions == null){
-			choicesQuestions = new ArrayList<>();
-		}
-		return new ResponseEntity<>(choicesQuestions, HttpStatus.OK);
-	}
 }
