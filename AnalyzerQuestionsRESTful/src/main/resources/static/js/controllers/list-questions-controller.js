@@ -87,7 +87,8 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		timer = new Timer();
 		timer.start({
 			countdown: true, 
-			startValues: {seconds: 183}});
+			startValues: {seconds: 183}
+		});
 		
 		$('.cronometer').html(timer.getTimeValues().toString());
 		timer.addEventListener('secondsUpdated', function (e) {

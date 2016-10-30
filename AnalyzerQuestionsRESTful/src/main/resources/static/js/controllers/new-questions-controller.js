@@ -28,7 +28,6 @@ aqtApp.controller('newQuestionController', function($scope, $http, $location) {
 			
 		}, function onError(response) {
 		});
-		
 	};
 	
 	/**
@@ -87,7 +86,6 @@ aqtApp.controller('newQuestionController', function($scope, $http, $location) {
 		}else{
 			buttonGetSug.prop('disabled', false)
 			buttonCompletter.prop('disabled', true);
-
 		}
 	}
 });
