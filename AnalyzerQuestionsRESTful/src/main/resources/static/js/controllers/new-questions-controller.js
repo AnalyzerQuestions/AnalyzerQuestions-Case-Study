@@ -34,21 +34,26 @@ aqtApp.controller('newQuestionController', function($scope, $http, $location) {
 	/**
 	 * Controla as escolhas de sugestões feitas pelo user.
 	 */
-	$scope.checkedSuggestion = function(suggestion, isChecked){
+	$scope.checkedSuggestion = function(suggestion){
 		var index = $scope.suggestions.indexOf(suggestion);
 		var elementClicked = $(".aqt-close").eq(index);
-		if(isChecked){
-			elementClicked.addClass('alert-success'); 
-			chosenSuggestions.push(suggestion);
-			anableButton(chosenSuggestions);
-		}
-		else{
+		var elementIcon = $('.js-icon').eq(index);
+		
+		if(elementClicked.hasClass("alert-success")){
 			elementClicked.removeClass('alert-success');
+			elementIcon.removeClass('fa-close');
+			elementIcon.addClass('fa-check')
 			var indexChoose = chosenSuggestions.indexOf(suggestion);
 			chosenSuggestions.splice(indexChoose, 1);
 			anableButton(chosenSuggestions);
 		}
-		
+		else{
+			elementClicked.addClass('alert-success'); 
+			elementIcon.removeClass('fa-check');
+			elementIcon.addClass('fa-close')
+			chosenSuggestions.push(suggestion);
+			anableButton(chosenSuggestions);
+		}
 	};
 	
 	/**

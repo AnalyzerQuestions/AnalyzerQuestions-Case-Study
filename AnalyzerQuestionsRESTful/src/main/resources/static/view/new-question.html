@@ -23,10 +23,7 @@
 		<div class="col-sm-6" ng-repeat = "sug in suggestions">
 			<div class="alert  alert-danger  alert-dismissible aqt-close" role="alert">
 				<button type="button" class="close btn-suggestion">
-					<i class="fa fa-times" ng-click="checkedSuggestion(sug, false)" data-toggle="tooltip" title="Click aqui se esta sugestão NÃO foi importante para você" aria-hidden="true"></i>
-				</button>
-				<button type="button" class="close btn-suggestion">
-					<i class="fa fa-check" ng-click="checkedSuggestion(sug, true)" data-toggle="tooltip" title="Click aqui se esta sugestão FOI importante para você" aria-hidden="true"></i>
+					<i class="fa fa-check js-icon" ng-click="checkedSuggestion(sug)" data-toggle="tooltip" title="Click aqui se esta sugestão FOI importante para você" aria-hidden="true"></i>
 				</button>
 				{{sug}}
 			</div>
