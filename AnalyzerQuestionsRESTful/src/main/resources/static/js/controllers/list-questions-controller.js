@@ -43,13 +43,23 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	 * Evento de escolha para o user responder.
 	 */
 	$scope.selectedChosenQuestion = function(){
-		chosenQuestions.push($scope.questionSelected);
 		var index = $scope.questions.indexOf($scope.questionSelected);
 		var groupList = $(".aqt-confirm").eq(index);
-		groupList.append('<span class="label label-success">SELECIONADA</span>'); 
+		var btnDlgDetail = $('#btn-dlg-detail');
+		
+		if(groupList.hasClass('js-selected')){
+			chosenQuestions.push($scope.questionSelected);
+			groupList.empty();
+			groupList.removeClass('js-selected');
+			btnDlgDetail.text('QUERO RESPONDER ESTA PERGUNTA');
+		}else{
+			chosenQuestions.splice(index, 1);
+			groupList.addClass('js-selected');
+			groupList.append('<span class="label label-success">SELECIONADA</span>');
+			btnDlgDetail.text('NÃO QUERO RESPONDER ESTA PERGUNTA');
+		}
 		
 		clearModal();
-		
 	}
 	
 	$scope.closeDetailQuestion = function() {
