@@ -3,21 +3,40 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
+@Entity
+@Table(name="question")
 public class Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
+	
 	private String title;
+	
 	private String description;
+	
+	@Column(name = "descrition_html")
 	private String descritptionHtml;
+	
+    @ElementCollection
 	private List<String> tags;
+	
 	private String answer;
-
 	public Question() {
 	}
 
@@ -53,8 +72,6 @@ public class Question implements Serializable {
 		this.tags = tags;
 	}
 	
-	
-
 	public String getAnswer() {
 		return answer;
 	}
@@ -68,5 +85,4 @@ public class Question implements Serializable {
 		return "Question [title=" + title + ", description=" + description + ", descritptionHtml=" + descritptionHtml
 				+ ", tags=" + tags + "]";
 	}
-
 }

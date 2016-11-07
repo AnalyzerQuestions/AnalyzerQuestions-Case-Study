@@ -12,7 +12,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
  *
  */
-public class AnalyzerQuestionService {
+public class AnalyzerQuestion {
 
 	private QuestionAnalyzerFinal questionAnalyzer;
 	private List<String> suggestions = new ArrayList<String>();

@@ -3,6 +3,7 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.AnalyzerQuestionService;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.QuestionPojo;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.SOClient;
 
@@ -29,14 +30,11 @@ public class AnalyzerQuestionController {
 
 	public static final String BASE_URI = "/analyzer";
 
-
-	private AnalyzerQuestionService service;
+	@Autowired
+	private QuestionService questionService;
 	
 	private List<Question> chosenQuestions;
 
-	public AnalyzerQuestionController() {
-		service = new AnalyzerQuestionService();
-	}
 
 	/**
 	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
@@ -47,8 +45,8 @@ public class AnalyzerQuestionController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question) {
-
-		List<String> suggestions = service.getSuggestions(question);
+		questionService.save(question);
+		List<String> suggestions = questionService.getAnalize(question);
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
 	}
 

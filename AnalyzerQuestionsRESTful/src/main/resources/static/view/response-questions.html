@@ -7,15 +7,16 @@
 		</h2>
 	</div>
 
-
-	<h2>{{question.title}}</h2>
-
-	<div id="body-detail-description"></div>
+	<div>
+		<h2>{{question.title}}</h2>
+		<div id="body-detail-description"></div>
+	</div>
 
 	<div style="margin-top: 8px;">
-		<button type="button" class="btn btn-primary" ng-click="">Responder</button>
+		<button type="button" class="btn btn-danger" ng-click="">Responder</button>
 
 		<button type="button" class="btn btn-primary" ng-click="nextQuestion.next()">Proxima</button>
+		<button type="button" class="btn btn-primary" ng-click="nextQuestion.next()">Anterior</button>
 	</div>
 
 </div>
