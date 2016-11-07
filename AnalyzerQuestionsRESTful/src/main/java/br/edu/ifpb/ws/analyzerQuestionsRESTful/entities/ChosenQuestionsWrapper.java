@@ -16,7 +16,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="chosen_questions")
+@Table(name="CHOSEN_QUESTIONS")
 public class ChosenQuestionsWrapper {
 
 	@Id

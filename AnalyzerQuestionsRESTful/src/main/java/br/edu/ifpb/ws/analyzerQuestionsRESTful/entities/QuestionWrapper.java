@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="question_mod_sugg")
+@Table(name="QUESTION_CHANGE_WITH_SUGESTIONS")
 public class QuestionWrapper {
 	
 	@Id
