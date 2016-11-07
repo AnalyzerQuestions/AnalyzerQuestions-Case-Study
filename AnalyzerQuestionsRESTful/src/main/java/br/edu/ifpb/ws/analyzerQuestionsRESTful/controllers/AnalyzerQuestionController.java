@@ -45,7 +45,7 @@ public class AnalyzerQuestionController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question) {
-		questionService.save(question);
+		questionService.saveOriginal(question);
 		List<String> suggestions = questionService.getAnalize(question);
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
 	}
@@ -61,7 +61,7 @@ public class AnalyzerQuestionController {
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/suggestions")
 	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper) {
 
-		System.out.println(questionWrapper);
+		questionService.saveWithSuggestions(questionWrapper);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -96,9 +96,8 @@ public class AnalyzerQuestionController {
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/choices")
 	public ResponseEntity<ChosenQuestionsWrapper> registerChosenQuestions(
 			@RequestBody ChosenQuestionsWrapper chosenQuestionW) {
-
-		System.out.println(chosenQuestionW);
 		
+		questionService.saveChosenQuestions(chosenQuestionW);
 		chosenQuestions = chosenQuestionW.getChosenQuestions();
 		
 		return new ResponseEntity<>(chosenQuestionW,HttpStatus.OK);
@@ -114,5 +113,4 @@ public class AnalyzerQuestionController {
 
 		return new ResponseEntity<List<Question>>(chosenQuestions, HttpStatus.OK);
 	}
-
 }

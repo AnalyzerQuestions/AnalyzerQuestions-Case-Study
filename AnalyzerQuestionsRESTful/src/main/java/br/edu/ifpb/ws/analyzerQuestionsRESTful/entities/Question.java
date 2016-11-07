@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -17,7 +18,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="question")
+@Table(name="question_orig")
 public class Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,10 +28,11 @@ public class Question implements Serializable {
 	private Long id;
 	
 	private String title;
-	
+
+	@Column(columnDefinition="TEXT")
 	private String description;
 	
-	@Column(name = "descrition_html")
+	@Column(name = "descrition_html",columnDefinition="TEXT")
 	private String descritptionHtml;
 	
     @ElementCollection

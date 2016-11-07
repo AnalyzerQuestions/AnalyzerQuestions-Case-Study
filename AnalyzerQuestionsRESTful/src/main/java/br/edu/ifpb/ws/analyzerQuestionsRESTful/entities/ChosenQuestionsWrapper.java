@@ -2,14 +2,31 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
  *
  */
+@Entity
+@Table(name="chosen_questions")
 public class ChosenQuestionsWrapper {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private Long id;
+	
+	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Question> clickedQuestions;
+	
+	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Question> chosenQuestions;
 
 	public List<Question> getClickedQuestions() {
