@@ -71,7 +71,7 @@ aqtApp.controller('newQuestionController', function($scope, $http, $location) {
 				data : questionWrapper
 				
 			}).then(function onSuccess() {
-				$location.path('/listQuestions')
+				$location.path('/step2')
 				
 			}, function onError() {
 				

@@ -48,12 +48,12 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var btnDlgDetail = $('#btn-dlg-detail');
 		
 		if(groupList.hasClass('js-selected')){
-			chosenQuestions.push($scope.questionSelected);
+			chosenQuestions.splice(index, 1);
 			groupList.empty();
 			groupList.removeClass('js-selected');
 			btnDlgDetail.text('QUERO RESPONDER ESTA PERGUNTA');
 		}else{
-			chosenQuestions.splice(index, 1);
+			chosenQuestions.push($scope.questionSelected);
 			groupList.addClass('js-selected');
 			groupList.append('<span class="label label-success">SELECIONADA</span>');
 			btnDlgDetail.text('NÃO QUERO RESPONDER ESTA PERGUNTA');
@@ -73,7 +73,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		var chosenQuestion = {};
 		chosenQuestion.clickedQuestions = clickedQuestions;
 		chosenQuestion.chosenQuestions = chosenQuestions;
-		
+		console.log(chosenQuestion);
 		removeFocusModal();
 		
 		$http({
@@ -83,7 +83,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 			
 		}).then(function onSuccess(response) {
 			
-			$location.path('/responseQuestions')
+			$location.path('/step3')
 			
 		}, function onError(response) {
 			

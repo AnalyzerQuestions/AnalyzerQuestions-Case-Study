@@ -11,7 +11,16 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 	}).when("/responseQuestions", {
 		templateUrl : 'view/response-questions.html',
 		controller : 'responseQuestionController'
-
+			
+	}).when("/", {
+		templateUrl : 'view/step-info1.html',
+		
+	}).when("/step2", {
+		templateUrl : 'view/step-info2.html',
+		
+	}).when("/step3", {
+		templateUrl : 'view/step-info3.html',
+			
 	}).otherwise({
 		redirectTo : '/'
 	});
