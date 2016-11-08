@@ -33,6 +33,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	 */
 	$scope.selectedQuestion = function(question) {
 		$scope.questionSelected = question;
+		question.questionType = 'CLICABLE';
 		clickedQuestions.push(question);
 		
 		var bodyDetail = $("#body-detail-description");
@@ -50,9 +51,11 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 		if(groupList.hasClass('js-selected')){
 			chosenQuestions.splice(index, 1);
 			groupList.empty();
+			$scope.questionSelected.questionType = 'CLICABLE';
 			groupList.removeClass('js-selected');
 			btnDlgDetail.text('QUERO RESPONDER ESTA PERGUNTA');
 		}else{
+			$scope.questionSelected.questionType = 'CHOSEN';
 			chosenQuestions.push($scope.questionSelected);
 			groupList.addClass('js-selected');
 			groupList.append('<span class="label label-success">SELECIONADA</span>');
