@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.QuestionPojo;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.SOClient;
@@ -45,7 +46,10 @@ public class AnalyzerQuestionController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question) {
+		
+		question.setQuestionType(QuestionType.ORIGINAL);
 		questionService.saveOriginal(question);
+		
 		List<String> suggestions = questionService.getAnalize(question);
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
 	}
@@ -60,7 +64,7 @@ public class AnalyzerQuestionController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/suggestions")
 	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper) {
-
+		questionWrapper.getQuestion().setQuestionType(QuestionType.CHANGED_WITH_SUGGESTION);
 		questionService.saveWithSuggestions(questionWrapper);
 
 		return new ResponseEntity<>(HttpStatus.OK);
