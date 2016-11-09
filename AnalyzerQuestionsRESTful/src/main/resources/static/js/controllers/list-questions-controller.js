@@ -8,9 +8,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	const URI = 'http://localhost:8080';
 	$scope.questions = [];
 	$scope.questionsLimit = 20;
-	
 	$scope.questionSelected = {};
-	
 	var chosenQuestions = [];
 	var clickedQuestions = [];
 
@@ -57,6 +55,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 			$scope.questionSelected.questionType = 'CLICABLE';
 			groupList.removeClass('js-selected');
 			btnDlgDetail.text('QUERO RESPONDER ESTA PERGUNTA');
+			
 		}else{
 			$scope.questionSelected.questionType = 'CHOSEN';
 			chosenQuestions.push($scope.questionSelected);
@@ -145,5 +144,4 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 	
 	$scope.getQuestions();
 	$scope.startCronometer();
-	
 });
