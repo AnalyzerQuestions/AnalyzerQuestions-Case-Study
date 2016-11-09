@@ -15,7 +15,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.StringTokenizerUtils;
 
 /**
  * 
- * @author franck
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
  *
  */
 public class ReaderQuestions {
@@ -64,8 +64,8 @@ public class ReaderQuestions {
 						record.get(TITLE), 
 						record.get(DESCRICAO), 
 						record.get(DESCRICAO_HTML), 
-						parsetoList(record.get(TAGS)),
-						parseToBoolean(record.get(FOI_RESPONDIDA)));
+						this.parseToList(record.get(TAGS)),
+						this.parseToBoolean(record.get(FOI_RESPONDIDA)));
 				
 				questions.add(question);
 			}
@@ -93,7 +93,7 @@ public class ReaderQuestions {
 		return questions;
 	}
 	
-	public List<String> parsetoList(String s){
+	private List<String> parseToList(String s){
 		String preparement = s.substring(1, s.length()-1);
 		String[] sliped = StringTokenizerUtils.parseTokenWithoutComma(preparement);
 		

@@ -7,7 +7,10 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 
 	const URI = 'http://localhost:8080';
 	$scope.questions = [];
+	$scope.questionsLimit = 20;
+	
 	$scope.questionSelected = {};
+	
 	var chosenQuestions = [];
 	var clickedQuestions = [];
 
@@ -85,13 +88,17 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 			data : chosenQuestion
 			
 		}).then(function onSuccess(response) {
-			
 			$location.path('/step3')
 			
 		}, function onError(response) {
 			
 		});
 	};
+	
+	$scope.loadMore = function() {
+	      var increamented = $scope.questionsLimit + 15;
+	      $scope.questionsLimit = increamented > $scope.questions.length ? $scope.questions.length : increamented;
+	    };
 	
 	/**
 	 * inicia cronometro, quando a tela de lista de pergunta é iniciada.

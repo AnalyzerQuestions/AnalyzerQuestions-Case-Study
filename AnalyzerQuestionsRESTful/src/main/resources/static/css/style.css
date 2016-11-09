@@ -17,8 +17,7 @@ body {
 
 .aqt-jumbotron {
 	width: 90%;
-	height: 90%
-	text-align: center;
+	height: 90% text-align: center;
 	margin-top: 80px;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -27,8 +26,7 @@ body {
 .aqt-jumbotron-q {
 	width: 90%;
 	background: white;
-	height: 90%
-	margin-top: 80px;
+	height: 90% margin-top: 80px;
 	padding-left: 20px;
 	padding-right: 20px;
 }
@@ -112,76 +110,85 @@ body {
 	border-radius: 2px;
 }
 
-.aqt-checkbox{
+.aqt-checkbox {
 	font-size: 20px;
 	margin-right: 15px;
 }
 
-.aqt-confirm{
+.aqt-confirm {
 	color: #469b2b;
 	float: right;
 }
 
 .box-footer {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  margin-top: 30px;
-  border-top: 2px solid #f4f4f4 !important;
-  padding: 7px;
-  background-color: #ffffff;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	margin-top: 30px;
+	border-top: 2px solid #f4f4f4 !important;
+	padding: 7px;
+	background-color: #ffffff;
 }
 
-.aqt-bttn-completter-list{
+.aqt-bttn-completter-list {
 	font-size: 17px;
 	padding: 4px;
 }
 
 /* LOGIN */
-
 .login {
-  width: 400px;
-  margin: 16px auto;
-  margin-top:60px;
-  font-size: 16px;
+	width: 400px;
+	margin: 16px auto;
+	margin-top: 60px;
+	font-size: 16px;
 }
-
 
 .login input {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  border-width: 1px;
-  border-style: solid;
-  padding: 16px;
-  outline: 0;
-  font-family: inherit;
-  font-size: 0.95em;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	border-width: 1px;
+	border-style: solid;
+	padding: 16px;
+	outline: 0;
+	font-family: inherit;
+	font-size: 0.95em;
 }
 
-.login input[type="email"],
-.login input[type="password"] {
-  background: #fff;
-  border-color: #bbb;
-  color: #555;
+.login input[type="email"], .login input[type="password"] {
+	background: #fff;
+	border-color: #bbb;
+	color: #555;
 }
 
-.login input[type="email"]:focus{
-  border-color: #888;
+.login input[type="email"]:focus {
+	border-color: #888;
 }
 
 .login input[type="submit"] {
-  background: #286090;
-  border-color: transparent;
-  color: #fff;
-  cursor: pointer;
+	background: #286090;
+	border-color: transparent;
+	color: #fff;
+	cursor: pointer;
 }
 
 .login input[type="submit"]:hover {
-  background: #084c87;
+	background: #084c87;
 }
 
 .login input[type="submit"]:focus {
-  border-color: #286090;
+	border-color: #286090;
+}
+
+.aqt-load-more {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.aqt-load-more button {
+	padding-left: 80px;
+	padding-right: 80px;
+	font-size: 22px;
 }

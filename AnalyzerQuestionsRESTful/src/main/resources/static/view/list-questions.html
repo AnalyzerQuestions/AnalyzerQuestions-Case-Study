@@ -16,7 +16,7 @@
 		</div>
 
 		<div class="row">
-				<div ng-repeat="question in questions">
+				<div ng-repeat="question in questions | limitTo:questionsLimit">
 					<div class="list-group" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" ng-click="selectedQuestion(question)">
 						<a class="list-group-item">
 							<h3 class="list-group-item-heading">{{question.title}}</h3>
@@ -30,5 +30,9 @@
 					</div>
 				</div>
 		</div>
+		<div class="aqt-load-more">
+		  	<button type="button" class="btn btn-default" ng-click="loadMore()">Mais perguntas</button>
+		 </div>
+		
 	</div>
 </div>
