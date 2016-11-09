@@ -42,12 +42,24 @@ public class Question implements Serializable {
 	private List<String> tags;
 
 	private String answer;
+	private boolean isAnswered;
 
 	@Enumerated(EnumType.STRING)
 	private QuestionType questionType;
 
 	public Question() {
 	}
+	
+	public Question(String title, String description, String descritptionHtml, 
+							List<String> tags, boolean isAnswered) {
+		this.title = title;
+		this.description = description;
+		this.descritptionHtml = descritptionHtml;
+		this.tags = tags;
+		this.isAnswered = isAnswered;
+	}
+
+
 
 	public String getTitle() {
 		return title;
@@ -67,6 +79,14 @@ public class Question implements Serializable {
 
 	public String getDescritptionHtml() {
 		return descritptionHtml;
+	}
+
+	public boolean isAnswered() {
+		return isAnswered;
+	}
+
+	public void setAnswered(boolean isAnswered) {
+		this.isAnswered = isAnswered;
 	}
 
 	public void setDescritptionHtml(String descritptionHtml) {

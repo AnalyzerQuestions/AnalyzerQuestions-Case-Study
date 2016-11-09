@@ -11,6 +11,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.ChosenQuestionsWrapperRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.QuestionRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.QuestionWrapperRepository;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
 
 /**
  * 
@@ -45,6 +46,13 @@ public class QuestionService {
 	
 	public ChosenQuestionsWrapper saveChosenQuestions(ChosenQuestionsWrapper chosenQuestionsWrapper) {
 		return chosenQuestionsWrapperRepository.save(chosenQuestionsWrapper);
+	}
+	
+	public List<Question> getQuestions() {
+		ReaderQuestions rq = new ReaderQuestions("perguntas.csv");
+		List<Question> questions = rq.readCsvFile();
+		
+		return questions;
 	}
 	
 	public List<String> getAnalize(Question question){

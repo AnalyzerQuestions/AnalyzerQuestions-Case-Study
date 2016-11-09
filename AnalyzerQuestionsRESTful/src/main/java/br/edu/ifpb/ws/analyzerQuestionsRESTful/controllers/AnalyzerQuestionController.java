@@ -16,8 +16,6 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.QuestionPojo;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.so.SOClient;
 
 /**
  * 
@@ -77,17 +75,7 @@ public class AnalyzerQuestionController {
 	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/getQuestions")
 	public ResponseEntity<List<Question>> getQuestions() {
 
-		List<Question> questions = new ArrayList<>();
-		SOClient soClient = new SOClient();
-
-		for (QuestionPojo questionPojo : soClient.getQuestions()) {
-			Question q = new  Question();
-			q.setDescription(questionPojo.getBodyMarkdown());
-			q.setDescritptionHtml(questionPojo.getBody());
-			q.setTitle(questionPojo.getTitle());
-			q.setTags(questionPojo.getTags());
-			questions.add(q);
-		}
+		List<Question> questions = questionService.getQuestions();
 
 		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
 	}

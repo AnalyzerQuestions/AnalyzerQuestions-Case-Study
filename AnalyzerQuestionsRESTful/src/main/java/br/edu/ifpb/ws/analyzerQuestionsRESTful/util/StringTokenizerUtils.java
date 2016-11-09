@@ -37,4 +37,11 @@ public class StringTokenizerUtils {
 		return result;
 	}
 	
+	public static String[] parseTokenWithoutComma(String str){
+		
+		String [] result = str.split(",");
+		
+		return result;
+	}
+	
 }
