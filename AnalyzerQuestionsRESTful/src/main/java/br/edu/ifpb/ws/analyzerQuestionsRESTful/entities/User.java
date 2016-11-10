@@ -31,13 +31,16 @@ public class User {
 	private String email;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date accessDate;
+	private Date accessDate = new Date();
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private QuestionWrapper questionWrapper;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private ChosenQuestionsWrapper chosenQuestionsWrapper;
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private Question question;
 	
 	public Long getId() {
 		return id;
@@ -87,11 +90,22 @@ public class User {
 		this.chosenQuestionsWrapper = chosenQuestionsWrapper;
 	}
 
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", accessDate=" + accessDate
-				+ ", questionWrapper=" + questionWrapper + ", chosenQuestionsWrapper=" + chosenQuestionsWrapper + "]";
+				+ ", questionWrapper=" + questionWrapper + ", chosenQuestionsWrapper=" + chosenQuestionsWrapper
+				+ ", question=" + question + "]";
 	}
+
+	
 
 	
 
