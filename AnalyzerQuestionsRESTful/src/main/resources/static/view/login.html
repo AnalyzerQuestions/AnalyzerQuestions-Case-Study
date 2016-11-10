@@ -6,14 +6,14 @@
         <form action="" id="loginForm">
           <div class="form-group input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input class="form-control" type="text" name='username' placeholder="Nome"/>          
+            <input class="form-control" type="text" name='username' ng-model="user.name" placeholder="Nome"/>          
           </div>
           <div class="form-group input-group">
             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-            <input class="form-control" type="email" name='email' placeholder="E-mail"/>     
+            <input class="form-control" type="email" name='email' ng-model="user,email" placeholder="E-mail"/>     
           </div>
           <div class="form-group">
-            <a type="button" class="btn btn-danger btn-block" href="#/step1">Proseguir</a>
+            <button type="button" class="btn btn-danger btn-block" ng-click="register()">Proseguir</button>
           </div>
         </form>        
       </div>  
