@@ -136,50 +136,6 @@ body {
 	padding: 4px;
 }
 
-/* LOGIN */
-.login {
-	width: 400px;
-	margin: 16px auto;
-	margin-top: 60px;
-	font-size: 16px;
-}
-
-.login input {
-	box-sizing: border-box;
-	display: block;
-	width: 100%;
-	border-width: 1px;
-	border-style: solid;
-	padding: 16px;
-	outline: 0;
-	font-family: inherit;
-	font-size: 0.95em;
-}
-
-.login input[type="email"], .login input[type="password"] {
-	background: #fff;
-	border-color: #bbb;
-	color: #555;
-}
-
-.login input[type="email"]:focus {
-	border-color: #888;
-}
-
-.login input[type="submit"] {
-	background: #286090;
-	border-color: transparent;
-	color: #fff;
-	cursor: pointer;
-}
-
-.login input[type="submit"]:hover {
-	background: #084c87;
-}
-
-.login input[type="submit"]:focus {
-	border-color: #286090;
-}
 
 .aqt-load-more {
 	margin-top: 15px;
@@ -191,4 +147,18 @@ body {
 	padding-left: 80px;
 	padding-right: 80px;
 	font-size: 22px;
+}
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 50%; 
+  height: 50%;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 40px;
 }
