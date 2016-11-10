@@ -18,6 +18,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *  @author  <a https://github.com/JoseRafael97">Rafael Feitosa</a>
  *
  */
 @Entity
@@ -42,10 +43,15 @@ public class Question implements Serializable {
 	private List<String> tags;
 
 	private String answer;
+	
 	private boolean isAnswered;
 
 	@Enumerated(EnumType.STRING)
 	private QuestionType questionType;
+	
+	//Atributo para guadar as opinião do por que a pessoa escolheu a pergunta.
+	@ElementCollection
+	private List<String> OpinionDescription;
 
 	public Question() {
 	}
