@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.datastax.driver.core.querybuilder.Update;
+
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.User;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
+import groovyjarjarasm.asm.commons.Method;
 
 /**
  * 
@@ -32,7 +37,12 @@ public class AnalyzerQuestionController {
 	@Autowired
 	private QuestionService questionService;
 	
+	@Autowired
+	private UserService userService;
+	
 	private List<Question> chosenQuestions;
+	
+
 
 
 	/**
@@ -104,5 +114,22 @@ public class AnalyzerQuestionController {
 		}
 
 		return new ResponseEntity<List<Question>>(chosenQuestions, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = BASE_URI+"/user")
+	public ResponseEntity<User> RegisterUser(@RequestBody User user){
+		
+		User u = userService.saveUser(user);
+		return new ResponseEntity<User>(u, HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = BASE_URI+"/user")
+	public ResponseEntity<User> updateUser(@RequestBody User user){
+		
+		User u = userService.updateUser(user); 
+		
+		return new ResponseEntity<User>(u, HttpStatus.OK);
+		
 	}
 }

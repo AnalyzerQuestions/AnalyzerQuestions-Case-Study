@@ -26,7 +26,7 @@ public class ChosenQuestionsWrapper {
 	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Question> clickedQuestions;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},  orphanRemoval = true)
 	private List<Question> chosenQuestions;
 
 	public List<Question> getClickedQuestions() {
