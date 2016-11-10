@@ -23,6 +23,7 @@ aqtApp.controller("listQuestionController", function($scope, $http, $location) {
 
 		}).then(function onSuccess(response) {
 			$scope.questions = response.data;
+			$scope.loadMore();
 
 		}, function onError(response) {
 
