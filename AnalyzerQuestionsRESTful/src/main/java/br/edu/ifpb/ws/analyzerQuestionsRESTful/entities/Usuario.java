@@ -18,8 +18,8 @@ import javax.persistence.TemporalType;
  *	@author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  */
 @Entity
-@Table(name="USER")
-public class User {
+@Table(name="USUARIO")
+public class Usuario {
 	
 	
 	@Id

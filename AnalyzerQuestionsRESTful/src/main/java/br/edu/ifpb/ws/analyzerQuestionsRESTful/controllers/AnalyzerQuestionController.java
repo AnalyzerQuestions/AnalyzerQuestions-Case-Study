@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.User;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
@@ -114,19 +114,18 @@ public class AnalyzerQuestionController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI+"/user")
-	public ResponseEntity<User> RegisterUser(@RequestBody User user){
+	public ResponseEntity<Usuario> RegisterUser(@RequestBody Usuario user){
 		
-		User u = userService.saveUser(user);
-		return new ResponseEntity<User>(u, HttpStatus.OK);
+		Usuario u = userService.saveUser(user);
+		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
 
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = BASE_URI+"/user")
-	public ResponseEntity<User> updateUser(@RequestBody User user){
+	public ResponseEntity<Usuario> updateUser(@RequestBody Usuario user){
 		
-		User u = userService.updateUser(user); 
-		
-		return new ResponseEntity<User>(u, HttpStatus.OK);
+		Usuario u = userService.updateUser(user); 
+		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
 		
 	}
 }

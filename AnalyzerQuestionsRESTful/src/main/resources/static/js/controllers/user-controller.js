@@ -1,21 +1,16 @@
-aqtApp.controller("userController", function($scope, $http, $location) {
-	
-	$scope.user = {};
-	
-	$scope.register = function() {
-		/*$http({
-			method : 'POST',
-			url : URI+'/user',
-			data : user,
+aqtApp.controller("userController", function($scope, userService, $location, localStorageService) {
 
-		}).then(function onSucces(response) {
-			$scope.user = response.data;
-			
-		}, function onError(response) {
-			
-		});*/
-		return localStorageService.set("aqt-user", $scope.user.name);
-		$location.path('/step1')
+	$scope.user = {};
+
+	$scope.register = function() {
+		userService.saveUser($scope.user).$promise.then(
+
+		function(value) {
+			$location.path('/step1')
+			return localStorageService.set("aqt-user", $scope.user);
+
+		}, function(error) {
+
+		});
 	};
-	
 });

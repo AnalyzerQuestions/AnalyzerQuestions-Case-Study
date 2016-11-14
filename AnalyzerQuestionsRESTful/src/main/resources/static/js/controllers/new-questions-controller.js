@@ -3,7 +3,7 @@
  * 
  * @created by Franck Aragão @date 20-10-16.
  */
-aqtApp.controller('newQuestionController', function($scope, $http, $location) {
+aqtApp.controller('newQuestionController', function($scope, $http, $location, localStorageService) {
 	
 	const URI = 'http://localhost:8080';
 	var chosenSuggestions = [];
