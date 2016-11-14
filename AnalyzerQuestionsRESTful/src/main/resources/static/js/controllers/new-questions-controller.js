@@ -10,6 +10,8 @@ aqtApp.controller('newQuestionController', function($scope, $http, $location) {
 	var buttonGetSug = $('#btn-get-sug');
 	var buttonCompletter = $('#btn-completter');
 	$scope.suggestions = [];
+	
+	console.log(localStorageService.get("aqt-user"));
 
 	/**
 	 * Submete uma nova pergunta à API e obtem sugestões.

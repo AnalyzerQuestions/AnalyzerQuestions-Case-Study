@@ -3,7 +3,7 @@ aqtApp.controller("userController", function($scope, $http, $location) {
 	$scope.user = {};
 	
 	$scope.register = function() {
-		$http({
+		/*$http({
 			method : 'POST',
 			url : URI+'/user',
 			data : user,
@@ -13,7 +13,9 @@ aqtApp.controller("userController", function($scope, $http, $location) {
 			
 		}, function onError(response) {
 			
-		});
+		});*/
+		return localStorageService.set("aqt-user", $scope.user.name);
+		$location.path('/step1')
 	};
 	
 });
