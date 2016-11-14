@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.datastax.driver.core.querybuilder.Update;
-
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
@@ -20,7 +18,6 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.User;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
-import groovyjarjarasm.asm.commons.Method;
 
 /**
  * 

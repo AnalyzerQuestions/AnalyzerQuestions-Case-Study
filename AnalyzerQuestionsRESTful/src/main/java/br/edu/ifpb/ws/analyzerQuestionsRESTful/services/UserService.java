@@ -1,10 +1,12 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.User;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.UserRepository;
 
+@Service
 public class UserService {
 	
 	@Autowired
