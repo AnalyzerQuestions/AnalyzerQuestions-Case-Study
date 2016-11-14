@@ -12,7 +12,6 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	
 	/**
 	 * Método responsável por salvar um usário no banco de dados
 	 * @param user
@@ -21,7 +20,6 @@ public class UserService {
 	public Usuario saveUser(Usuario user){
 		
 		this.userRepository.save(user);
-		
 		return user;
 	}
 	
@@ -44,6 +42,15 @@ public class UserService {
 	public Usuario updateUser(Usuario user){
 		this.userRepository.save(user);
 		return user;
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Usuario getById(Long id) {
+		return userRepository.getOne(id);
 	}
 
 }

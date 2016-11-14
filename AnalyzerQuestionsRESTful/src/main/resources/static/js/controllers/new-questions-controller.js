@@ -1,91 +1,98 @@
 /**
- * Controller responsável pela manipulação do fragmento de  página new-question.html
+ * Controller responsável pela manipulação do fragmento de página
+ * new-question.html
  * 
- * @created by Franck Aragão @date 20-10-16.
+ * @created by Franck Aragão
+ * @date 20-10-16.
  */
-aqtApp.controller('newQuestionController', function($scope, $http, $location, localStorageService) {
-	
-	const URI = 'http://localhost:8080';
+aqtApp.controller('newQuestionController', function($scope, userService, $http,
+		$location, localStorageService) {
+
 	var chosenSuggestions = [];
+	$scope.suggestions = [];
 	var buttonGetSug = $('#btn-get-sug');
 	var buttonCompletter = $('#btn-completter');
-	$scope.suggestions = [];
-	
-	console.log(localStorageService.get("aqt-user"));
+
+	var userStorage = localStorageService.get("aqt-user");
+	var user = {};
 
 	/**
 	 * Submete uma nova pergunta à API e obtem sugestões.
 	 */
 	$scope.getSuggestions = function(question) {
-		
-		question.markdownDescription = post = $('#editor-f').data('markdown').parseContent();
-	    
+
+		question.markdownDescription = post = $('#editor-f').data('markdown')
+				.parseContent();
+		var user = userStorage;
+		user.question = question;
+
 		$http({
 			method : 'POST',
-			url : URI+'/analyzer',
-			data : question,
+			url : '/analyzer',
+			data : user,
 
 		}).then(function onSucces(response) {
 			$scope.suggestions = response.data;
-			
+
 		}, function onError(response) {
 		});
 	};
-	
+
 	/**
 	 * Controla as escolhas de sugestões feitas pelo user.
 	 */
-	$scope.checkedSuggestion = function(suggestion){
+	$scope.checkedSuggestion = function(suggestion) {
 		var index = $scope.suggestions.indexOf(suggestion);
 		var elementClicked = $(".aqt-close").eq(index);
 		var elementIcon = $('.js-icon').eq(index);
-		
-		if(elementClicked.hasClass("alert-success")){
+
+		if (elementClicked.hasClass("alert-success")) {
 			elementClicked.removeClass('alert-success');
 			elementIcon.removeClass('fa-close');
 			elementIcon.addClass('fa-check')
 			var indexChoose = chosenSuggestions.indexOf(suggestion);
 			chosenSuggestions.splice(indexChoose, 1);
 			anableButton(chosenSuggestions);
-		}
-		else{
-			elementClicked.addClass('alert-success'); 
+		} else {
+			elementClicked.addClass('alert-success');
 			elementIcon.removeClass('fa-check');
 			elementIcon.addClass('fa-close')
 			chosenSuggestions.push(suggestion);
 			anableButton(chosenSuggestions);
 		}
 	};
-	
+
 	/**
 	 * Registra na API as escolhas de sugestões do user.
 	 */
-	$scope.registerChosenSuggestions = function(question){
-		if(chosenSuggestions.length > 0){
-			
+	$scope.registerChosenSuggestions = function(question) {
+		if (chosenSuggestions.length > 0) {
+
 			var questionWrapper = {};
 			questionWrapper.question = question;
 			questionWrapper.suggestions = chosenSuggestions;
-			
-			$http({
-				method : 'POST',
-				url : URI+'/analyzer/suggestions',
-				data : questionWrapper
-				
-			}).then(function onSuccess() {
-				$location.path('/step2')
-				
-			}, function onError() {
-				
+
+			userService.getById(userStorage.id).$promise.then(
+				function(data) {
+					user = data;
+					user.questionWrapper = questionWrapper;
+					userService.updateUser(user).$promise.then(
+						function onSuccess() {
+							$location.path('/step2')
+
+						}, function onError() {
+					});
+			}, function(data) {
+
 			});
 		}
 	};
-	
-	function anableButton(chosenSuggestions){
-		if(chosenSuggestions.length > 0){
+
+	function anableButton(chosenSuggestions) {
+		if (chosenSuggestions.length > 0) {
 			buttonGetSug.prop('disabled', true)
 			buttonCompletter.prop('disabled', false);
-		}else{
+		} else {
 			buttonGetSug.prop('disabled', false)
 			buttonCompletter.prop('disabled', true);
 		}

@@ -14,6 +14,10 @@ aqtApp.service('userService', function(resourceService){
 	};
 	
 	this.updateUser = function(user) {
-		return resourceService.update(cliente);
+		return resourceService.update(user);
 	};	
+	
+	this.getById = function(id) {
+		return resourceService.get({userId: id});
+	};
 });

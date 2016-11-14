@@ -6,14 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.ChosenQuestionsWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.QuestionWrapper;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
@@ -31,8 +30,7 @@ public class AnalyzerQuestionController {
 
 	public static final String BASE_URI = "/analyzer";
 
-	@Autowired
-	private QuestionService questionService;
+	private QuestionService questionService = new QuestionService();
 	
 	@Autowired
 	private UserService userService;
@@ -46,33 +44,16 @@ public class AnalyzerQuestionController {
 	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
 	 * perunta.
 	 * 
-	 * @param question
+	 * @param usuario
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
-	public ResponseEntity<List<String>> getSuggestions(@RequestBody Question question) {
+	public ResponseEntity<List<String>> getSuggestions(@RequestBody Usuario usuario) {
+		usuario.getQuestion().setQuestionType(QuestionType.ORIGINAL);
 		
-		question.setQuestionType(QuestionType.ORIGINAL);
-		questionService.saveOriginal(question);
+		List<String> suggestions = questionService.getAnalize(usuario.getQuestion());
 		
-		List<String> suggestions = questionService.getAnalize(question);
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
-	}
-
-	/**
-	 * Obtém um wrapper de uma pergunta, contendo a pergunta e lista de
-	 * sugestões desta pergunta.
-	 * 
-	 * @param questionWrapper
-	 * 
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/suggestions")
-	public ResponseEntity<QuestionWrapper> registerChosenSuggestios(@RequestBody QuestionWrapper questionWrapper) {
-		questionWrapper.getQuestion().setQuestionType(QuestionType.CHANGED_WITH_SUGGESTION);
-		questionService.saveWithSuggestions(questionWrapper);
-
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	/**
@@ -89,20 +70,7 @@ public class AnalyzerQuestionController {
 
 	/**
 	 * 
-	 * @param chosenQuestionW
-	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/choices")
-	public ResponseEntity<ChosenQuestionsWrapper> registerChosenQuestions(
-			@RequestBody ChosenQuestionsWrapper chosenQuestionW) {
-		
-		questionService.saveChosenQuestions(chosenQuestionW);
-		chosenQuestions = chosenQuestionW.getChosenQuestions();
-		
-		return new ResponseEntity<>(chosenQuestionW,HttpStatus.OK);
-	}
-	
-	
 	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/getChonseQuestions")
 	public ResponseEntity<List<Question>> getChosenQuestions() {
 
@@ -113,6 +81,11 @@ public class AnalyzerQuestionController {
 		return new ResponseEntity<List<Question>>(chosenQuestions, HttpStatus.OK);
 	}
 	
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI+"/user")
 	public ResponseEntity<Usuario> RegisterUser(@RequestBody Usuario user){
 		
@@ -121,11 +94,31 @@ public class AnalyzerQuestionController {
 
 	}
 	
+	/**
+	 * 
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.PUT, value = BASE_URI+"/user")
 	public ResponseEntity<Usuario> updateUser(@RequestBody Usuario user){
-		
 		Usuario u = userService.updateUser(user); 
 		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
 		
 	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user/{id}")
+	public ResponseEntity<Usuario> getById(@PathVariable Long id){
+			
+		Usuario user = userService.getById(id);
+		if(user == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+
 }

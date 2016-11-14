@@ -33,13 +33,13 @@ public class Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date accessDate = new Date();
 	
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private QuestionWrapper questionWrapper;
 	
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private ChosenQuestionsWrapper chosenQuestionsWrapper;
 	
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	private Question question;
 	
 	public Long getId() {
