@@ -1,10 +1,10 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
-import opennlp.maxent.Main;
 
 /**
  * 
@@ -12,6 +12,9 @@ import opennlp.maxent.Main;
  *
  */
 public class QuestionService {
+	
+	private final String CSV_READ = "perguntas.csv"; 
+	private final String CSV_300_QUESTION = "perguntasOrder.csv"; 
 
 	private AnalyzerQuestionSuggestion analyzer;
 	private AnalyzerQuestion analyzerQuestion;
@@ -22,18 +25,50 @@ public class QuestionService {
 	}
 
 	public List<Question> getQuestions() {
-		ReaderQuestions rq = new ReaderQuestions("perguntas.csv");
+		ReaderQuestions rq = new ReaderQuestions(CSV_300_QUESTION);
+		List<Question> questions = rq.readCsvFile();
+
+		return questions;
+	}
+	
+	public List<Question> ordenedQuestions(){
+		
+		List<Question> goodQuestions = new ArrayList<>();
+		List<Question> badQuestions = new ArrayList<>();
+		int cont = 0;
+		
+		ReaderQuestions rq = new ReaderQuestions(CSV_READ);
 		List<Question> questions = rq.readCsvFile();
 
 		for (Question q : questions) {
+			if(goodQuestion(q)==1){
+				goodQuestions.add(q);
+			}else{
+				badQuestions.add(q);
+			}
+		}
+		
+		questions = new ArrayList<>();
+		
+		for(int i = 0 ; i<300 ;i++){
+			if(cont==11){
+				cont =0;
+			}
 			
+			if(cont<6){
+				questions.add(goodQuestions.get(i));
+			}else if(cont>5){
+				questions.add(badQuestions.get(i));
+			}
+			
+			cont++;
 		}
 
 		return questions;
 	}
 	
-	public Float goodQuestionAverage(){
-		ReaderQuestions rq = new ReaderQuestions("perguntas.csv");
+	public Integer goodQuestionAverage(){
+		ReaderQuestions rq = new ReaderQuestions(CSV_300_QUESTION);
 		List<Question> questions = rq.readCsvFile();
 
 		int cont = 0;
@@ -43,9 +78,7 @@ public class QuestionService {
 			}
 		}
 
-		System.out.println(questions.size());
-		Float average = (float) ((cont*100)/questions.size());
-		return average;
+		return ((cont*100)/questions.size());
 	}
 
 	private Integer goodQuestion(Question question) {
@@ -59,7 +92,6 @@ public class QuestionService {
 	
 	public static void main(String[] args) {
 		QuestionService qu = new QuestionService();
-		
 		System.out.println(qu.goodQuestionAverage());
 	}
 }
