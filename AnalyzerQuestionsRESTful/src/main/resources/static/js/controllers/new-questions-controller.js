@@ -21,15 +21,14 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	 */
 	$scope.getSuggestions = function(question) {
 
-		question.markdownDescription = post = $('#editor-f').data('markdown')
-				.parseContent();
+		question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
 		var user = userStorage;
 		user.question = question;
-
+		console.log(user);
 		$http({
 			method : 'POST',
 			url : '/analyzer',
-			data : user,
+			data : user
 
 		}).then(function onSucces(response) {
 			$scope.suggestions = response.data;

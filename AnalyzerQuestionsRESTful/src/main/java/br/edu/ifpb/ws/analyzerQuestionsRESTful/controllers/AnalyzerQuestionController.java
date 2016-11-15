@@ -37,9 +37,6 @@ public class AnalyzerQuestionController {
 	
 	private List<Question> chosenQuestions;
 	
-
-
-
 	/**
 	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
 	 * perunta.
@@ -51,6 +48,7 @@ public class AnalyzerQuestionController {
 	public ResponseEntity<List<String>> getSuggestions(@RequestBody Usuario usuario) {
 		usuario.getQuestion().setQuestionType(QuestionType.ORIGINAL);
 		
+		userService.updateUser(usuario);
 		List<String> suggestions = questionService.getAnalize(usuario.getQuestion());
 		
 		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
