@@ -5,28 +5,18 @@
  * @created
  * @date 21-10-16.
  */
-aqtApp.controller("responseQuestionController", function($scope, $http, $location) {
+aqtApp.controller("responseQuestionController", function($scope, userService, $location, localStorageService) {
 
 	var chosenQuestions = [];
 	$scope.question = {};
+	var userStorage = localStorageService.get("aqt-user");
 
-	/**
-	 * Obtém lista de perguntas ecolhidas do WS.
-	 */
-	$scope.getSelectedQuestions = function() {
-
-		$http({
-			method : 'GET',
-			url : '/analyzer/getChonseQuestions'
-
-		}).then(function onSuccess(response) {
-			chosenQuestions = response.data;
-			$scope.nextQuestion.next();
-
-		}, function onError(response) {
-
-		});
-	};
+	userService.getById(userStorage.id).$promise.then(
+			function(data) {
+				chosenQuestions = data.chosenQuestionsWrapper.chosenQuestions;
+				$scope.nextQuestion.next();
+			}, function(data) {
+	});
 
 	$scope.nextQuestion = {
 		cont : 0,
@@ -34,12 +24,11 @@ aqtApp.controller("responseQuestionController", function($scope, $http, $locatio
 		next : function() {
 			var elemetQuestion = $("#body-detail-description");
 			elemetQuestion.empty();
+			console.log(chosenQuestions);
 			$scope.question = chosenQuestions[this.cont];
 			elemetQuestion.append($scope.question.descritptionHtml);
 			this.cont++;
 		}
 	}
-
-	$scope.getSelectedQuestions();
 
 });

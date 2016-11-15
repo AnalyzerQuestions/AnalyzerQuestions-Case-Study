@@ -1,6 +1,5 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,6 @@ public class AnalyzerQuestionController {
 	@Autowired
 	private UserService userService;
 	
-	private List<Question> chosenQuestions;
-	
 	/**
 	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
 	 * perunta.
@@ -64,19 +61,6 @@ public class AnalyzerQuestionController {
 		List<Question> questions = questionService.getQuestions();
 
 		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
-	}
-
-	/**
-	 * 
-	 */
-	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/getChonseQuestions")
-	public ResponseEntity<List<Question>> getChosenQuestions() {
-
-		if (chosenQuestions == null)  {
-			chosenQuestions = new ArrayList<>();
-		}
-
-		return new ResponseEntity<List<Question>>(chosenQuestions, HttpStatus.OK);
 	}
 	
 	/**
