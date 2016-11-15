@@ -9,6 +9,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ * @author <a href="https://github.com/JoseRafael97">José Rafael</a>
  *
  */
 public class QuestionService {
