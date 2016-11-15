@@ -19,7 +19,7 @@ public class QuestionWrapper {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Question question;
 	
 	@ElementCollection

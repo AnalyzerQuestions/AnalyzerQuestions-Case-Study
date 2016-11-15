@@ -13,6 +13,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	$scope.question = {}
 	var buttonGetSug = $('#btn-get-sug');
 	var buttonCompletter = $('#btn-completter');
+	$scope.question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
 
 	var userStorage = localStorageService.get("aqt-user");
 	var user = {};
@@ -22,7 +23,6 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	 */
 	$scope.getSuggestions = function() {
 
-		$scope.question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
 		var user = userStorage;
 		user.question = $scope.question;
 		$http({
@@ -69,8 +69,10 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 			var questionWrapper = {};
 			questionWrapper.suggestions = chosenSuggestions;
+			$scope.question.questionType = "CHANGED_WITH_SUGGESTION";
 			questionWrapper.question = $scope.question;
-			console.log($scope.question);
+			
+			
 			userService.getById(userStorage.id).$promise.then(
 				function(data) {
 					user = data;
