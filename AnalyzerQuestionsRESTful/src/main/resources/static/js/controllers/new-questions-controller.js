@@ -10,6 +10,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 	var chosenSuggestions = [];
 	$scope.suggestions = [];
+	$scope.question = {}
 	var buttonGetSug = $('#btn-get-sug');
 	var buttonCompletter = $('#btn-completter');
 
@@ -19,11 +20,11 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	/**
 	 * Submete uma nova pergunta à API e obtem sugestões.
 	 */
-	$scope.getSuggestions = function(question) {
+	$scope.getSuggestions = function() {
 
-		question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
+		$scope.question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
 		var user = userStorage;
-		user.question = question;
+		user.question = $scope.question;
 		$http({
 			method : 'POST',
 			url : '/analyzer',
@@ -63,12 +64,13 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	/**
 	 * Registra na API as escolhas de sugestões do user.
 	 */
-	$scope.registerChosenSuggestions = function(question) {
+	$scope.registerChosenSuggestions = function() {
 		if (chosenSuggestions.length > 0) {
 
 			var questionWrapper = {};
 			questionWrapper.suggestions = chosenSuggestions;
-
+			questionWrapper.question = $scope.question;
+			console.log($scope.question);
 			userService.getById(userStorage.id).$promise.then(
 				function(data) {
 					user = data;

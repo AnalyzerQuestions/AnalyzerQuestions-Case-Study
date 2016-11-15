@@ -5,11 +5,8 @@
  * @created
  * @date 21-10-16.
  */
-aqtApp.controller("responseQuestionController", function($scope, $http,
-		$location) {
+aqtApp.controller("responseQuestionController", function($scope, $http, $location) {
 
-	const
-	URI = 'http://localhost:8080';
 	var chosenQuestions = [];
 	$scope.question = {};
 
@@ -20,7 +17,7 @@ aqtApp.controller("responseQuestionController", function($scope, $http,
 
 		$http({
 			method : 'GET',
-			url : URI + '/analyzer/getChonseQuestions'
+			url : '/analyzer/getChonseQuestions'
 
 		}).then(function onSuccess(response) {
 			chosenQuestions = response.data;
