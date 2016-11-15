@@ -118,5 +118,17 @@ public class AnalyzerQuestionController {
 		}
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user")
+	public ResponseEntity<List<Usuario>> findAll(){
+		
+		List<Usuario> users = userService.getAll();
+		
+		return new ResponseEntity<List<Usuario>>(users, HttpStatus.OK);
+	}
 
 }
