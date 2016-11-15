@@ -3,6 +3,7 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.LanguageToolUtils;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.StringTokenizerUtils;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.StringUtil;
@@ -501,4 +502,8 @@ public class QuestionAnalyzerFinal {
 		
 		return 0;
 	}
+	
+	
+	
+	
 }

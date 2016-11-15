@@ -1,106 +1,82 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.services;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerFinal;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
 
-/**
- * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
- *
- */
 public class AnalyzerQuestion {
-
+	
 	private QuestionAnalyzerFinal questionAnalyzer;
-	private List<String> suggestions = new ArrayList<String>();
-
-	public List<String> getSuggestions(Question question) {
-		suggestions.clear();
-
+	
+	public Integer getGoodQuestionAnalyzer(Question question) {
 		questionAnalyzer = new QuestionAnalyzerFinal();
-
-		this.analyseUnderstandableTitle(question.getTitle(), question.getDescription());
-		this.analyseCoherencyBodyAndTitle(question.getTitle(), question.getDescription());
-		this.analyzerObjective(question.getDescription());
-		this.analyzerClarity(question.getTitle(), question.getDescription());
-		this.analyseShowingExample(question.getDescription());
-		this.analyzerUnderstandableDescription(question.getTitle(), question.getDescription());
-		this.analyzerBeEducated(question.getDescription());
-		this.analyzerShortDescriptionQuestion(question.getDescription());
-		this.analyzerDoNotCreateHomeworkQuestions(question.getDescription());
-		this.analyzerUsingProperLanguage(question.getDescription());
 		
-		return suggestions;
+		int cont = 0;
+
+		cont = cont + this.analyseUnderstandableTitle(question.getTitle(), question.getDescription());
+		cont = cont + this.analyseCoherencyBodyAndTitle(question.getTitle(), question.getDescription());
+		cont = cont + this.analyzerObjective(question.getDescription());
+		cont = cont + this.analyzerClarity(question.getTitle(), question.getDescription());
+		cont = cont + this.analyseShowingExample(question.getDescription());
+		cont = cont + this.analyzerUnderstandableDescription(question.getTitle(), question.getDescription());
+		cont = cont + this.analyzerBeEducated(question.getDescription());
+		cont = cont + this.analyzerShortDescriptionQuestion(question.getDescription());
+		cont = cont + this.analyzerDoNotCreateHomeworkQuestions(question.getDescription());
+		cont = cont + this.analyzerUsingProperLanguage(question.getDescription());
+		cont = cont + this.analyzerDetailAboutContext(question.getDescription());
+		
+		if(cont > 7){
+			return 1;
+		}
+		return 0;
 	}
 
-	public void analyseUnderstandableTitle(String title, String description) {
-		if (questionAnalyzer.analyzerUnderstandableTitle(title, description) == 0)
-			suggestions.add(Messages.TITULO_BEM_DEFINIDO.getMsg());
+	public Integer analyseUnderstandableTitle(String title, String description) {
+		return questionAnalyzer.analyzerUnderstandableTitle(title, description);
 	}
 	
 	
-	public void analyseCoherencyBodyAndTitle(String title, String description){
-		if(questionAnalyzer.analyzerCoherencyBodyAndTitle(title, description) == 0)
-			suggestions.add(Messages.COERENCY_BODY_WITH_TITLE.getMsg());
+	public Integer analyseCoherencyBodyAndTitle(String title, String description){
+		return questionAnalyzer.analyzerCoherencyBodyAndTitle(title, description);
 	}
 	
-	public void analyzerObjective(String description){
-		if(questionAnalyzer.analyzerObjective(description) == 0)
-			suggestions.add(Messages.IS_OBJECTIVE.getMsg());
+	public Integer analyzerObjective(String description){
+		return questionAnalyzer.analyzerObjective(description);
 	}
 	
-	public void analyzerClarity(String title, String description){
-		if(questionAnalyzer.analyzerClarity(title, description) == 0)
-			suggestions.add(Messages.IS_CLARITY.getMsg());
+	public Integer analyzerClarity(String title, String description){
+		return questionAnalyzer.analyzerClarity(title, description);
 	}
 	
-	public void analyseShowingExample(String description){
-		if(questionAnalyzer.analyzerShowExample(description) == 0)
-			suggestions.add(Messages.SHOW_EXAMPLE.getMsg());
+	public Integer analyseShowingExample(String description){
+		return questionAnalyzer.analyzerShowExample(description);
 	}
 	
 	
-	public void analyzerUnderstandableDescription(String title, String description){
-		if(questionAnalyzer.analyzerUnderstandableDescription(title, description) == 0)
-			suggestions.add(Messages.UNDESTANDABLE_DESCRTION.getMsg());
+	public Integer analyzerUnderstandableDescription(String title, String description){
+		return questionAnalyzer.analyzerUnderstandableDescription(title, description);
 	}
 	
-	public void analyzerDetailAboutContext(String description){
-		if(questionAnalyzer.analyzerDetailAboutContext(description) == 0)
-			suggestions.add(Messages.DETAIL_CONTEXT.getMsg());
+	public Integer analyzerDetailAboutContext(String description){
+		return questionAnalyzer.analyzerDetailAboutContext(description);
 	}
 	
-	public void analyzerUsingProperLanguage(String description){
-		if(questionAnalyzer.analyzerUsingProperLanguage(description) == 0)
-			suggestions.add(Messages.USING_PROPER_LANGUAGE.getMsg());
+	public Integer analyzerUsingProperLanguage(String description){
+		return questionAnalyzer.analyzerUsingProperLanguage(description);
 	}
 	
-	public void analyzerBeEducated(String description){
-		if(questionAnalyzer.analyzerBeEducated(description) == 0)
-			suggestions.add(Messages.BE_EDUCADED.getMsg());
+	public Integer analyzerBeEducated(String description){
+		return questionAnalyzer.analyzerBeEducated(description);
 	}
 	
-	public void analyzerShortDescriptionQuestion(String description){
-		if(questionAnalyzer.analyzerShortDescriptionQuestion(description) == 0)
-			suggestions.add(Messages.SHORT_DESCRIPTION.getMsg());
+	public Integer analyzerShortDescriptionQuestion(String description){
+		return questionAnalyzer.analyzerShortDescriptionQuestion(description);
 	}
 	
-	public void analyzerDoNotCreateHomeworkQuestions(String description){
-		if(questionAnalyzer.analyzerDoNotCreateHomeworkQuestions(description) == 0)
-			suggestions.add(Messages.HOME_WORK_QUESTION.getMsg());
+	public Integer analyzerDoNotCreateHomeworkQuestions(String description){
+		return questionAnalyzer.analyzerDoNotCreateHomeworkQuestions(description);
 	}
 	
-	public List<String> getMessages() {
-		return suggestions;
-	}
-
-	
-	public void setMessages(List<String> messages) {
-		this.suggestions = messages;
-	}
 
 	public QuestionAnalyzerFinal getQuestionAnalyzer() {
 		return questionAnalyzer;
@@ -109,5 +85,5 @@ public class AnalyzerQuestion {
 	public void setQuestionAnalyzer(QuestionAnalyzerFinal questionAnalyzer) {
 		this.questionAnalyzer = questionAnalyzer;
 	}
-	
+
 }
