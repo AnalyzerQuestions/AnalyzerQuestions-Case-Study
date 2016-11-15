@@ -24,7 +24,6 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 		question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
 		var user = userStorage;
 		user.question = question;
-		console.log(user);
 		$http({
 			method : 'POST',
 			url : '/analyzer',
@@ -68,7 +67,6 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 		if (chosenSuggestions.length > 0) {
 
 			var questionWrapper = {};
-			questionWrapper.question = question;
 			questionWrapper.suggestions = chosenSuggestions;
 
 			userService.getById(userStorage.id).$promise.then(
