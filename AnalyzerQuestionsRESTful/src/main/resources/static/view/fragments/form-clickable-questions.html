@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+	<div class="panel-heading">Indique a baixo os motivos que levaram
+		você a visualizar essa pergunta</div>
+	<div class="panel-body">
+		<div class="checkbox" ng-repeat="o in optionsQuestionsClicked">
+			<label class="checkbox"> <input type="checkbox" value="{{o}}"
+			ng-checked="checkedQuestionsClicked.indexOf(o) != -1" ng-click="toggleCheck(o)"> {{o}}
+			</label>
+		</div>
+	</div>
+</div>

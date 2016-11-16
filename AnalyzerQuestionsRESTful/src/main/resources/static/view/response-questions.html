@@ -1,23 +1,34 @@
 
 <div class="container-fluid">
-	<div class="content-header">
-		<h2>
-			Responder Perguntas <small>Responda as perguntas escolhidas
-				na fase anterior</small>
-		</h2>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="content-header">
+				<h2>
+					Perguntas que você mostrou interesse <small>Indique os
+						motivos pelo qual se interessou para cada uma das perguntas a
+						seguir:</small>
+				</h2>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div>
+						<h2>{{question.title}}</h2>
+						<div id="body-detail-description"></div>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div ng-include="'/view/fragments/form-clickable-questions.html'"></div>
+
+			</div>
+			<div style="margin-top: 8px;" class="well">
+
+				<button type="button" class="btn btn-primary" ng-click="nextQuestion.next()">PRÓXIMA PERGUNTA</button>
+				<button type="button" class="btn btn-default" ng-click="nextQuestion.next()">PERGUNTA ANTERIOR</button>
+			</div>
+		</div>
 	</div>
-
-	<div>
-		<h2>{{question.title}}</h2>
-		<div id="body-detail-description"></div>
-	</div>
-
-	<div style="margin-top: 8px;">
-		<button type="button" class="btn btn-danger" ng-click="">Responder</button>
-
-		<button type="button" class="btn btn-primary" ng-click="nextQuestion.next()">Proxima</button>
-		<button type="button" class="btn btn-primary" ng-click="nextQuestion.next()">Anterior</button>
-	</div>
-
-</div>
+	<div class="col-md-1"></div>
 </div>
