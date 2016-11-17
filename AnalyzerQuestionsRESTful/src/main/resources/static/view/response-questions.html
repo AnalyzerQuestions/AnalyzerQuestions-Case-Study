@@ -19,14 +19,14 @@
 				</div>
 			</div>
 
+			<div class="well">
+
+				<button type="reset" class="btn btn-primary" ng-click="next()">PRÓXIMA PERGUNTA</button>
+				<button type="button" class="btn btn-default" ng-click="back()">PERGUNTA ANTERIOR</button>
+			</div>
 			<div>
 				<div ng-include="'/view/fragments/form-clickable-questions.html'"></div>
 
-			</div>
-			<div style="margin-top: 8px;" class="well">
-
-				<button type="reset" class="btn btn-primary" ng-click="nextQuestion.next()">PRÓXIMA PERGUNTA</button>
-				<button type="button" class="btn btn-default" ng-click="nextQuestion.next()">PERGUNTA ANTERIOR</button>
 			</div>
 		</div>
 	</div>
