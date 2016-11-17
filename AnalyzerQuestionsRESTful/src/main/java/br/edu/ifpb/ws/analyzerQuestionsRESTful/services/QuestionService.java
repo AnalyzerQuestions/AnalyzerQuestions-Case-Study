@@ -3,7 +3,11 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.QuestionRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
 
 /**
@@ -12,17 +16,31 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
  * @author <a href="https://github.com/JoseRafael97">José Rafael</a>
  *
  */
+@Service
 public class QuestionService {
 	
 	private final String CSV_READ = "perguntas.csv"; 
+	
 	private final String CSV_300_QUESTION = "perguntasOrder.csv"; 
 
+	@Autowired
+	private QuestionRepository questionRepository;
+	
 	private AnalyzerQuestionSuggestion analyzer;
+	
 	private AnalyzerQuestion analyzerQuestion;
 
 	public QuestionService() {
 		analyzer = new AnalyzerQuestionSuggestion();
 		analyzerQuestion = new AnalyzerQuestion();
+	}
+	
+	public Question findById(Long id){
+		return questionRepository.findOne(id);
+	}
+	
+	public Question update(Question question) {
+		return questionRepository.save(question);
 	}
 
 	public List<Question> getQuestions() {
@@ -32,7 +50,7 @@ public class QuestionService {
 		return questions;
 	}
 	
-	public List<Question> ordenedQuestions(){
+	private List<Question> ordenedQuestions(){
 		
 		List<Question> goodQuestions = new ArrayList<>();
 		List<Question> badQuestions = new ArrayList<>();
@@ -88,11 +106,5 @@ public class QuestionService {
 
 	public List<String> getAnalize(Question question) {
 		return analyzer.getSuggestions(question);
-	}
-	
-	
-	public static void main(String[] args) {
-		QuestionService qu = new QuestionService();
-		System.out.println(qu.goodQuestionAverage());
 	}
 }

@@ -1,24 +1,25 @@
 /**
  * Controller responsável pela manipulação do fragmento de página
  * list-questions.html
- * 
+ *
  * @created
  * @date 21-10-16.
  */
 aqtApp.controller("responseQuestionController", function($scope, userService, questionService, $location, localStorageService, growl) {
-	
+
 	var vm = this;
-	
+
 	vm.chosenQuestions = [];
 	vm.optionsQuestionsClicked = questionService.getOptionsQuestionsClicked();
 	vm.checkedQuestionsClicked = [];
 	vm.question = {};
 	vm.other = false;
 	vm.otherText = '';
-	
+
 	var userStorage = localStorageService.get("aqt-user");
 	var elemetQuestion = $("#body-detail-description");
-	
+	var user = {};
+
 	vm.toggleCheck = function (option) {
         if (vm.checkedQuestionsClicked.indexOf(option) === -1) {
         	vm.checkedQuestionsClicked.push(option);
@@ -26,20 +27,25 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
         	vm.checkedQuestionsClicked.splice(vm.checkedQuestionsClicked.indexOf(option), 1);
         }
     };
+
 	userService.getById(userStorage.id).$promise.then(
 			function(data) {
+				user = data;
 				vm.chosenQuestions = data.chosenQuestionsWrapper.chosenQuestions;
 				vm.question = vm.chosenQuestions[0];
 				elemetQuestion.append(vm.question.descritptionHtml);
 			}, function(data) {
 	});
-	
+
 	vm.nextQuestion = function(){
 		if(vm.other){
-			vm.checkedQuestionsClicked.push(vm.otherText);
+			if(vm.frmOptions.$valid){
+				vm.checkedQuestionsClicked.push(vm.otherText);
+			}else{
+				growl.error("Escolha no mínimo um motivo");
+			}
 		}
-		console.log(vm.frmOptions)
-		if(vm.checkedQuestionsClicked.length && vm.frmOptions.$valid){
+		if(vm.checkedQuestionsClicked.length){
 			next();
 		}else{
 			growl.error("Escolha no mínimo um motivo");
@@ -52,14 +58,23 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		elemetQuestion.empty();
 		vm.question = vm.chosenQuestions[cont];
 		elemetQuestion.append(vm.question.descritptionHtml);
-		reset();
+		updateQuestion(vm.question, cont);
 	};
-	
+
+	var updateQuestion = function(question, index){
+		question.motives = vm.checkedQuestionsClicked;
+		
+		questionService.updateQuestion(question).$promise.then(
+			function(response){
+				reset();
+			}, function(response) {
+		});
+	};
+
 	vm.disableBtnNext = function(){
 		return vm.chosenQuestions.length-1 === cont;
 	};
-	
-	
+
     var reset = function() {
     	vm.checkedQuestionsClicked = angular.copy(vm.checkedQuestionsClicked = []);
     	vm.other = false;

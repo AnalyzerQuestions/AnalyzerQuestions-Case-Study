@@ -29,7 +29,8 @@ public class AnalyzerQuestionController {
 
 	public static final String BASE_URI = "/analyzer";
 
-	private QuestionService questionService = new QuestionService();
+	@Autowired
+	private QuestionService questionService;
 	
 	@Autowired
 	private UserService userService;

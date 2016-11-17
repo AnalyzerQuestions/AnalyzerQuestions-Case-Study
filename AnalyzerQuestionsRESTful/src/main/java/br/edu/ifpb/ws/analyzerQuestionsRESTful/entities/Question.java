@@ -18,7 +18,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
- *  @author  <a https://github.com/JoseRafael97">Rafael Feitosa</a>
+ * @author <a https://github.com/JoseRafael97">Rafael Feitosa</a>
  *
  */
 @Entity
@@ -43,29 +43,25 @@ public class Question implements Serializable {
 	private List<String> tags;
 
 	private String answer;
-	
+
 	private boolean isAnswered;
 
 	@Enumerated(EnumType.STRING)
 	private QuestionType questionType;
-	
-	//Atributo para guadar as opinião do por que a pessoa escolheu a pergunta.
+
 	@ElementCollection
-	private List<String> OpinionDescription;
+	private List<String> motives;
 
 	public Question() {
 	}
-	
-	public Question(String title, String description, String descritptionHtml, 
-							List<String> tags, boolean isAnswered) {
+
+	public Question(String title, String description, String descritptionHtml, List<String> tags, boolean isAnswered) {
 		this.title = title;
 		this.description = description;
 		this.descritptionHtml = descritptionHtml;
 		this.tags = tags;
 		this.isAnswered = isAnswered;
 	}
-
-
 
 	public String getTitle() {
 		return title;
@@ -131,10 +127,85 @@ public class Question implements Serializable {
 		this.questionType = questionType;
 	}
 
+	public List<String> getMotives() {
+		return motives;
+	}
+
+	public void setMotives(List<String> motives) {
+		this.motives = motives;
+	}
+
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", title=" + title + ", description=" + description + ", descritptionHtml="
-				+ descritptionHtml + ", tags=" + tags + ", answer=" + answer + ", questionType=" + questionType + "]";
+				+ descritptionHtml + ", tags=" + tags + ", answer=" + answer + ", isAnswered=" + isAnswered
+				+ ", questionType=" + questionType + ", motives=" + motives + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((descritptionHtml == null) ? 0 : descritptionHtml.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (isAnswered ? 1231 : 1237);
+		result = prime * result + ((motives == null) ? 0 : motives.hashCode());
+		result = prime * result + ((questionType == null) ? 0 : questionType.hashCode());
+		result = prime * result + ((tags == null) ? 0 : tags.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Question other = (Question) obj;
+		if (answer == null) {
+			if (other.answer != null)
+				return false;
+		} else if (!answer.equals(other.answer))
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (descritptionHtml == null) {
+			if (other.descritptionHtml != null)
+				return false;
+		} else if (!descritptionHtml.equals(other.descritptionHtml))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (isAnswered != other.isAnswered)
+			return false;
+		if (motives == null) {
+			if (other.motives != null)
+				return false;
+		} else if (!motives.equals(other.motives))
+			return false;
+		if (questionType != other.questionType)
+			return false;
+		if (tags == null) {
+			if (other.tags != null)
+				return false;
+		} else if (!tags.equals(other.tags))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
 }

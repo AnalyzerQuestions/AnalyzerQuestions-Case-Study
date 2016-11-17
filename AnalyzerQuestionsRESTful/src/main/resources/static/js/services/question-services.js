@@ -1,4 +1,12 @@
-aqtApp.service('questionService', function(resourceService){
+aqtApp.factory('resourceQuestionService', function($resource) {
+	
+	return $resource('/questions/:questionId', null, {
+		update : {
+			method: 'PUT'
+		}
+	});
+})
+aqtApp.service('questionService', function(resourceQuestionService){
 	
 	var optionsQuestionsClicked = [];
 	
@@ -7,9 +15,15 @@ aqtApp.service('questionService', function(resourceService){
 		return optionsQuestionsClicked;
 	};
 	
+	this.getById = function(questionId){
+		return resourceQuestionService.get({questionId: questionId});
+	};
+	
+	this.updateQuestion = function(question){
+		return resourceQuestionService.update(question);
+	};
 	
 	var generateOptionsClicked = function(){
-		
 		optionsQuestionsClicked = [
 		                           'Muito curta, pouco clara, vaga ou difícil de entender.',
 		                           'Programa específico sem um trecho de código ou explicação adequada.',

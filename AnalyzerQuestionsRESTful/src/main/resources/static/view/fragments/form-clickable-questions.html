@@ -17,7 +17,7 @@
 					ng-checked="vm.other"
 					ng-click="vm.other == false? vm.other = true:vm.other = false"> Outro
 				</label> <textarea class="form-control" required ng-show="vm.other" name="option" ng-model="vm.otherText" placeholder="Descreva aqui" type="text" />
-				<span ng-show="vm.frmOptions.option.$dirty && vm.frmOptions.option.$error.required" class="form-control alert alert-danger">Campo deve ser preenchido</span>
+				<span ng-show="vm.other && vm.frmOptions.option.$touched && vm.frmOptions.option.$error.required" class="form-control alert alert-danger">Campo deve ser preenchido</span>
 			</div>
 	</div>
 </div>
