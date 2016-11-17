@@ -18,16 +18,14 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="well">
-
-				<button type="reset" class="btn btn-primary" ng-click="next()">PRÓXIMA PERGUNTA</button>
-				<button type="button" class="btn btn-default" ng-click="back()">PERGUNTA ANTERIOR</button>
-			</div>
-			<div>
-				<div ng-include="'/view/fragments/form-clickable-questions.html'"></div>
-
-			</div>
+			<form novalidate name="vm.frmOptions">
+				<div class="well">
+					<button type="reset" class="btn btn-primary" ng-disabled="vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA PERGUNTA</button>
+				</div>
+				<div>
+					<div ng-include="'/view/fragments/form-clickable-questions.html'"></div>
+				</div>
+			</form>
 		</div>
 	</div>
 	<div class="col-md-1"></div>

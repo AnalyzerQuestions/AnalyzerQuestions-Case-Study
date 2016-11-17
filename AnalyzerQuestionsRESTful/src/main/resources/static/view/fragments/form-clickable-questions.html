@@ -2,11 +2,22 @@
 	<div class="panel-heading">Indique a baixo os motivos que levaram
 		você a visualizar essa pergunta</div>
 	<div class="panel-body">
-		<div class="checkbox" ng-repeat="o in optionsQuestionsClicked">
-			<label class="checkbox"><input type="checkbox" value="{{o}}"
-			ng-checked="checkedQuestionsClicked.indexOf(o) != -1" ng-click="toggleCheck(o)"> {{o}}
-			 
-			</label>
-		</div>
+		
+			<div class="checkbox" ng-repeat="o in vm.optionsQuestionsClicked">
+				<label class="checkbox"> <input type="checkbox"
+					value="{{o}}"
+					ng-checked="vm.checkedQuestionsClicked.indexOf(o) != -1"
+					ng-click="vm.toggleCheck(o)"> {{o}}
+				</label>
+
+			</div>
+			<div class="checkbox">
+
+				<label class="checkbox"> <input type="checkbox"
+					ng-checked="vm.other"
+					ng-click="vm.other == false? vm.other = true:vm.other = false"> Outro
+				</label> <textarea class="form-control" required ng-show="vm.other" name="option" ng-model="vm.otherText" placeholder="Descreva aqui" type="text" />
+				<span ng-show="vm.frmOptions.option.$dirty && vm.frmOptions.option.$error.required" class="form-control alert alert-danger">Campo deve ser preenchido</span>
+			</div>
 	</div>
 </div>

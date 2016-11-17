@@ -8,11 +8,12 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="/vendors/bootstrap-markdown/css/bootstrap-markdown.min.css"/>
 	<link rel='stylesheet' href='/vendors/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+	<link rel="stylesheet" type="text/css" href="/vendors/angular-growl/angular-growl.min.css" />
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"/>
 </head>
 <body>
-
 	<div ng-include="'/view/fragments/navBar.html'"></div>
+	<div growl=""></div>
 
 	<div class="aqt-content" ng-view="content"></div>
 	
@@ -26,12 +27,14 @@
 	<script src="/js/vendors/easytimer.min.js"></script>
 	<script src="/js/vendors/ng-infinite-scroll.min.js"></script>
 	<script src="/vendors/angular-loading-bar/build/loading-bar.min.js"></script>
+	<script src="/vendors/angular-growl/angular-growl.min.js"></script>
 	
 	
 	<script src="/js/app.js"></script>
 	<script src="/js/config/route-config.js"></script>
 	<script src="/js/config/loading-bar-config.js"></script>
 	<script src="/js/config/local-store-config.js"></script>
+	<script src="/js/config/growl-config.js"></script>
 	
 	<script src="/js/services/user-services.js"></script>
 	<script src="/js/services/question-services.js"></script>
