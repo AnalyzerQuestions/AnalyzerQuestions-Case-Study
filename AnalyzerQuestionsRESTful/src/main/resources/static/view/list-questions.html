@@ -1,37 +1,44 @@
 <div ng-include="'/view/fragments/detail-question.html'"></div>
 <div ng-include="'/view/fragments/end-time.html'"></div>
 <div>
-	
-	<div class="container-fluid">
-		<div class="content-header">
-			<h2>
-				Lista de Perguntas <small>Escolha as perguntas mais atrativas</small>
-			</h2>
-			<ol class="breadcrumb">
-				<li>
-				    <div class="cronometer"></div>
-				</li>
-				    <button type="button" class="btn btn-danger aqt-bttn-completter-list" ng-click="endChosenQuestion()"><strong>FINALIZAR</strong></button>
-			</ol>
-		</div>
 
+	<div class="container-fluid">
+		<ol class="breadcrumb">
+			<li>
+				<div class="cronometer"></div>
+			</li>
+			<button type="button" class="btn btn-danger aqt-bttn-completter-list" ng-click="endChosenQuestion()">
+				<strong>FINALIZAR</strong>
+			</button>
+		</ol>
 		<div class="row">
-		<div infinite-scroll='loadMore()' infinite-scroll-distance='0'>
-				<div ng-repeat="question in questions | limitTo:questionsLimit">
-					<div class="list-group" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" ng-click="selectedQuestion(question)">
-						<a class="list-group-item">
-							<h3 class="list-group-item-heading">{{question.title}}</h3>
-							<div style="margin-top: 8px;">
-								<i class="aqt-tag" ng-repeat = "tag in question.tags">
-									<span class="label label-primary">{{tag}}</span>
-								</i>
-							<span class="aqt-confirm"></span>
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="content-header">
+					<h2>
+						Lista de Perguntas <small>Escolha as perguntas mais
+							atrativas</small>
+					</h2>
+				</div>
+
+				<div class="row">
+					<div infinite-scroll='loadMore()' infinite-scroll-distance='0'>
+						<div ng-repeat="question in questions | limitTo:questionsLimit">
+							<div class="list-group" style="cursor: pointer;" data-toggle="modal" data-target="#myModal" ng-click="selectedQuestion(question)">
+								<a class="list-group-item">
+									<h3 class="list-group-item-heading">{{question.title}}</h3>
+									<div style="margin-top: 8px;">
+										<i class="aqt-tag" ng-repeat="tag in question.tags"> <span class="label label-primary">{{tag}}</span>
+										</i> <span class="aqt-confirm"></span>
+									</div>
+								</a>
 							</div>
-						</a>
+						</div>
 					</div>
 				</div>
+
 			</div>
+			<div class="col-md-1"></div>
 		</div>
-		
 	</div>
 </div>

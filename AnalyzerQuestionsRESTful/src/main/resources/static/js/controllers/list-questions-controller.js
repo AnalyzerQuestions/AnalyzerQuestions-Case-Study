@@ -43,29 +43,40 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 
 			var bodyDetail = $("#body-detail-description");
 			bodyDetail.append($scope.questionSelected.descritptionHtml);
+			labelButtonSelection();
 		};
 
 		/**
 		 * Evento de escolha para o user responder.
 		 */
+		var labelButtonSelection = function(){
+			var index = $scope.questions.indexOf($scope.questionSelected);
+			var groupList = $(".aqt-confirm").eq(index);
+			
+			var btnSelection = $('#btn-dlg-detail');
+			
+			if(groupList.hasClass('js-selected')){
+				btnSelection.text('NÃO QUERO RESPONDER ESTA PERGUNTA');
+			}else{
+				btnSelection.text('QUERO RESPONDER ESTA PERGUNTA');
+			}
+		};
 		$scope.selectedChosenQuestion = function() {
 			var index = $scope.questions.indexOf($scope.questionSelected);
 			var groupList = $(".aqt-confirm").eq(index);
-			var btnDlgDetail = $('#btn-dlg-detail');
-
+			
+			groupList.append('<span class="label label-success">SELECIONADA</span>');
 			if (groupList.hasClass('js-selected')) {
 				chosenQuestions.splice(index, 1);
-				groupList.empty();
 				$scope.questionSelected.questionType = 'CLICABLE';
+				groupList.hide();
 				groupList.removeClass('js-selected');
-				btnDlgDetail.text('QUERO RESPONDER ESTA PERGUNTA');
 
 			} else {
 				$scope.questionSelected.questionType = 'CHOSEN';
 				chosenQuestions.push($scope.questionSelected);
 				groupList.addClass('js-selected');
-				groupList.append('<span class="label label-success">SELECIONADA</span>');
-				btnDlgDetail.text('NÃO QUERO RESPONDER ESTA PERGUNTA');
+				groupList.show();
 			}
 
 			clearModal();
