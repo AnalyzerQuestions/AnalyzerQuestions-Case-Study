@@ -13,7 +13,6 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 
 @RestController
-//@RequestMapping(AnalyzerQuestionController.BASE_URI)
 public class QuestionController {
 	
 	public static final String BASE_URI = "/questions";

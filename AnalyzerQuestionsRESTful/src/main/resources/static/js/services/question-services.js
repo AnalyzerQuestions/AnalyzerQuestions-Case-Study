@@ -9,11 +9,7 @@ aqtApp.factory('resourceQuestionService', function($resource) {
 aqtApp.service('questionService', function(resourceQuestionService){
 	
 	var optionsQuestionsClicked = [];
-	
-	this.getOptionsQuestionsClicked = function(user){
-		generateOptionsClicked();
-		return optionsQuestionsClicked;
-	};
+	var optionsQuestionsChosen = [];
 	
 	this.getById = function(questionId){
 		return resourceQuestionService.get({questionId: questionId});
@@ -21,6 +17,16 @@ aqtApp.service('questionService', function(resourceQuestionService){
 	
 	this.updateQuestion = function(question){
 		return resourceQuestionService.update(question);
+	};
+	
+	this.getOptionsQuestionsClicked = function(user){
+		generateOptionsClicked();
+		return optionsQuestionsClicked;
+	};
+	
+	this.getOptionsQuestionsChosen = function(user){
+		generateOptionsChosen();
+		return optionsQuestionsChosen;
 	};
 	
 	var generateOptionsClicked = function(){
@@ -33,6 +39,14 @@ aqtApp.service('questionService', function(resourceQuestionService){
 		                           'Já possui a resposta na pergunta.',
 		                           'Resposta não é relevante ou necessária.',
 		                           'Pergunta de trabalhos acadêmicos.'
+	    ]
+	};
+	
+	var generateOptionsChosen = function(){
+		optionsQuestionsChosen = [
+		                           'Pergunta bem escrita.',
+		                           'Pergunta clara e objetiva.',
+		                           'Pergunta de uma tecnologia que conheço',
 	    ]
 	};
 });

@@ -11,6 +11,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 
 	vm.chosenQuestions = [];
 	vm.optionsQuestionsClicked = questionService.getOptionsQuestionsClicked();
+	vm.optionsQuestionsChosen = questionService.getOptionsQuestionsChosen();
 	vm.checkedQuestionsClicked = [];
 	vm.question = {};
 	vm.other = false;
@@ -58,10 +59,10 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		elemetQuestion.empty();
 		vm.question = vm.chosenQuestions[cont];
 		elemetQuestion.append(vm.question.descritptionHtml);
-		updateQuestion(vm.question, cont);
+		updateQuestion(vm.question);
 	};
 
-	var updateQuestion = function(question, index){
+	var updateQuestion = function(question){
 		question.motives = vm.checkedQuestionsClicked;
 		
 		questionService.updateQuestion(question).$promise.then(

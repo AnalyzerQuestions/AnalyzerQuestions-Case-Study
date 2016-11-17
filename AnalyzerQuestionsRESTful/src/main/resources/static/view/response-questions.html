@@ -13,17 +13,21 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div>
-						<h2>{{question.title}}</h2>
+						<h2>{{vm.question.title}}</h2>
 						<div id="body-detail-description"></div>
 					</div>
 				</div>
 			</div>
 			<form novalidate name="vm.frmOptions">
 				<div class="well">
-					<button type="reset" class="btn btn-primary" ng-disabled="vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA PERGUNTA</button>
+					<button type="reset" class="btn btn-primary" ng-show="!vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA PERGUNTA</button>
+					<button type="reset" class="btn btn-danger" ng-show="vm.disableBtnNext()" ng-click="vm.nextQuestion()">FINALIZAR</button>
 				</div>
-				<div>
+				<div ng-if="vm.question.questionType == 'CLICABLE'">
 					<div ng-include="'/view/fragments/form-clickable-questions.html'"></div>
+				</div>
+				<div ng-if="vm.question.questionType == 'CHOSEN'">
+					<div ng-include="'/view/fragments/form-chosen-questions.html'"></div>
 				</div>
 			</form>
 		</div>

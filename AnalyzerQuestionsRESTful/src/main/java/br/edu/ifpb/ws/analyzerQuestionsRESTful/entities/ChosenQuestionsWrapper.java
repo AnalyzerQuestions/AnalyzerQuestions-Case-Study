@@ -12,30 +12,19 @@ import javax.persistence.Table;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 @Entity
-@Table(name="CHOSEN_QUESTIONS")
+@Table(name = "CHOSEN_QUESTIONS")
 public class ChosenQuestionsWrapper {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Question> clickedQuestions;
-	
-	@OneToMany(cascade = {CascadeType.ALL},  orphanRemoval = true)
+
+	@OneToMany(cascade = { CascadeType.ALL }, orphanRemoval = true)
 	private List<Question> chosenQuestions;
-
-	public List<Question> getClickedQuestions() {
-		return clickedQuestions;
-	}
-
-	public void setClickedQuestions(List<Question> clickedQuestions) {
-		this.clickedQuestions = clickedQuestions;
-	}
 
 	public List<Question> getChosenQuestions() {
 		return chosenQuestions;
@@ -47,7 +36,7 @@ public class ChosenQuestionsWrapper {
 
 	@Override
 	public String toString() {
-		return "ChosenQuestionsWrapper [clickedQuestions=" + clickedQuestions + ", chosenQuestions=" + chosenQuestions + "]";
+		return "ChosenQuestionsWrapper [id=" + id + ", chosenQuestions=" + chosenQuestions + "]";
 	}
 
 }

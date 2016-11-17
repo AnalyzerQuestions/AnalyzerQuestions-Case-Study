@@ -11,7 +11,6 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		$scope.questionsLimit = 20;
 		$scope.questionSelected = {};
 		var chosenQuestions = [];
-		var clickedQuestions = [];
 
 		var userStorage = localStorageService.get("aqt-user");
 		
@@ -39,7 +38,7 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		$scope.selectedQuestion = function(question) {
 			$scope.questionSelected = question;
 			question.questionType = 'CLICABLE';
-			clickedQuestions.push(question);
+			chosenQuestions.push(question);
 
 			var bodyDetail = $("#body-detail-description");
 			bodyDetail.append($scope.questionSelected.descritptionHtml);
@@ -67,17 +66,16 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 			
 			groupList.append('<span class="label label-success">SELECIONADA</span>');
 			if (groupList.hasClass('js-selected')) {
-				chosenQuestions.splice(index, 1);
 				$scope.questionSelected.questionType = 'CLICABLE';
 				groupList.hide();
 				groupList.removeClass('js-selected');
 
 			} else {
 				$scope.questionSelected.questionType = 'CHOSEN';
-				chosenQuestions.push($scope.questionSelected);
 				groupList.addClass('js-selected');
 				groupList.show();
 			}
+			chosenQuestions[index] = $scope.questionSelected;
 
 			clearModal();
 		}
@@ -94,7 +92,6 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 
 			var chosenQuestion = {};
 
-			chosenQuestion.clickedQuestions = clickedQuestions;
 			chosenQuestion.chosenQuestions = chosenQuestions;
 
 			userService.getById(userStorage.id).$promise.then(
