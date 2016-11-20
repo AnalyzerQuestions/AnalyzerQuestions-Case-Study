@@ -16,7 +16,7 @@ public enum Messages {
 
 	USING_PROPER_LANGUAGE("Use a norma culta da língua."),
 
-	BE_EDUCADED("Use a norma culta da língua e adicione algum tipo de agradecimento."),
+	BE_EDUCADED("Seja educado."),
 	
 	HOME_WORK_QUESTION("Evite criar perguntas sobre trabalhos acadêmicos."),
 	

@@ -3,7 +3,6 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.LanguageToolUtils;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.StringTokenizerUtils;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.StringUtil;
@@ -357,7 +356,7 @@ public class QuestionAnalyzerFinal {
 		return false;
 	}
 
-	private boolean isMediumSizeTitle(String title) {
+	public boolean isMediumSizeTitle(String title) {
 		String str = StringUtil.removeConnective(title);
 		str = StringUtil.removeCharacterSpecial(str);
 		String[] strPart = StringTokenizerUtils.parseToken(str);
@@ -394,7 +393,7 @@ public class QuestionAnalyzerFinal {
 	/**
 	 * Verifica se a descrição está relacionada a um único problema.
 	 */
-	private boolean isQuestionUnique(String description) {
+	public boolean isQuestionUnique(String description) {
 		int flag = 0;
 
 		String str = this.removeAllCode(description);

@@ -32,7 +32,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 		}).then(function onSucces(response) {
 			$scope.suggestions = response.data;
-
+			console.log($scope.suggestions);
 		}, function onError(response) {
 		});
 	};

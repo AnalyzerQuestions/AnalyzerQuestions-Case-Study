@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.QuestionRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
@@ -104,7 +105,7 @@ public class QuestionService {
 		return analyzerQuestion.getGoodQuestionAnalyzer(question);
 	}
 
-	public List<String> getAnalize(Question question) {
-		return analyzer.getSuggestions(question);
+	public List<MSG> getAnalize(Question question) {
+		return analyzer.getSuggestions1(question);
 	}
 }

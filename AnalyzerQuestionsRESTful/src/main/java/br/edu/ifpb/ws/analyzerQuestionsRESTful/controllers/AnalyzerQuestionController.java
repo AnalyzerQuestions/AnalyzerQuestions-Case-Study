@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
@@ -43,13 +44,13 @@ public class AnalyzerQuestionController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
-	public ResponseEntity<List<String>> getSuggestions(@RequestBody Usuario usuario) {
+	public ResponseEntity<List<MSG>> getSuggestions(@RequestBody Usuario usuario) {
 		usuario.getQuestion().setQuestionType(QuestionType.ORIGINAL);
 		
 		userService.updateUser(usuario);
-		List<String> suggestions = questionService.getAnalize(usuario.getQuestion());
-		
-		return new ResponseEntity<List<String>>(suggestions, HttpStatus.OK);
+		List<MSG> suggestions = questionService.getAnalize(usuario.getQuestion());
+		System.out.println(suggestions);
+		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
 	}
 
 	/**

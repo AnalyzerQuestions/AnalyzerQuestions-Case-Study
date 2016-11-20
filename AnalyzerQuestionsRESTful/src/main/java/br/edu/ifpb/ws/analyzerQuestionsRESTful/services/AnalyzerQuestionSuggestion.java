@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerFinal;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerMSG;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 public class AnalyzerQuestionSuggestion {
 
 	private QuestionAnalyzerFinal questionAnalyzer;
-	private List<String> suggestions = new ArrayList<String>();
+	private QuestionAnalyzerMSG analyzerMSG;
+	private List<MSG> suggestionsMap = new ArrayList<>();
 
-	public List<String> getSuggestions(Question question) {
-		suggestions.clear();
+	public List<MSG> getSuggestions1(Question question) {
+		suggestionsMap.clear();
 
 		questionAnalyzer = new QuestionAnalyzerFinal();
+		analyzerMSG = new QuestionAnalyzerMSG();
 
 		this.analyseUnderstandableTitle(question.getTitle(), question.getDescription());
 		this.analyseCoherencyBodyAndTitle(question.getTitle(), question.getDescription());
@@ -32,74 +35,48 @@ public class AnalyzerQuestionSuggestion {
 		this.analyzerShortDescriptionQuestion(question.getDescription());
 		this.analyzerDoNotCreateHomeworkQuestions(question.getDescription());
 		this.analyzerUsingProperLanguage(question.getDescription());
-		
-		return suggestions;
+
+		return suggestionsMap;
 	}
 
 	public void analyseUnderstandableTitle(String title, String description) {
-		if (questionAnalyzer.analyzerUnderstandableTitle(title, description) == 0)
-			suggestions.add(Messages.TITULO_BEM_DEFINIDO.getMsg());
-	}
-	
-	
-	public void analyseCoherencyBodyAndTitle(String title, String description){
-		if(questionAnalyzer.analyzerCoherencyBodyAndTitle(title, description) == 0)
-			suggestions.add(Messages.COERENCY_BODY_WITH_TITLE.getMsg());
-	}
-	
-	public void analyzerObjective(String description){
-		if(questionAnalyzer.analyzerObjective(description) == 0)
-			suggestions.add(Messages.IS_OBJECTIVE.getMsg());
-	}
-	
-	public void analyzerClarity(String title, String description){
-		if(questionAnalyzer.analyzerClarity(title, description) == 0)
-			suggestions.add(Messages.IS_CLARITY.getMsg());
-	}
-	
-	public void analyseShowingExample(String description){
-		if(questionAnalyzer.analyzerShowExample(description) == 0)
-			suggestions.add(Messages.SHOW_EXAMPLE.getMsg());
-	}
-	
-	
-	public void analyzerUnderstandableDescription(String title, String description){
-		if(questionAnalyzer.analyzerUnderstandableDescription(title, description) == 0)
-			suggestions.add(Messages.UNDESTANDABLE_DESCRTION.getMsg());
-	}
-	
-	public void analyzerDetailAboutContext(String description){
-		if(questionAnalyzer.analyzerDetailAboutContext(description) == 0)
-			suggestions.add(Messages.DETAIL_CONTEXT.getMsg());
-	}
-	
-	public void analyzerUsingProperLanguage(String description){
-		if(questionAnalyzer.analyzerUsingProperLanguage(description) == 0)
-			suggestions.add(Messages.USING_PROPER_LANGUAGE.getMsg());
-	}
-	
-	public void analyzerBeEducated(String description){
-		if(questionAnalyzer.analyzerBeEducated(description) == 0)
-			suggestions.add(Messages.BE_EDUCADED.getMsg());
-	}
-	
-	public void analyzerShortDescriptionQuestion(String description){
-		if(questionAnalyzer.analyzerShortDescriptionQuestion(description) == 0)
-			suggestions.add(Messages.SHORT_DESCRIPTION.getMsg());
-	}
-	
-	public void analyzerDoNotCreateHomeworkQuestions(String description){
-		if(questionAnalyzer.analyzerDoNotCreateHomeworkQuestions(description) == 0)
-			suggestions.add(Messages.HOME_WORK_QUESTION.getMsg());
-	}
-	
-	public List<String> getMessages() {
-		return suggestions;
+		suggestionsMap.add(analyzerMSG.msgUnderstandableTitle(title, description));
 	}
 
-	
-	public void setMessages(List<String> messages) {
-		this.suggestions = messages;
+	public void analyseCoherencyBodyAndTitle(String title, String description) {
+		suggestionsMap.add(analyzerMSG.msgCoherencyBodyAndTitle(title, description));
+	}
+
+	public void analyzerObjective(String description) {
+		suggestionsMap.add(analyzerMSG.msgObjective(description));
+	}
+
+	public void analyzerClarity(String title, String description) {
+		suggestionsMap.add(analyzerMSG.msgClarity(title, description));
+	}
+
+	public void analyseShowingExample(String description) {
+		suggestionsMap.add(analyzerMSG.msgExample(description));
+	}
+
+	public void analyzerUnderstandableDescription(String title, String description) {
+		suggestionsMap.add(analyzerMSG.msgUnderstandableDescription(title, description));
+	}
+
+	public void analyzerUsingProperLanguage(String description) {
+		suggestionsMap.add(analyzerMSG.msgUsingProperLanguage(description));
+	}
+
+	public void analyzerBeEducated(String description) {
+		suggestionsMap.add(analyzerMSG.msgBeEducated(description));
+	}
+
+	public void analyzerShortDescriptionQuestion(String description) {
+		suggestionsMap.add(analyzerMSG.msgShortDescriptionQuestion(description));
+	}
+
+	public void analyzerDoNotCreateHomeworkQuestions(String description) {
+		suggestionsMap.add(analyzerMSG.msgDoNotCreateHomeworkQuestions(description));
 	}
 
 	public QuestionAnalyzerFinal getQuestionAnalyzer() {
@@ -109,5 +86,5 @@ public class AnalyzerQuestionSuggestion {
 	public void setQuestionAnalyzer(QuestionAnalyzerFinal questionAnalyzer) {
 		this.questionAnalyzer = questionAnalyzer;
 	}
-	
+
 }
