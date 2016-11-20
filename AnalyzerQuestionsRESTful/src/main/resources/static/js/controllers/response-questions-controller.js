@@ -50,7 +50,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		}else{
 			growl.error("Escolha no mínimo um motivo");
 		}
-	}
+	};
 
 	var cont = 0;
 	var next = function() {
