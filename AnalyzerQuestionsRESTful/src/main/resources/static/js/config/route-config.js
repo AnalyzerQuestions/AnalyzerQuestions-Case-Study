@@ -14,7 +14,7 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 
 	}).when("/", {
 		templateUrl : 'view/login.html',
-		controller : "userController"
+		controller : "accessController"
 
 	}).when("/aqtAdmin", {
 		templateUrl : 'view/admin.html',

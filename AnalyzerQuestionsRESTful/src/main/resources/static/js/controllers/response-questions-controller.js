@@ -46,6 +46,10 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 			}
 		}
 		if(vm.checkedQuestionsClicked.length){
+			if(vm.disableBtnNext()){
+				localStorageService.clearAll();
+				$location.path('/')
+			}
 			next();
 		}else{
 			growl.error("Escolha no mínimo um motivo");
@@ -71,8 +75,10 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	
 	var setQuestionInHtml = function(cont){
 		elemetQuestion.empty();
-		vm.question = vm.chosenQuestions[cont];
-		elemetQuestion.append(vm.question.descritptionHtml);
+		if(!(vm.chosenQuestions.length === cont)){
+			vm.question = vm.chosenQuestions[cont];
+			elemetQuestion.append(vm.question.descritptionHtml);
+		}
 	};
 	
 	vm.disableBtnNext = function(){
