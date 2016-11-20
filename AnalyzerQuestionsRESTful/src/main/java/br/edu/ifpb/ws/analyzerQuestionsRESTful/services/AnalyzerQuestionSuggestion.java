@@ -18,6 +18,7 @@ public class AnalyzerQuestionSuggestion {
 	private QuestionAnalyzerFinal questionAnalyzer;
 	private QuestionAnalyzerMSG analyzerMSG;
 	private List<MSG> suggestionsMap = new ArrayList<>();
+	private MSG msg;
 
 	public List<MSG> getSuggestions1(Question question) {
 		suggestionsMap.clear();
@@ -40,43 +41,73 @@ public class AnalyzerQuestionSuggestion {
 	}
 
 	public void analyseUnderstandableTitle(String title, String description) {
-		suggestionsMap.add(analyzerMSG.msgUnderstandableTitle(title, description));
+		msg = analyzerMSG.msgUnderstandableTitle(title, description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyseCoherencyBodyAndTitle(String title, String description) {
-		suggestionsMap.add(analyzerMSG.msgCoherencyBodyAndTitle(title, description));
+		msg = analyzerMSG.msgCoherencyBodyAndTitle(title, description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerObjective(String description) {
-		suggestionsMap.add(analyzerMSG.msgObjective(description));
+		msg = analyzerMSG.msgObjective(description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerClarity(String title, String description) {
-		suggestionsMap.add(analyzerMSG.msgClarity(title, description));
+		msg = analyzerMSG.msgClarity(title, description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyseShowingExample(String description) {
-		suggestionsMap.add(analyzerMSG.msgExample(description));
+		msg = analyzerMSG.msgExample(description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerUnderstandableDescription(String title, String description) {
-		suggestionsMap.add(analyzerMSG.msgUnderstandableDescription(title, description));
+		msg = analyzerMSG.msgUnderstandableDescription(title, description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerUsingProperLanguage(String description) {
-		suggestionsMap.add(analyzerMSG.msgUsingProperLanguage(description));
+		msg =analyzerMSG.msgUsingProperLanguage(description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerBeEducated(String description) {
-		suggestionsMap.add(analyzerMSG.msgBeEducated(description));
+		msg = analyzerMSG.msgBeEducated(description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerShortDescriptionQuestion(String description) {
-		suggestionsMap.add(analyzerMSG.msgShortDescriptionQuestion(description));
+		msg = analyzerMSG.msgShortDescriptionQuestion(description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public void analyzerDoNotCreateHomeworkQuestions(String description) {
-		suggestionsMap.add(analyzerMSG.msgDoNotCreateHomeworkQuestions(description));
+		msg = analyzerMSG.msgDoNotCreateHomeworkQuestions(description);
+		if(msg.getHeader() != null){
+			suggestionsMap.add(msg);
+		}
 	}
 
 	public QuestionAnalyzerFinal getQuestionAnalyzer() {

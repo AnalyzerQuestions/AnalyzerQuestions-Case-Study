@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">PERGUNTAS ESCOLHIDAS</div>
+				<div class="panel-heading">PERGUNTAS ESCOLHIDAS DE 300 PERGUNTAS (55% Boas)</div>
 				<div class="panel-body"></div>
 				<div class="table-responsive">
 					<table
@@ -75,7 +75,7 @@
 								<td>{{question.id}}</td>
 								<td>{{question.title}}</td>
 								<td>{{question.description}}</td>
-								<td>{{question.questionType}}</td>
+								<td>{{question.questionType === 'CHOSEN'? 'Escolhida':'Clicada'}}</td>
 								<td>
 									<div ng-repeat="m in question.motives">
 										<li>{{m}}</li>

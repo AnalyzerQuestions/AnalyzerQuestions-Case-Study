@@ -32,7 +32,6 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 		}).then(function onSucces(response) {
 			$scope.suggestions = response.data;
-			console.log($scope.suggestions);
 		}, function onError(response) {
 		});
 	};
@@ -56,7 +55,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 			elementClicked.addClass('alert-success');
 			elementIcon.removeClass('fa-check');
 			elementIcon.addClass('fa-close')
-			chosenSuggestions.push(suggestion);
+			chosenSuggestions.push(suggestion.header);
 			anableButton(chosenSuggestions);
 		}
 	};

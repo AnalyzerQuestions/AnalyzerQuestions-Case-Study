@@ -18,8 +18,8 @@ public class QuestionAnalyzerMSG {
 
 	public MSG msgObjective(String description) {
 		messages = new ArrayList<>();
+		msg = new MSG();
 		if (qaf.analyzerObjective(description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.IS_OBJECTIVE.getMsg());
 
 			if (qaf.analyzerShortDescriptionQuestion(description) == 0)
@@ -37,8 +37,8 @@ public class QuestionAnalyzerMSG {
 	}
 
 	public MSG msgExample(String description) {
+		msg = new MSG();
 		if (qaf.analyzerShowExample(description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.SHOW_EXAMPLE.getMsg());
 		}
 		return msg;
@@ -46,8 +46,8 @@ public class QuestionAnalyzerMSG {
 
 	public MSG msgClarity(String title, String description) {
 		messages = new ArrayList<>();
+		msg = new MSG();
 		if (qaf.analyzerClarity(title, description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.IS_CLARITY.getMsg());
 
 			if (qaf.analyzerObjective(description) == 0)
@@ -69,8 +69,8 @@ public class QuestionAnalyzerMSG {
 
 	public MSG msgUnderstandableDescription(String title, String description) {
 		messages = new ArrayList<>();
+		msg = new MSG();
 		if (qaf.analyzerUnderstandableDescription(title, description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.UNDESTANDABLE_DESCRTION.getMsg());
 
 			if (qaf.analyzerObjective(description) == 0)
@@ -86,8 +86,8 @@ public class QuestionAnalyzerMSG {
 
 	public MSG msgBeEducated(String description) {
 		messages = new ArrayList<>();
+		msg = new MSG();
 		if (qaf.analyzerBeEducated(description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.BE_EDUCADED.getMsg());
 
 			if (qaf.analyzerUsingProperLanguage(description) == 0)
@@ -102,8 +102,8 @@ public class QuestionAnalyzerMSG {
 	}
 
 	public MSG msgCoherencyBodyAndTitle(String title, String description) {
+		msg = new MSG();
 		if (qaf.analyzerCoherencyBodyAndTitle(title, description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.COERENCY_BODY_WITH_TITLE.getMsg());
 		}
 
@@ -111,8 +111,8 @@ public class QuestionAnalyzerMSG {
 	}
 
 	public MSG msgUsingProperLanguage(String description) {
+		msg = new MSG();
 		if (qaf.analyzerUsingProperLanguage(description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.USING_PROPER_LANGUAGE.getMsg());
 		}
 
@@ -121,9 +121,8 @@ public class QuestionAnalyzerMSG {
 
 	public MSG msgUnderstandableTitle(String title, String description) {
 		messages = new ArrayList<>();
-
+		msg = new MSG();
 		if (qaf.analyzerUnderstandableTitle(title, description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.TITULO_BEM_DEFINIDO.getMsg());
 			if (!qaf.isMediumSizeTitle(title))
 				messages.add("Evite escrever titulo muito curto ou muito longo.");
@@ -137,8 +136,8 @@ public class QuestionAnalyzerMSG {
 	}
 
 	public MSG msgShortDescriptionQuestion(String description) {
+		msg = new MSG();
 		if (qaf.analyzerShortDescriptionQuestion(description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.SHORT_DESCRIPTION.getMsg());
 		}
 
@@ -146,8 +145,8 @@ public class QuestionAnalyzerMSG {
 	}
 
 	public MSG msgDoNotCreateHomeworkQuestions(String description) {
+		msg = new MSG();
 		if (qaf.analyzerDoNotCreateHomeworkQuestions(description) == 0) {
-			msg = new MSG();
 			msg.setHeader(Messages.HOME_WORK_QUESTION.getMsg());
 		}
 

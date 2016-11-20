@@ -49,7 +49,6 @@ public class AnalyzerQuestionController {
 		
 		userService.updateUser(usuario);
 		List<MSG> suggestions = questionService.getAnalize(usuario.getQuestion());
-		System.out.println(suggestions);
 		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
 	}
 

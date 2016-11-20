@@ -15,22 +15,24 @@
 				</div>
 				<div class="form-group">
 					Descrição da Pergunta
-					<textarea id="editor-f" data-iconlibrary="fa" name="content" data-width="725" data-provide="markdown" rows="13" ng-model="question.description">
+					<textarea id="editor-f" data-iconlibrary="fa" name="content" data-width="50%" data-provide="markdown" rows="13" ng-model="question.description">
 					</textarea>
 				</div>
 				<button id="btn-get-sug" class="btn  btn-primary" type="submit" ng-click="getSuggestions()">Obter Sugestões</button>
 				<button id="btn-completter" class="btn  btn-danger" type="submit" disabled="true" ng-click="registerChosenSuggestions()">Finalizar</button>
+				
+				<div style="height: 300px;"></div>
 			</div>
 		</form>
 		<div class="col-sm-6" ng-repeat = "sug in suggestions">
 			<div class="alert  alert-danger  alert-dismissible aqt-close" role="alert">
 				<button type="button" class="close btn-suggestion">
-					<a><i class="fa fa-check js-icon" ng-click="checkedSuggestion(sug.header)" data-toggle="tooltip" title="Click aqui se esta sugestão FOI importante para você" aria-hidden="true"></i></a>
+					<a><i class="fa fa-check js-icon" ng-click="checkedSuggestion(sug)" data-toggle="tooltip" title="Click aqui se esta sugestão FOI importante para você" aria-hidden="true"></i></a>
 				</button>
 				<p>
-				{{sug.header}}
+				<span style="font-size: 20px;">{{sug.header}}</span>
 				<div ng-repeat="m in sug.messages">
-				<li>{{m}}</li>
+				<li style="font-size: 15px;">{{m}}</li>
 				</div>
 				</p>
 			</div>
