@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/vendors/angular-growl/angular-growl.min.css" />
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"/>
 </head>
-<body>
+<body ng-controller="mainController">
 	<div ng-include="'/view/fragments/navBar.html'"></div>
 	<div growl=""></div>
 
@@ -39,6 +39,7 @@
 	<script src="/js/services/user-services.js"></script>
 	<script src="/js/services/question-services.js"></script>
 	
+	<script src="/js/controllers/main-controller.js"></script>
 	<script src="/js/controllers/new-questions-controller.js"></script>
 	<script src="/js/controllers/list-questions-controller.js"></script>
 	<script src="/js/controllers/response-questions-controller.js"></script>
