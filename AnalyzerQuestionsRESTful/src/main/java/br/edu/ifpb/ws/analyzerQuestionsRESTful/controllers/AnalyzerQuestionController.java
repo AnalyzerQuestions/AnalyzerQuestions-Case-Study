@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
@@ -114,6 +115,19 @@ public class AnalyzerQuestionController {
 		List<Usuario> users = userService.getAll();
 		
 		return new ResponseEntity<List<Usuario>>(users, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user/adminAccess")
+	public ResponseEntity<?> access(@RequestParam("key") String key){
+		System.out.println(key);
+		String keyStore = "adminAqtGQ";
+		
+		if(key.equals(keyStore)){
+			return new ResponseEntity<>(HttpStatus.OK);
+		}else{
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);		
+		}
+		
 	}
 
 }
