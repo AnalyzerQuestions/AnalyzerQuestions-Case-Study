@@ -33,8 +33,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 			function(data) {
 				user = data;
 				vm.chosenQuestions = data.chosenQuestionsWrapper.chosenQuestions;
-				vm.question = vm.chosenQuestions[cont];
-				elemetQuestion.append(vm.question.descritptionHtml);
+				setQuestionInHtml(cont);
 			}, function(data) {
 	});
 
@@ -57,9 +56,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	var next = function() {
 		cont++;
 		updateQuestion(vm.question);
-		elemetQuestion.empty();
-		vm.question = vm.chosenQuestions[cont];
-		elemetQuestion.append(vm.question.descritptionHtml);
+		setQuestionInHtml(cont);
 	};
 
 	var updateQuestion = function(question){
@@ -70,6 +67,12 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 				reset();
 			}, function(response) {
 		});
+	};
+	
+	var setQuestionInHtml = function(cont){
+		elemetQuestion.empty();
+		vm.question = vm.chosenQuestions[cont];
+		elemetQuestion.append(vm.question.descritptionHtml);
 	};
 	
 	vm.disableBtnNext = function(){
