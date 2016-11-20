@@ -20,7 +20,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	var userStorage = localStorageService.get("aqt-user");
 	var elemetQuestion = $("#body-detail-description");
 	var user = {};
-
+	
 	vm.toggleCheck = function (option) {
         if (vm.checkedQuestionsClicked.indexOf(option) === -1) {
         	vm.checkedQuestionsClicked.push(option);
@@ -33,7 +33,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 			function(data) {
 				user = data;
 				vm.chosenQuestions = data.chosenQuestionsWrapper.chosenQuestions;
-				vm.question = vm.chosenQuestions[0];
+				vm.question = vm.chosenQuestions[cont];
 				elemetQuestion.append(vm.question.descritptionHtml);
 			}, function(data) {
 	});
@@ -56,10 +56,10 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	var cont = 0;
 	var next = function() {
 		cont++;
+		updateQuestion(vm.question);
 		elemetQuestion.empty();
 		vm.question = vm.chosenQuestions[cont];
 		elemetQuestion.append(vm.question.descritptionHtml);
-		updateQuestion(vm.question);
 	};
 
 	var updateQuestion = function(question){
@@ -71,7 +71,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 			}, function(response) {
 		});
 	};
-
+	
 	vm.disableBtnNext = function(){
 		return vm.chosenQuestions.length-1 === cont;
 	};

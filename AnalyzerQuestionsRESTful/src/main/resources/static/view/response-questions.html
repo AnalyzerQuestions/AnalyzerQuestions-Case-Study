@@ -23,8 +23,8 @@
 					<button type="reset" class="btn btn-primary" ng-show="!vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA PERGUNTA</button>
 					<button type="reset" class="btn btn-danger" ng-show="vm.disableBtnNext()" ng-click="vm.nextQuestion()">FINALIZAR</button>
 				</div>
-				<div ng-show="!(vm.question.questionType === 'CLICABLE')" ng-include="'/view/fragments/form-clickable-questions.html'"></div>
-				<div ng-show="!(vm.question.questionType === 'CHOSEN')" ng-include="'/view/fragments/form-chosen-questions.html'"></div>
+				<div ng-show="(vm.question.questionType === 'CLICABLE')" ng-include="'/view/fragments/form-clickable-questions.html'"></div>
+				<div ng-show="(vm.question.questionType === 'CHOSEN')" ng-include="'/view/fragments/form-chosen-questions.html'"></div>
 			</form>
 		</div>
 	</div>

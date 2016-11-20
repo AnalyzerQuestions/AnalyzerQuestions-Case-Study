@@ -37,9 +37,6 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		 */
 		$scope.selectedQuestion = function(question) {
 			$scope.questionSelected = question;
-			question.questionType = 'CLICABLE';
-			chosenQuestions.push(question);
-
 			var bodyDetail = $("#body-detail-description");
 			bodyDetail.append($scope.questionSelected.descritptionHtml);
 			labelButtonSelection();
@@ -51,8 +48,13 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		var labelButtonSelection = function(){
 			var index = $scope.questions.indexOf($scope.questionSelected);
 			var groupList = $(".aqt-confirm").eq(index);
-			
+			var id = chosenQuestions.indexOf($scope.questionSelected);
 			var btnSelection = $('#btn-dlg-detail');
+			
+			if(id === -1){
+				$scope.questionSelected.questionType = 'CLICABLE';
+				chosenQuestions.push($scope.questionSelected);
+			}
 			
 			if(groupList.hasClass('js-selected')){
 				btnSelection.text('NÃO QUERO RESPONDER ESTA PERGUNTA');
@@ -62,20 +64,23 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		};
 		$scope.selectedChosenQuestion = function() {
 			var index = $scope.questions.indexOf($scope.questionSelected);
+			var id = chosenQuestions.indexOf($scope.questionSelected);
 			var groupList = $(".aqt-confirm").eq(index);
 			
-			groupList.append('<span class="label label-success">SELECIONADA</span>');
 			if (groupList.hasClass('js-selected')) {
+				chosenQuestions.splice(id, 1);
 				$scope.questionSelected.questionType = 'CLICABLE';
-				groupList.hide();
+				chosenQuestions.push($scope.questionSelected);
+				groupList.empty();
 				groupList.removeClass('js-selected');
 
 			} else {
+				chosenQuestions.splice(id, 1);
 				$scope.questionSelected.questionType = 'CHOSEN';
+				chosenQuestions.push($scope.questionSelected);
 				groupList.addClass('js-selected');
-				groupList.show();
+				groupList.append('<span class="label label-success">SELECIONADA</span>');
 			}
-			chosenQuestions[index] = $scope.questionSelected;
 
 			clearModal();
 		}

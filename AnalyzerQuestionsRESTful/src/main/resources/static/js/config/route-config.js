@@ -14,17 +14,25 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 
 	}).when("/", {
 		templateUrl : 'view/login.html',
-		controller: "userController"
-		
+		controller : "userController"
+
+	}).when("/aqtAdmin", {
+		templateUrl : 'view/admin.html',
+		controller : 'adminController'
+
+	}).when("/adminUsers", {
+		templateUrl : 'view/users.html',
+		controller : 'userController'
+
 	}).when("/step1", {
 		templateUrl : 'view/step-info1.html',
-		
+
 	}).when("/step2", {
 		templateUrl : 'view/step-info2.html',
-		
+
 	}).when("/step3", {
 		templateUrl : 'view/step-info3.html',
-			
+
 	}).otherwise({
 		redirectTo : '/'
 	});

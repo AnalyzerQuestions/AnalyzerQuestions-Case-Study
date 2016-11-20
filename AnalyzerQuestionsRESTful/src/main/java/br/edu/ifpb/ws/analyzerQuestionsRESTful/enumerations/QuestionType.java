@@ -2,6 +2,17 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations;
 
 public enum QuestionType {
 	
-	ORIGINAL, CHANGED_WITH_SUGGESTION, CHOSEN, CLICABLE
+	ORIGINAL("Original"), CHANGED_WITH_SUGGESTION("Modificada"), CHOSEN("Selecionada"), CLICABLE("Clicada");
+	
+	private String attr;
+
+	private QuestionType(String attr) {
+		this.attr = attr;
+	}
+
+	public String getAttr() {
+		return attr;
+	}
+
 
 }

@@ -1,6 +1,7 @@
 aqtApp.controller("userController", function($scope, userService, $location, localStorageService) {
 
 	$scope.user = {};
+	$scope.users  = [];
 	
 	localStorageService.clearAll();
 
@@ -15,4 +16,18 @@ aqtApp.controller("userController", function($scope, userService, $location, loc
 
 		});
 	};
+	
+	var findAll = function(){
+		userService.findAll().$promise.then(
+			function(response){
+				$scope.users = response;
+				console.log($scope.users);
+				
+			}, function(response) {
+			
+		});
+	};
+	
+	findAll();
+	
 });

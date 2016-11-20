@@ -20,4 +20,8 @@ aqtApp.service('userService', function(resourceService){
 	this.getById = function(id) {
 		return resourceService.get({userId: id});
 	};
+	
+	this.findAll = function(id) {
+		return resourceService.query();
+	};
 });
