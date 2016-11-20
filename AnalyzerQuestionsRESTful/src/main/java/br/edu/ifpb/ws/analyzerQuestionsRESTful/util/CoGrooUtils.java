@@ -77,8 +77,4 @@ public class CoGrooUtils {
 
 		return document;
 	}
-
-	public static void main(String[] args) {
-		isCorrectText("algo");
-	}
 }

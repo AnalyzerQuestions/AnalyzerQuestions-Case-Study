@@ -48,9 +48,4 @@ public class ReaderFile {
 		}
 		return sb.toString();
 	}*/
-	
-	public static void main(String[] args) {
-		ReaderFile rf = new ReaderFile();
-		System.out.println(rf.readerTxt("classJava.txt"));
-	}
 }
