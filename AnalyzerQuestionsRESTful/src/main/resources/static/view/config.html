@@ -1,0 +1,30 @@
+<div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="content-header">
+					<h2>
+						Configurações <small></small>
+					</h2>
+				</div>
+				<form name="frmConfig" novalidate>
+					<div class="row">
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+							<input class="form-control" type="text" name='cro' ng-model="config.time" placeholder="Tempo em segundos" required />
+							<span ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required" class="form-control alert alert-danger">Campo deve ser informado</span>
+						</div>
+					</div>
+					{{config.time}}
+					<div class="form-group">
+						<button class="btn  btn-primary" type="button" ng-click="update()">Salvar</button>
+						<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+</div>

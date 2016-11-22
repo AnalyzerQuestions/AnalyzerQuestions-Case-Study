@@ -24,6 +24,10 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 		templateUrl : 'view/users.html',
 		controller : 'userController'
 
+	}).when("/adminConfig", {
+		templateUrl : 'view/config.html',
+		controller : 'configController'
+
 	}).when("/step1", {
 		templateUrl : 'view/step-info1.html',
 
@@ -32,6 +36,9 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 
 	}).when("/step3", {
 		templateUrl : 'view/step-info3.html',
+
+	}).when("/final", {
+		templateUrl : 'view/final.html',
 
 	}).otherwise({
 		redirectTo : '/'

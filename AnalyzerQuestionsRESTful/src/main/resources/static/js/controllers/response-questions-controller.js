@@ -48,8 +48,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		if(vm.checkedQuestionsClicked.length){
 			if(vm.disableBtnNext()){
 				localStorageService.clearAll();
-				$location.path('/')
-				growl.success("Concluído!");
+				$location.path('/final')
 			}
 			next();
 		}else{
