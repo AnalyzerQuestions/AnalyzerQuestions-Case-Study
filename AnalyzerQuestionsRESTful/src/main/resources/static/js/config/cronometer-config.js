@@ -5,7 +5,7 @@ aqtApp.service('cronometerConfig', function($http) {
 	};
 	
 	this.updateTime = function(config){
-		return $http.put('/config/config.json', config);
+		return $http.put('/config', config);
 	};
 
 });

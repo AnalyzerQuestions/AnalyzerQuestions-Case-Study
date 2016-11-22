@@ -58,6 +58,13 @@
 			<version>9.4-1206-jdbc42</version>
 		</dependency>
 
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+
 		<!-- DEPENDENCIES ANALYZER -->
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
