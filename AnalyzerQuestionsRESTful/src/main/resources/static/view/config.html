@@ -11,16 +11,48 @@
 				</div>
 				<form name="frmConfig" novalidate>
 					<div class="row">
-						<div class="form-group input-group">
-							<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-							<input class="form-control" type="text" name='cro' ng-model="config.time" placeholder="Tempo em segundos" required />
-							<span ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required" class="form-control alert alert-danger">Campo deve ser informado</span>
+						<div class="panel panel-primary">
+							<div class="panel-heading">Configurações do cronometro</div>
+							<div class="panel-body">
+
+								<div class="form-group input-group">
+									<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+									<input class="form-control" type="text" name='cro'
+										ng-model="config.time" placeholder="Tempo em segundos"
+										required /> <span
+										ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+										class="form-control alert alert-danger">Campo deve ser
+										informado</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<button class="btn  btn-primary" type="button"
+									ng-click="update()">Salvar</button>
+								<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
+							</div>
 						</div>
 					</div>
-					{{config.time}}
-					<div class="form-group">
-						<button class="btn  btn-primary" type="button" ng-click="update()">Salvar</button>
-						<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
+					<div class="row">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Configurações das sugestões</div>
+							<div class="panel-body">
+
+								<div class="form-group input-group">
+									<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+									<input class="form-control" type="text" name='cro'
+										ng-model="config.time" placeholder="Tempo em segundos"
+										required /> <span
+										ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+										class="form-control alert alert-danger">Campo deve ser
+										informado</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<button class="btn  btn-primary" type="button"
+									ng-click="update()">Salvar</button>
+								<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>

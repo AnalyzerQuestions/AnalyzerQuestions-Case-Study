@@ -23,13 +23,13 @@ public class QuestionAnalyzerMSG {
 			msg.setHeader(Messages.IS_OBJECTIVE.getMsg());
 
 			if (qaf.analyzerShortDescriptionQuestion(description) == 0)
-				messages.add("Descrição curta.");
+				messages.add(Messages.IS_OBJECIVE_DC.getMsg());
 
 			if (!qaf.isQuestionUnique(description))
-				messages.add("Resuma a pergunta a um único problema.");
+				messages.add(Messages.IS_OBJECTIVE_QUESTION_UNIQUE.getMsg());
 
 			if (qaf.avoidingMuchCode(description) == 0)
-				messages.add("Evite pergunta com muito código.");
+				messages.add(Messages.IS_OBJECTIVE_MUCH_CODE.getMsg());
 		}
 
 		msg.setMessages(messages);
