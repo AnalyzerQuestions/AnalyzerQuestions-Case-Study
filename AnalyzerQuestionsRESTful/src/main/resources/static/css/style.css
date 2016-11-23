@@ -64,7 +64,7 @@ body {
 	padding: 2px;
 }
 
-.modal-dialog {
+.aqt-modal-dialog {
 	margin-top: 100px;
 	width: 80%;
 }
@@ -172,4 +172,8 @@ body {
   -moz-transition:1s linear all;
   -o-transition:1s linear all;
   transition:1s linear all;
+}
+
+.acoes{
+	text-align: center;
 }

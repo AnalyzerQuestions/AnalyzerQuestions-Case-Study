@@ -1,5 +1,5 @@
+<div ng-include="'/view/fragments/option-edit.html'"></div>
 <div>
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -34,7 +34,7 @@
 									<div class="panel-heading">
 										Configurações de opções de motivos em visualizar a pergunta
 										<div style="float: right">
-											<button class="btn  btn-default">
+											<button class="btn  btn-default" data-toggle="modal" data-target="#optionModal" ng-click="openModal(null, false, true)">
 												<i class="fa  fa-plus"></i>
 											</button>
 										</div>
@@ -53,14 +53,14 @@
 												<tbody>
 													<tr ng-repeat="d in config.optionsQuestionsClicked">
 														<td>{{d}}</td>
-														<td class="table-pesq-produto-col-acoes">
+														<td class="acoes">
 
 															<div class="btn-group">
-																<button class="btn  btn-default btn-xs">
+																<button data-toggle="modal" data-target="#optionModal" ng-click="openModal(d, true, true)" class="btn  btn-default btn-xs">
 																	<i class="fa  fa-pencil"></i>
 																</button>
 
-																<button class="btn  btn-default btn-xs">
+																<button class="btn  btn-default btn-xs" ng-click="removeMotiveClicked(d)">
 																	<i class="fa  fa-trash"></i>
 																</button>
 															</div>
@@ -96,7 +96,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr ng-repeat="d in config.optionsQuestionsClicked">
+													<tr ng-repeat="d in config.optionsQuestionsChosen">
 														<td>{{d}}</td>
 														<td class="table-pesq-produto-col-acoes">
 

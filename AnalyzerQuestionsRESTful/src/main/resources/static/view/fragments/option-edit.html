@@ -1,0 +1,32 @@
+<div class="modal fade" id="optionModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title">
+					<strong>Motivo</strong>
+				</h3>
+			</div>
+
+			<div class="modal-body">
+				<form class="form-horizontal" name="frmNewOp" novalidate>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input id="nameOption" type="text" required ng-model="clicked.motive" name="op" class="form-control" autofocus="autofocus">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="btn-dlg-detail" ng-disabled="frmNewOp.$invalid" type="button" class="btn btn-primary" ng-click="saveMotive()">OK</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+	</div>
+</div>

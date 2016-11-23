@@ -4,16 +4,13 @@
 	
       <div class="col-sm-12 col-md-10 col-md-offset-1">
         <form name="frmUser" novalidate>
-          <div class="form-group input-group">
+          <div class="form-group input-group " ng-class="{ 'has-error' : frmUser.username.$error.required && frmUser.username.$dirty}">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
             <input class="form-control" type="text" name='username' ng-model="user.name" placeholder="Nome" required/>
-            <span ng-show="frmUser.username.$dirty && frmUser.username.$error.required" class="form-control alert alert-danger">Campo deve ser informado</span>          
           </div>
-          <div class="form-group input-group">
+          <div class="form-group input-group" ng-class="{ 'has-error' : frmUser.email.$error.email}">
             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
             <input class="form-control" type="email" name='email' ng-model="user.email" placeholder="E-mail" required/>
-            <span ng-show="frmUser.email.$dirty && frmUser.email.$error.required" class="form-control alert alert-danger">Campo deve ser informado</span>      
-            <span ng-show="frmUser.email.$error.email" class="form-control alert alert-danger">E-mail inválido</span>         
           </div>
           <div class="form-group">
             <button type="button" class="btn btn-danger btn-block" ng-disabled="frmUser.$invalid" ng-click="register()">Proseguir</button>
