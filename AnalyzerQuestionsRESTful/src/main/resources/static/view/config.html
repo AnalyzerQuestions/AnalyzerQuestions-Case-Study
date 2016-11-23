@@ -79,7 +79,7 @@
 									<div class="panel-heading">
 										Configurações de opções de motivos para responder a pergunta
 										<div style="float: right">
-											<button class="btn  btn-default">
+											<button class="btn  btn-default" data-toggle="modal" data-target="#optionModal" ng-click="openModal(null, false, false)">
 												<i class="fa  fa-plus"></i>
 											</button>
 										</div>
@@ -101,11 +101,11 @@
 														<td class="table-pesq-produto-col-acoes">
 
 															<div class="btn-group">
-																<button class="btn  btn-default btn-xs">
+																<button data-toggle="modal" data-target="#optionModal" ng-click="openModal(d, true, false)" class="btn  btn-default btn-xs">
 																	<i class="fa  fa-pencil"></i>
 																</button>
 
-																<button class="btn  btn-default btn-xs">
+																<button class="btn  btn-default btn-xs" ng-click="removeMotiveChosen(d)">
 																	<i class="fa  fa-trash"></i>
 																</button>
 															</div>

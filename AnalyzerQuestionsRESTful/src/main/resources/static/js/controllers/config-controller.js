@@ -29,7 +29,11 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 				updateMotiveClicked($scope.clicked.motive);
 			}
 		}else{
-			
+			if (!isUpdated) {
+				saveMotiveChosen($scope.clicked.motive);
+			} else {
+				updateMotiveChosen($scope.clicked.motive);
+			}
 		}
 	};
 	
@@ -48,6 +52,25 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	var updateMotiveClicked = function(motive) {
 		var index = $scope.config.optionsQuestionsClicked.indexOf(previusMotive);
 		$scope.config.optionsQuestionsClicked[index] = motive;
+		$('#optionModal').modal('hide');
+		$scope.update();
+	};
+	
+	var saveMotiveChosen = function(motive){
+		$scope.config.optionsQuestionsChosen.push(motive);
+		$('#optionModal').modal('hide');
+		$scope.update();
+	};
+	
+	$scope.removeMotiveChosen = function(motive) {
+		var index = $scope.config.optionsQuestionsChosen.indexOf(motive);
+		$scope.config.optionsQuestionsChosen.splice(index, 1);
+		$scope.update();
+	};
+	
+	var updateMotiveChosen= function(motive) {
+		var index = $scope.config.optionsQuestionsChosen.indexOf(previusMotive);
+		$scope.config.optionsQuestionsChosen[index] = motive;
 		$('#optionModal').modal('hide');
 		$scope.update();
 	};
