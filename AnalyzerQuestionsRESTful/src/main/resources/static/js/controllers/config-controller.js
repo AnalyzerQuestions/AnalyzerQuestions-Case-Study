@@ -6,7 +6,7 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	var isClicked = false;
 	var previusMotive = "";
 
-	aqtConfig.getTime().then(function(response) {
+	aqtConfig.getConfig().then(function(response) {
 		$scope.config = response.data;
 	});
 

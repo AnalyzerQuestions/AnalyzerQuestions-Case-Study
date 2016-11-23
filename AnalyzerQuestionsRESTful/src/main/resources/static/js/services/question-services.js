@@ -6,7 +6,7 @@ aqtApp.factory('resourceQuestionService', function($resource) {
 		}
 	});
 })
-aqtApp.service('questionService', function(resourceQuestionService){
+aqtApp.service('questionService', function(resourceQuestionService, aqtConfig){
 	
 	var optionsQuestionsClicked = [];
 	var optionsQuestionsChosen = [];
@@ -20,13 +20,11 @@ aqtApp.service('questionService', function(resourceQuestionService){
 	};
 	
 	this.getOptionsQuestionsClicked = function(user){
-		generateOptionsClicked();
-		return optionsQuestionsClicked;
+		return aqtConfig.getConfig();
 	};
 	
 	this.getOptionsQuestionsChosen = function(user){
-		generateOptionsChosen();
-		return optionsQuestionsChosen;
+		return aqtConfig.getConfig();
 	};
 	
 	var generateOptionsClicked = function(){

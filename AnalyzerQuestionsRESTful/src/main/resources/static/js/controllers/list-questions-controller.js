@@ -123,7 +123,7 @@ aqtApp.controller("listQuestionController",function($scope, userService, aqtConf
 		 * inicia cronometro, quando a tela de lista de pergunta é
 		 * iniciada.
 		 */
-		aqtConfig.getTime().then(function(response){
+		aqtConfig.getConfig().then(function(response){
 			console.log(response.data);
 			timer = new Timer();
 			timer.start({

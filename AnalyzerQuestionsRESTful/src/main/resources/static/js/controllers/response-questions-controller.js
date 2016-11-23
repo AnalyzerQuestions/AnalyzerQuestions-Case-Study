@@ -5,13 +5,14 @@
  * @created
  * @date 21-10-16.
  */
-aqtApp.controller("responseQuestionController", function($scope, userService, questionService, $location, localStorageService, growl) {
+aqtApp.controller("responseQuestionController", function($scope, userService, questionService, aqtConfig, $location, localStorageService, growl) {
 
 	var vm = this;
 
 	vm.chosenQuestions = [];
-	vm.optionsQuestionsClicked = questionService.getOptionsQuestionsClicked();
-	vm.optionsQuestionsChosen = questionService.getOptionsQuestionsChosen();
+	
+	vm.optionsQuestionsClicked = [];
+	vm.optionsQuestionsChosen = [];
 	vm.checkedQuestionsClicked = [];
 	vm.question = {};
 	vm.other = false;
@@ -20,6 +21,14 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	var userStorage = localStorageService.get("aqt-user");
 	var elemetQuestion = $("#body-detail-description");
 	var user = {};
+	
+	questionService.getOptionsQuestionsClicked().then(function(response) {
+		vm.optionsQuestionsClicked = response.data.optionsQuestionsClicked;
+	});
+	
+	questionService.getOptionsQuestionsChosen().then(function(response) {
+		vm.optionsQuestionsChosen = response.data.optionsQuestionsChosen;
+	});
 	
 	vm.toggleCheck = function (option) {
         if (vm.checkedQuestionsClicked.indexOf(option) === -1) {
