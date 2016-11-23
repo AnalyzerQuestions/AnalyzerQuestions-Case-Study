@@ -1,15 +1,15 @@
-
 <div class="container-fluid">
+	<div class="row"></div>
 	<div class="row">
 		<div class="col-md-1"></div>
-		<div class="col-md-10">
-			<div class="content-header">
-				<h2>
-					Perguntas que você mostrou interesse <small>Indique os
-						motivos pelo qual se interessou para cada uma das perguntas a
-						seguir:</small>
-				</h2>
-			</div>
+		<div class="content-header aqt-header">
+			<h2>
+				Perguntas que você mostrou interesse <small>Indique os
+					motivos pelo qual se interessou para cada uma das perguntas a
+					seguir:</small>
+			</h2>
+		</div>
+		<div class="col-md-7">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div>
@@ -18,13 +18,31 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="col-md-5">
 			<form novalidate name="vm.frmOptions">
 				<div class="well">
-					<button type="reset" class="btn btn-primary" ng-show="!vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA PERGUNTA</button>
-					<button type="reset" class="btn btn-danger" ng-show="vm.disableBtnNext()" ng-click="vm.nextQuestion()">FINALIZAR</button>
+					<div class="row">
+						<div class="col-md-3">
+							<button type="reset" class="btn btn-primary"
+								ng-show="!vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA
+								PERGUNTA</button>
+							<button type="reset" class="btn btn-danger"
+								ng-show="vm.disableBtnNext()" ng-click="vm.nextQuestion()">FINALIZAR</button>
+						</div>
+						<div class="col-md-9 aqt-progress">
+							<div class="progress">
+								<div class="progress-bar" role="progressbar" aria-valuenow="{{vm.progress}}"
+									aria-valuemin="0" aria-valuemax="{{vm.chosenQuestions.length}}" style="width: {{(vm.progress/vm.chosenQuestions.length)*100}}%;">
+									{{vm.progress}} / {{vm.chosenQuestions.length}}</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div ng-if="(vm.question.questionType === 'CLICABLE')" ng-include="'/view/fragments/form-clickable-questions.html'"></div>
-				<div ng-if="(vm.question.questionType === 'CHOSEN')" ng-include="'/view/fragments/form-chosen-questions.html'"></div>
+				<div ng-if="(vm.question.questionType === 'CLICABLE')"
+					ng-include="'/view/fragments/form-clickable-questions.html'"></div>
+				<div ng-if="(vm.question.questionType === 'CHOSEN')"
+					ng-include="'/view/fragments/form-chosen-questions.html'"></div>
 			</form>
 		</div>
 	</div>

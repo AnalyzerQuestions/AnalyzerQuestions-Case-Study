@@ -17,6 +17,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	vm.question = {};
 	vm.other = false;
 	vm.otherText = '';
+	vm.progress = 0;
 
 	var userStorage = localStorageService.get("aqt-user");
 	var elemetQuestion = $("#body-detail-description");
@@ -68,6 +69,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	var cont = 0;
 	var next = function() {
 		cont++;
+		vm.progress = cont;
 		updateQuestion(vm.question);
 		setQuestionInHtml(cont);
 	};

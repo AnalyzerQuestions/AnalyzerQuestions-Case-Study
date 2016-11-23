@@ -177,3 +177,11 @@ body {
 .acoes{
 	text-align: center;
 }
+.aqt-header{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.aqt-progress{
+	margin-top: 7px !important;
+}
