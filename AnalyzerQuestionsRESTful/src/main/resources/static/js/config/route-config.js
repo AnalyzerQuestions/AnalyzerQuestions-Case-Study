@@ -27,6 +27,10 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 	}).when("/adminConfig", {
 		templateUrl : 'view/config.html',
 		controller : 'configController'
+			
+	}).when("/viewUser/:userId", {
+		templateUrl : 'view/user-detail.html',
+		controller : 'userController'
 
 	}).when("/step1", {
 		templateUrl : 'view/step-info1.html',

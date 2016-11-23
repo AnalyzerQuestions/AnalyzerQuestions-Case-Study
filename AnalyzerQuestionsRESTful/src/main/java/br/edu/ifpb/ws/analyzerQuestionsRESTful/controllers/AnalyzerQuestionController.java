@@ -97,7 +97,6 @@ public class AnalyzerQuestionController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user/{id}")
 	public ResponseEntity<Usuario> getById(@PathVariable Long id){
-			
 		Usuario user = userService.getById(id);
 		if(user == null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
