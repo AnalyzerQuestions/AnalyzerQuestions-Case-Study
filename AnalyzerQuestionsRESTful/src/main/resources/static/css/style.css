@@ -185,3 +185,9 @@ body {
 .aqt-progress{
 	margin-top: 7px !important;
 }
+
+.aqt-suggestions{
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}

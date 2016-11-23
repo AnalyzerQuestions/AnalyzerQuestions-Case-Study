@@ -11,8 +11,6 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	var chosenSuggestions = [];
 	$scope.suggestions = [];
 	$scope.question = {}
-	var buttonGetSug = $('#btn-get-sug');
-	var buttonCompletter = $('#btn-completter');
 	$scope.question.descritptionHtml = post = $('#editor-f').data('markdown').parseContent();
 
 	var userStorage = localStorageService.get("aqt-user");
@@ -50,13 +48,11 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 			elementIcon.addClass('fa-check')
 			var indexChoose = chosenSuggestions.indexOf(suggestion);
 			chosenSuggestions.splice(indexChoose, 1);
-			anableButton(chosenSuggestions);
 		} else {
 			elementClicked.addClass('alert-success');
 			elementIcon.removeClass('fa-check');
 			elementIcon.addClass('fa-close')
 			chosenSuggestions.push(suggestion.header);
-			anableButton(chosenSuggestions);
 		}
 	};
 
@@ -87,14 +83,4 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 			});
 		}
 	};
-
-	function anableButton(chosenSuggestions) {
-		if (chosenSuggestions.length > 0) {
-			buttonGetSug.prop('disabled', true)
-			buttonCompletter.prop('disabled', false);
-		} else {
-			buttonGetSug.prop('disabled', false)
-			buttonCompletter.prop('disabled', true);
-		}
-	}
 });
