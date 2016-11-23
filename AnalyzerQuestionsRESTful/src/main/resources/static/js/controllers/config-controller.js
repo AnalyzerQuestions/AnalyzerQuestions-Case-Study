@@ -6,10 +6,16 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	var isClicked = false;
 	var previusMotive = "";
 
+	/**
+	 * 
+	 */
 	aqtConfig.getConfig().then(function(response) {
 		$scope.config = response.data;
 	});
 
+	/**
+	 * 
+	 */
 	$scope.openModal = function(motive, isUp, isCli) {
 		isUpdated = isUp;
 		isClicked = isCli;
@@ -21,6 +27,9 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 		}
 	};
 
+	/**
+	 * 
+	 */
 	$scope.saveMotive = function() {
 		if(isClicked){
 			if (!isUpdated) {
@@ -35,58 +44,82 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 				updateMotiveChosen($scope.clicked.motive);
 			}
 		}
+		reset();
 	};
 	
+	/**
+	 * 
+	 */
 	var saveMotiveClicked = function(motive){
 		$scope.config.optionsQuestionsClicked.push(motive);
 		$('#optionModal').modal('hide');
-		$scope.update();
 	};
 
+	/**
+	 * 
+	 */
 	$scope.removeMotiveClicked = function(motive) {
 		var index = $scope.config.optionsQuestionsClicked.indexOf(motive);
 		$scope.config.optionsQuestionsClicked.splice(index, 1);
-		$scope.update();
 	};
 
+	/**
+	 * 
+	 */
 	var updateMotiveClicked = function(motive) {
 		var index = $scope.config.optionsQuestionsClicked.indexOf(previusMotive);
 		$scope.config.optionsQuestionsClicked[index] = motive;
 		$('#optionModal').modal('hide');
-		$scope.update();
 	};
 	
+	/**
+	 * 
+	 */
 	var saveMotiveChosen = function(motive){
 		$scope.config.optionsQuestionsChosen.push(motive);
 		$('#optionModal').modal('hide');
-		$scope.update();
 	};
 	
+	/**
+	 * 
+	 */
 	$scope.removeMotiveChosen = function(motive) {
 		var index = $scope.config.optionsQuestionsChosen.indexOf(motive);
 		$scope.config.optionsQuestionsChosen.splice(index, 1);
-		$scope.update();
+
 	};
 	
+	/**
+	 * 
+	 */
 	var updateMotiveChosen= function(motive) {
 		var index = $scope.config.optionsQuestionsChosen.indexOf(previusMotive);
 		$scope.config.optionsQuestionsChosen[index] = motive;
 		$('#optionModal').modal('hide');
-		$scope.update();
 	};
 
+	/**
+	 * 
+	 */
 	$scope.update = function() {
 		aqtConfig.updateTime($scope.config).then(function(response) {
+			growl.success("Configurações salvas");
 			reset();
 		});
 	};
-
+	
+	/**
+	 * 
+	 */
 	$scope.getSuggestions = function() {
 		aqtConfig.getSuggestions().then(function(response) {
 			console.log(response.data);
 		});
 	};
 
+	/**
+	 * 
+	 */
 	var reset = function() {
 		$scope.clicked = angular.copy($scope.clicked = {});
 		motive = "";
