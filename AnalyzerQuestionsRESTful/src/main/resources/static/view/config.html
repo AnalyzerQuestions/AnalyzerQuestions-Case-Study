@@ -11,47 +11,119 @@
 				</div>
 				<form name="frmConfig" novalidate>
 					<div class="row">
-						<div class="panel panel-primary">
-							<div class="panel-heading">Configurações do cronometro</div>
-							<div class="panel-body">
+						<div class="col-md-13">
+							<div class="panel panel-primary">
+								<div class="panel-heading">Configurações do cronometro</div>
+								<div class="panel-body">
 
-								<div class="form-group input-group">
-									<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-									<input class="form-control" type="text" name='cro'
-										ng-model="config.time" placeholder="Tempo em segundos"
-										required /> <span
-										ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
-										class="form-control alert alert-danger">Campo deve ser
-										informado</span>
+									<div class="form-group input-group">
+										<span class="input-group-addon"><i
+											class="fa fa-clock-o"></i></span> <input class="form-control"
+											type="text" name='cro' ng-model="config.time"
+											placeholder="Tempo em segundos" required /> <span
+											ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+											class="form-control alert alert-danger">Campo deve ser
+											informado</span>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<button class="btn  btn-primary" type="button"
-									ng-click="update()">Salvar</button>
-								<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="panel panel-primary">
-							<div class="panel-heading">Configurações das sugestões</div>
-							<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										Configurações de opções de motivos em visualizar a pergunta
+										<div style="float: right">
+											<button class="btn  btn-default">
+												<i class="fa  fa-plus"></i>
+											</button>
+										</div>
+									</div>
+									<div class="panel-body">
 
-								<div class="form-group input-group">
-									<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-									<input class="form-control" type="text" name='cro'
-										ng-model="config.time" placeholder="Tempo em segundos"
-										required /> <span
-										ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
-										class="form-control alert alert-danger">Campo deve ser
-										informado</span>
+										<div class="table-responsive">
+											<table
+												class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+												<thead>
+													<tr>
+														<th width="90%">Opções</th>
+														<th width="10%">Ações</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="d in config.optionsQuestionsClicked">
+														<td>{{d}}</td>
+														<td class="table-pesq-produto-col-acoes">
+
+															<div class="btn-group">
+																<button class="btn  btn-default btn-xs">
+																	<i class="fa  fa-pencil"></i>
+																</button>
+
+																<button class="btn  btn-default btn-xs">
+																	<i class="fa  fa-trash"></i>
+																</button>
+															</div>
+
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<button class="btn  btn-primary" type="button"
-									ng-click="update()">Salvar</button>
-								<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
+							<div class="col-md-6">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										Configurações de opções de motivos para responder a pergunta
+										<div style="float: right">
+											<button class="btn  btn-default">
+												<i class="fa  fa-plus"></i>
+											</button>
+										</div>
+									</div>
+									<div class="panel-body">
+
+										<div class="table-responsive">
+											<table
+												class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+												<thead>
+													<tr>
+														<th width="90%">Opções</th>
+														<th width="10%">Ações</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="d in config.optionsQuestionsClicked">
+														<td>{{d}}</td>
+														<td class="table-pesq-produto-col-acoes">
+
+															<div class="btn-group">
+																<button class="btn  btn-default btn-xs">
+																	<i class="fa  fa-pencil"></i>
+																</button>
+
+																<button class="btn  btn-default btn-xs">
+																	<i class="fa  fa-trash"></i>
+																</button>
+															</div>
+
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+									</div>
+								</div>
 							</div>
+						</div>
+						<div class="well">
+							<button class="btn  btn-primary" type="button"
+								ng-click="update()">Salvar</button>
+							<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
 						</div>
 					</div>
 				</form>

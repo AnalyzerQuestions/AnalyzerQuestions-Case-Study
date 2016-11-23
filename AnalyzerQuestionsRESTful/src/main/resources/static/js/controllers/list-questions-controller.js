@@ -5,7 +5,7 @@
  * @created by Franck Aragão
  * @date 21-10-16.
  */
-aqtApp.controller("listQuestionController",function($scope, userService, $http, $location,localStorageService) {
+aqtApp.controller("listQuestionController",function($scope, userService, aqtConfig, $http, $location,localStorageService) {
 
 		$scope.questions = [];
 		$scope.questionsLimit = 20;
@@ -123,11 +123,12 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		 * inicia cronometro, quando a tela de lista de pergunta é
 		 * iniciada.
 		 */
-		$scope.startCronometer = function() {
+		aqtConfig.getTime().then(function(response){
+			console.log(response.data);
 			timer = new Timer();
 			timer.start({
 				countdown : true,
-				startValues : {seconds : 183}
+				startValues : {seconds : Number(response.data.time)}
 			});
 
 			$('.cronometer').html(timer.getTimeValues().toString());
@@ -140,7 +141,7 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 				$('.cronometer').html('');
 				$('#end-time').modal('toggle')
 			});
-		};
+		});
 
 		/**
 		 * Remove classes do componente modal do bootstrap. Forma
@@ -165,5 +166,4 @@ aqtApp.controller("listQuestionController",function($scope, userService, $http, 
 		}
 
 		$scope.getQuestions();
-		$scope.startCronometer();
 	});

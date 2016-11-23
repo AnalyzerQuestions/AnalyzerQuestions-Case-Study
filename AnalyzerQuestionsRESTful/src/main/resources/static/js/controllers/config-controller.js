@@ -1,7 +1,6 @@
-aqtApp.controller("configController", function($scope, aqtConfig, userService, growl) {
+aqtApp.controller("configController", function($scope, aqtConfig, questionService, userService, growl) {
 
 	$scope.config = {};
-
 	aqtConfig.getTime().then(function(response) {
 		$scope.config = response.data;
 	});
@@ -17,7 +16,4 @@ aqtApp.controller("configController", function($scope, aqtConfig, userService, g
 			console.log(response.data);
 		});
 	};
-	
-	$scope.getSuggestions();
-	
 });

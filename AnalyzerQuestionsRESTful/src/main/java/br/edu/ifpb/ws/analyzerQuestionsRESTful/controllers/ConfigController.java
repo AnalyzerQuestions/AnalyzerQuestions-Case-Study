@@ -23,6 +23,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 @RestController
 public class ConfigController {
 	
+	FileOperationUtil fileOperationUtil = new FileOperationUtil();
 	/**
 	 * 
 	 * @param config
@@ -30,13 +31,25 @@ public class ConfigController {
 	 */
 	@RequestMapping(value = "/config", method = RequestMethod.POST)
 	public ResponseEntity<Config> updateConfig(@RequestBody Config config) {
-		FileOperationUtil fileOperationUtil = new FileOperationUtil();
 		
 		Gson gson  = new Gson();
 		String json = gson.toJson(config);
 		fileOperationUtil.writer(json, "config.json");
 		
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	/**
+	 * 
+	 * @param config
+	 * @return
+	 */
+	@RequestMapping(value = "/config", method = RequestMethod.GET)
+	public ResponseEntity<String> getConfig() {
+		
+		String json = fileOperationUtil.reader("config.json");
+		
+		return new ResponseEntity<>(json, HttpStatus.OK);
 	}
 	
 	/**

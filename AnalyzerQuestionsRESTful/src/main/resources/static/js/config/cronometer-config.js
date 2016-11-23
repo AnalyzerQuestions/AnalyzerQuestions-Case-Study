@@ -1,7 +1,7 @@
 aqtApp.service('aqtConfig', function($http) {
 
 	this.getTime = function(){
-		return $http.get('/config/config.json');
+		return $http.get('config.json');
 	};
 	
 	this.updateTime = function(config){
