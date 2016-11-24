@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.Config;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 

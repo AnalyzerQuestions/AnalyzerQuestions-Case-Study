@@ -5,7 +5,7 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	var isUpdated = false;
 	var isClicked = false;
 	var previusMotive = "";
-
+	
 	/**
 	 * 
 	 */
@@ -113,7 +113,6 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	 */
 	$scope.getSuggestions = function() {
 		aqtConfig.getSuggestions().then(function(response) {
-			console.log(response.data);
 		});
 	};
 
