@@ -124,7 +124,6 @@ aqtApp.controller("listQuestionController",function($scope, userService, aqtConf
 		 * iniciada.
 		 */
 		aqtConfig.getConfig().then(function(response){
-			console.log(response.data);
 			timer = new Timer();
 			timer.start({
 				countdown : true,

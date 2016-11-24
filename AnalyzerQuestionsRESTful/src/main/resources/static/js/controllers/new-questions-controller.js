@@ -60,27 +60,25 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 	 * Registra na API as escolhas de sugestões do user.
 	 */
 	$scope.registerChosenSuggestions = function() {
-		if (chosenSuggestions.length > 0) {
 
-			var questionWrapper = {};
-			questionWrapper.suggestions = chosenSuggestions;
-			$scope.question.questionType = "CHANGED_WITH_SUGGESTION";
-			questionWrapper.question = $scope.question;
-			
-			
-			userService.getById(userStorage.id).$promise.then(
-				function(data) {
-					user = data;
-					user.questionWrapper = questionWrapper;
-					userService.updateUser(user).$promise.then(
-						function onSuccess() {
-							$location.path('/step2')
+		var questionWrapper = {};
+		questionWrapper.suggestions = chosenSuggestions;
+		$scope.question.questionType = "CHANGED_WITH_SUGGESTION";
+		questionWrapper.question = $scope.question;
+		
+		
+		userService.getById(userStorage.id).$promise.then(
+			function(data) {
+				user = data;
+				user.questionWrapper = questionWrapper;
+				userService.updateUser(user).$promise.then(
+					function onSuccess() {
+						$location.path('/step2')
 
-						}, function onError() {
-					});
-			}, function(data) {
+					}, function onError() {
+				});
+		}, function(data) {
 
-			});
-		}
+		});
 	};
 });
