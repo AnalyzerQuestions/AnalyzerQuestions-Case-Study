@@ -1,5 +1,5 @@
 aqtApp.controller("userController",function($scope, userService, $location, localStorageService,
-				DTOptionsBuilder, DTColumnDefBuilder, $routeParams) {
+				DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, $routeParams) {
 
 			$scope.users = [];
 			$scope.user = {};
@@ -15,12 +15,15 @@ aqtApp.controller("userController",function($scope, userService, $location, loca
 			};
 
 			$scope.dtOptions = DTOptionsBuilder.newOptions()
-					.withPaginationType('full_numbers').withDisplayLength(10);
+					.withPaginationType('simple_numbers').withDisplayLength(10).withBootstrap();
 
 			$scope.dtColumnDefs = [
-					DTColumnDefBuilder.newColumnDef(0).notSortable(),
-					DTColumnDefBuilder.newColumnDef(1),
-					DTColumnDefBuilder.newColumnDef(2) ];
+					DTColumnDefBuilder.newColumnDef(1).notSortable(),
+					DTColumnDefBuilder.newColumnDef(2).notSortable(),
+					DTColumnDefBuilder.newColumnDef(3).notSortable(),
+					DTColumnDefBuilder.newColumnDef(4).notSortable(),
+					DTColumnDefBuilder.newColumnDef(5).notSortable()
+					];
 
 			var findAll = function() {
 				userService.findAll().$promise.then(function(response) {
