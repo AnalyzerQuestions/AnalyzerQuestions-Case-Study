@@ -8,6 +8,7 @@ public class Config {
 	private List<String> optionsQuestionsClicked;
 	private List<String> optionsQuestionsChosen;
 	private Step steps;
+	private List<String> suggestions;
 
 	public String getTime() {
 		return time;
@@ -39,6 +40,14 @@ public class Config {
 
 	public void setSteps(Step steps) {
 		this.steps = steps;
+	}
+
+	public List<String> getSuggestions() {
+		return suggestions;
+	}
+
+	public void setSuggestions(List<String> suggestions) {
+		this.suggestions = suggestions;
 	}
 
 	@Override

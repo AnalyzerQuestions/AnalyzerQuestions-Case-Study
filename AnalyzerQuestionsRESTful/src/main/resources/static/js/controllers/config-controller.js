@@ -111,10 +111,10 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	/**
 	 * 
 	 */
-	$scope.getSuggestions = function() {
-		aqtConfig.getSuggestions().then(function(response) {
-		});
-	};
+	aqtConfig.getSuggestions().then(function(response) {
+		$scope.config.suggestions = response.data;
+	});
+	
 
 	/**
 	 * 

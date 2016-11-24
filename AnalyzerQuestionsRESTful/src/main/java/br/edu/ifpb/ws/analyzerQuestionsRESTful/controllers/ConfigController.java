@@ -1,5 +1,6 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,11 +59,15 @@ public class ConfigController {
 	 * @return
 	 */
 	@RequestMapping(value="/suggestions", method=RequestMethod.GET)
-	public ResponseEntity<List<Messages>> getSuggestions(){
-		
+	public ResponseEntity<List<String>> getSuggestions(){
+		List<String> values = new ArrayList<>();
 		List<Messages> messages = Arrays.asList(Messages.values());
 		
-		return new ResponseEntity<List<Messages>>(messages, HttpStatus.OK);
+		for (Messages messages2 : messages) {
+			values.add(messages2.getMsg());
+		}
+		
+		return new ResponseEntity<List<String>>(values, HttpStatus.OK);
 	}
 
 }

@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.Config;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.JsonUtil;
 
 public class QuestionAnalyzerMSG {
 
 	QuestionAnalyzerFinal qaf;
 	List<String> messages;
 	MSG msg;
-
+	
+	private List<String> getSuggestions(){
+		Config config = JsonUtil.loadFromJSONGson("config.json");
+		return config.getSuggestions();
+	}
+	
 	public QuestionAnalyzerMSG() {
 		qaf = new QuestionAnalyzerFinal();
 	}
