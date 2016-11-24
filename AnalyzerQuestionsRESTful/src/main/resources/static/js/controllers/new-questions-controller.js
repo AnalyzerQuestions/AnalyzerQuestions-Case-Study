@@ -6,7 +6,7 @@
  * @date 20-10-16.
  */
 aqtApp.controller('newQuestionController', function($scope, userService, $http,
-		$location, localStorageService) {
+		$location, localStorageService, aqtConfig) {
 
 	var chosenSuggestions = [];
 	$scope.suggestions = [];
@@ -15,6 +15,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 	var userStorage = localStorageService.get("aqt-user");
 	var user = {};
+	var config = {};
 
 	/**
 	 * Submete uma nova pergunta à API e obtem sugestões.
@@ -30,7 +31,15 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 		}).then(function onSucces(response) {
 			$scope.suggestions = response.data;
+			config.suggestions = response.data;
+			$scope.update();
 		}, function onError(response) {
+		});
+	};
+	
+	$scope.update = function() {
+		aqtConfig.updateTime(config).then(function(response) {
+			
 		});
 	};
 
