@@ -34,15 +34,19 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 
 	}).when("/step1", {
 		templateUrl : 'view/step-info1.html',
+		controller : 'stepController'
 
 	}).when("/step2", {
 		templateUrl : 'view/step-info2.html',
+		controller : 'stepController'
 
 	}).when("/step3", {
 		templateUrl : 'view/step-info3.html',
+		controller : 'stepController'
 
 	}).when("/final", {
 		templateUrl : 'view/final.html',
+		controller : 'stepController'
 
 	}).otherwise({
 		redirectTo : '/'
