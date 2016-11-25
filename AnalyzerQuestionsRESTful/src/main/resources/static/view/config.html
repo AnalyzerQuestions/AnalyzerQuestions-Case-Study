@@ -1,4 +1,6 @@
 <div ng-include="'/view/fragments/option-edit.html'"></div>
+<div ng-include="'/view/fragments/suggestion-edit.html'"></div>
+
 <div>
 	<div class="container-fluid">
 		<div class="row">
@@ -222,26 +224,7 @@
 						</div>
 
 						<!-- Container das configurações das mensagens das sugestões -->
-
-						<div class="col-md-13">
-							<div class="panel panel-primary">
-								<div class="panel-heading">Configurações de mensagens de
-									sugestões</div>
-								<div class="panel-body">
-
-									<div class="form-group input-group">
-										<span class="input-group-addon"><i
-											class="fa fa-clock-o"></i></span> <input class="form-control"
-											type="text" name='cro' ng-model="config.time"
-											placeholder="Tempo em segundos" required /> <span
-											ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
-											class="form-control alert alert-danger">Campo deve ser
-											informado</span>
-									</div>
-								</div>
-							</div>
-						</div>
-
+						<div ng-include="'/view/fragments/config-suggestions.html'"></div>
 
 						<div class="well well-sm">
 							<button class="btn  btn-primary" type="button"

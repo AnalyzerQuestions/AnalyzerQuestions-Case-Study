@@ -1,5 +1,8 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities;
 
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -26,6 +29,9 @@ public class Suggestion {
 	@Enumerated(EnumType.STRING)
 	private TSuggestions tipo;
 
+	@ElementCollection
+	private List<String> categoria;
+
 	private String msg;
 
 	public TSuggestions getTipo() {
@@ -50,6 +56,14 @@ public class Suggestion {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public List<String> getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(List<String> categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override

@@ -1,11 +1,14 @@
 aqtApp.controller("configController", function($scope, aqtConfig, questionService, userService, growl) {
 
 	$scope.config = {};
-	$scope.suggestion = {};
 	$scope.clicked = {};
 	var isUpdated = false;
 	var isClicked = false;
 	var previusMotive = "";
+
+	$scope.suggestions = [];
+	$scope.suggestion = {};
+	var previusSuggestion = {};
 	
 	/**
 	 * 
@@ -112,19 +115,40 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	/**
 	 * 
 	 */
-/*	aqtConfig.getSuggestions().then(function(response) {
-		$scope.config.suggestions = response.data;
-	});*/
+	aqtConfig.getSuggestions().then(function(response) {
+		$scope.suggestions = response.data;
+		console.log(response.data);
+	});
 	
+	/**
+	 * 
+	 */
 	$scope.saveSuggestion = function(){
 		aqtConfig.generateSuggestions().forEach(function(sug) {
 			aqtConfig.saveSuggestion(sug).then(function(response){
-				console.log(response);
+				console.log("Gerado com sucesso");
 			});
 		})
 	};
 	
-
+	/**
+	 * 
+	 */
+	$scope.openModalSuggestion = function(suggestion){
+		$scope.suggestion = suggestion;
+		previusSuggestion = suggestion;
+		
+	};
+	
+	/**
+	 * 
+	 */
+	$scope.updateSuggestion = function(){
+		aqtConfig.updateSuggestion($scope.suggestion).then(function(response){
+			$('#suggestionModal').modal('hide');
+		});
+	};
+	
 	/**
 	 * 
 	 */

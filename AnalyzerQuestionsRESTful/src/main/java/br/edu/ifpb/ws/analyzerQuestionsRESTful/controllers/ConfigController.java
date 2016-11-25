@@ -74,10 +74,23 @@ public class ConfigController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/suggestions", method=RequestMethod.GET)
-	public ResponseEntity<List<String>> getSuggestions(){
+	@RequestMapping(value="/suggestions", method=RequestMethod.PUT)
+	public ResponseEntity<Suggestion> updateSuggestion(@RequestBody Suggestion suggestion){
 
+		Suggestion suggestionUpdated = service.save(suggestion);
 		
-		return new ResponseEntity<List<String>>(HttpStatus.OK);
+		return new ResponseEntity<Suggestion>(suggestionUpdated, HttpStatus.OK);
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value="/suggestions", method=RequestMethod.GET)
+	public ResponseEntity<List<Suggestion>> findAllSuggestions(){
+
+		List<Suggestion> suggestions = service.findAll();
+		
+		return new ResponseEntity<List<Suggestion>>(suggestions, HttpStatus.OK);
 	}
 }

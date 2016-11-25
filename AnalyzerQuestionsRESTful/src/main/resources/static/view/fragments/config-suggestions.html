@@ -1,0 +1,45 @@
+
+<div class="col-md-13">
+	<div class="panel panel-primary">
+		<div class="panel-heading">Configurações de mensagens de
+			sugestões</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+				<table
+					class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+					<thead>
+						<tr>
+							<th width="12%">Faz parte</th>
+							<th width="80%">Sugestão</th>
+							<th width="8%">Ações</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="s in suggestions">
+							<td class="acoes">
+							<div ng-repeat="c in s.categoria">
+								<span style="font-size: 12px;" class="label label-warning">{{c}}</span>
+							</div>
+							</td>
+							<td>{{s.msg}}</td>
+							<td class="acoes">
+
+								<div class="btn-group">
+									<button data-toggle="modal" data-target="#suggestionModal"
+										ng-click="openModalSuggestion(s)"
+										class="btn  btn-default btn-xs">
+										<i class="fa  fa-pencil"></i>
+									</button>
+								</div>
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
