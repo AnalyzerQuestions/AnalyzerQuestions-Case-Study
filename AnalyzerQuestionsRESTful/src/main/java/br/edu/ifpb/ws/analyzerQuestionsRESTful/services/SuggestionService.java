@@ -36,7 +36,6 @@ public class SuggestionService {
 	 * 
 	 * @return
 	 */
-	@Transactional
 	public List<Suggestion> findAll(){
 		return suggestionRepository.findAll();
 	}
@@ -46,8 +45,14 @@ public class SuggestionService {
 	 * @param t
 	 * @return
 	 */
-	@Transactional
 	public Suggestion findByTipo(TSuggestions t){
 		return suggestionRepository.findByTipo(t);
+	}
+	
+	/**
+	 * 
+	 */
+	public void removeAll() {
+		suggestionRepository.deleteAll();
 	}
 }

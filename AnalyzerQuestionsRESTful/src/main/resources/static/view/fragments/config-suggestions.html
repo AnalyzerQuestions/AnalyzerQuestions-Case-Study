@@ -1,8 +1,13 @@
 
 <div class="col-md-13">
 	<div class="panel panel-primary">
-		<div class="panel-heading">Configurações de mensagens de
-			sugestões</div>
+		<div class="panel-heading">
+			Configurações de mensagens de sugestões
+			<div style="float: right">
+				<button class="btn  btn-primary" type="button"
+					ng-click="saveSuggestion()">GERAR PADRÃO</button>
+			</div>
+		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
 				<table
@@ -17,9 +22,9 @@
 					<tbody>
 						<tr ng-repeat="s in suggestions">
 							<td class="acoes">
-							<div ng-repeat="c in s.categoria">
-								<span style="font-size: 12px;" class="label label-warning">{{c}}</span>
-							</div>
+								<div ng-repeat="c in s.categoria">
+									<span style="font-size: 12px;" class="label label-warning">{{c}}</span>
+								</div>
 							</td>
 							<td>{{s.msg}}</td>
 							<td class="acoes">

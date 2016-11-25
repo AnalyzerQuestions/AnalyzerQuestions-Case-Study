@@ -115,18 +115,21 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	/**
 	 * 
 	 */
-	aqtConfig.getSuggestions().then(function(response) {
-		$scope.suggestions = response.data;
-		console.log(response.data);
-	});
-	
+	var getSuggestions = function() {
+		aqtConfig.getSuggestions().then(function(response) {
+			$scope.suggestions = response.data;
+			console.log(response.data);
+		});
+	};
 	/**
 	 * 
 	 */
 	$scope.saveSuggestion = function(){
+		aqtConfig.removeAllSuggestions();
+		
 		aqtConfig.generateSuggestions().forEach(function(sug) {
 			aqtConfig.saveSuggestion(sug).then(function(response){
-				console.log("Gerado com sucesso");
+				getSuggestions();
 			});
 		})
 	};
@@ -157,4 +160,6 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 		motive = "";
 		isUpdated = false;
 	};
+	
+	getSuggestions();
 });

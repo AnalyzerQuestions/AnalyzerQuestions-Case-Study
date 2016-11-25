@@ -19,6 +19,10 @@ aqtApp.service('aqtConfig', function($http) {
 	this.updateSuggestion = function(suggestion) {
 		return $http.put('/suggestions', suggestion)
 	};
+	
+	this.removeAllSuggestions = function() {
+		return $http.delete('/suggestions');
+	};
 
 	this.generateSuggestions = function() {
 
@@ -45,14 +49,9 @@ aqtApp.service('aqtConfig', function($http) {
 			  categoria : ['Muito código']
 			
 			}, sug = {
-			  msg : 'Seja Objetivo e deixe a pergunta mais evidente.',
+			  msg : 'Seja Objetivo e deixe a pergunta mais evidente possível.',
 			  tipo : 'IS_CLARITY',
 			  categoria : ['Clara']
-				  
-			}, sug = {
-			  msg : 'Descreva seu problema de forma simples e direta.',
-			  tipo : 'IS_CLARITY_OBJECTIVE',
-			  categoria : ['Objetividade']
 				  
 			}, sug = {
 			  msg : 'Resuma a pergunta a um único problema e/ou deixe mais evidente seu prblema.',
@@ -65,12 +64,12 @@ aqtApp.service('aqtConfig', function($http) {
 			  categoria : ['Uso da língua']
 					  
 			}, sug = {
-			  msg : 'Adicione algum tipo de agradecimento.',
+			  msg : 'Adicione algum tipo de agradecimento ao final de sua pergunta.',
 			  tipo : 'GREAT',
 			  categoria : ['Agradecimento']
 				  
 			}, sug = {
-			  msg : 'Título longo ou curto.',
+			  msg : 'Evite cirar o título da pergunta muito longo ou curto.',
 			  tipo : 'TITLE_MEDIO',
 			  categoria : ['Tamanho do título']
 				 
@@ -80,7 +79,7 @@ aqtApp.service('aqtConfig', function($http) {
 			  categoria : ['Mostrar exemplo']
 				  
 			}, sug = {
-			  msg : 'Seja educado, adione algum tipo de gratificação.',
+			  msg : 'Seja educado, use a norma culta da língua e adicione algum tipo de agradecimento.',
 			  tipo : 'BE_EDUCADED',
 			  categoria : ['Ser educado']
 			
@@ -90,7 +89,7 @@ aqtApp.service('aqtConfig', function($http) {
 			  categoria : ['Perguntas acadêmicas']
 			
 			}, sug = {
-			  msg : 'Evite descrição muito curta.',
+			  msg : 'Evite adicionar muita informação na descrição da pergunta, seja sucinto.',
 			  tipo : 'SHORT_DESCRIPTION',
 			  categoria : ['Descrição curta']
 			
@@ -100,7 +99,7 @@ aqtApp.service('aqtConfig', function($http) {
 			  categoria : ['Descrição bem definida']
 				  
 			}, sug = {
-			  msg : 'Descreva melhor o título da pergunta.',
+			  msg : 'Descreva melhor o título da pergunta, o título deve ser o resumo da descrição do problema.',
 			  tipo : 'TITULO_BEM_DEFINIDO',
 			  categoria : ['Título bem definido']
 				  

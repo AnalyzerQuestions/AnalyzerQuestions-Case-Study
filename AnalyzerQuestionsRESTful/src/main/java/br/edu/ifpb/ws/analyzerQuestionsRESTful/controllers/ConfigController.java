@@ -19,16 +19,17 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 @RestController
 public class ConfigController {
-	
+
 	@Autowired
 	private SuggestionService service;
-	
+
 	FileOperationUtil fileOperationUtil = new FileOperationUtil();
+
 	/**
 	 * 
 	 * @param config
@@ -36,14 +37,14 @@ public class ConfigController {
 	 */
 	@RequestMapping(value = "/config", method = RequestMethod.POST)
 	public ResponseEntity<Config> updateConfig(@RequestBody Config config) {
-		
-		Gson gson  = new Gson();
+
+		Gson gson = new Gson();
 		String json = gson.toJson(config);
 		fileOperationUtil.writer(json, "config.json");
-		
+
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @param config
@@ -51,46 +52,53 @@ public class ConfigController {
 	 */
 	@RequestMapping(value = "/config", method = RequestMethod.GET)
 	public ResponseEntity<String> getConfig() {
-		
+
 		String json = fileOperationUtil.reader("config.json");
-		
+
 		return new ResponseEntity<>(json, HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @param suggestion
 	 * @return
 	 */
-	@RequestMapping(value="/suggestions", method=RequestMethod.POST)
-	public ResponseEntity<Suggestion> saveSuggestion(@RequestBody Suggestion suggestion){
-		
+	@RequestMapping(value = "/suggestions", method = RequestMethod.POST)
+	public ResponseEntity<Suggestion> saveSuggestion(@RequestBody Suggestion suggestion) {
+
 		Suggestion suggestionSaved = service.save(suggestion);
-		
+
 		return new ResponseEntity<Suggestion>(suggestionSaved, HttpStatus.CREATED);
 	}
-	
+
+	@RequestMapping(value = "/suggestions", method = RequestMethod.DELETE)
+	public ResponseEntity<?> removeAll() {
+		service.removeAll();
+		return new ResponseEntity<>(HttpStatus.OK);
+
+	};
+
 	/**
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/suggestions", method=RequestMethod.PUT)
-	public ResponseEntity<Suggestion> updateSuggestion(@RequestBody Suggestion suggestion){
+	@RequestMapping(value = "/suggestions", method = RequestMethod.PUT)
+	public ResponseEntity<Suggestion> updateSuggestion(@RequestBody Suggestion suggestion) {
 
 		Suggestion suggestionUpdated = service.save(suggestion);
-		
+
 		return new ResponseEntity<Suggestion>(suggestionUpdated, HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/suggestions", method=RequestMethod.GET)
-	public ResponseEntity<List<Suggestion>> findAllSuggestions(){
+	@RequestMapping(value = "/suggestions", method = RequestMethod.GET)
+	public ResponseEntity<List<Suggestion>> findAllSuggestions() {
 
 		List<Suggestion> suggestions = service.findAll();
-		
+
 		return new ResponseEntity<List<Suggestion>>(suggestions, HttpStatus.OK);
 	}
 }
