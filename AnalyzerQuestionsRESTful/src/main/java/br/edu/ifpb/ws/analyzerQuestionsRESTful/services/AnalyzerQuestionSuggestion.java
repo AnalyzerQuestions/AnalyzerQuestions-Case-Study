@@ -3,28 +3,39 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerFinal;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerMSG;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
 
 /**
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
+@Service
 public class AnalyzerQuestionSuggestion {
 
-	private QuestionAnalyzerFinal questionAnalyzer;
+	@Autowired
 	private QuestionAnalyzerMSG analyzerMSG;
+	
+	private QuestionAnalyzerFinal questionAnalyzer;
+	
 	private List<MSG> suggestionsMap = new ArrayList<>();
+	
 	private MSG msg;
+	
+	
+	public AnalyzerQuestionSuggestion() {
+	}
 
 	public List<MSG> getSuggestions1(Question question) {
 		suggestionsMap.clear();
 
 		questionAnalyzer = new QuestionAnalyzerFinal();
-		analyzerMSG = new QuestionAnalyzerMSG();
 
 		this.analyseUnderstandableTitle(question.getTitle(), question.getDescription());
 		this.analyseCoherencyBodyAndTitle(question.getTitle(), question.getDescription());

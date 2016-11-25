@@ -3,161 +3,224 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.Config;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.JsonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.TSuggestions;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.SuggestionService;
+
+/**
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ *
+ */
+@Service
 public class QuestionAnalyzerMSG {
 
-	QuestionAnalyzerFinal qaf;
-	List<String> messages;
-	MSG msg;
+	private QuestionAnalyzerFinal qaf;
+	private List<String> messages;
+	private MSG msg;
 	
-	private List<String> getSuggestions(){
-		Config config = JsonUtil.loadFromJSONGson("config.json");
-		return config.getSuggestions();
-	}
+	@Autowired
+	private SuggestionService suggestionService;
 	
+	/**
+	 * 
+	 * @param service
+	 */
 	public QuestionAnalyzerMSG() {
 		qaf = new QuestionAnalyzerFinal();
 	}
 
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
 	public MSG msgObjective(String description) {
 		messages = new ArrayList<>();
 		msg = new MSG();
 		if (qaf.analyzerObjective(description) == 0) {
-			msg.setHeader(Messages.IS_OBJECTIVE.getMsg());
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE).getMsg());
 
 			if (qaf.analyzerShortDescriptionQuestion(description) == 0)
-				messages.add(Messages.IS_OBJECIVE_DC.getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECIVE_DC).getMsg());
 
 			if (!qaf.isQuestionUnique(description))
-				messages.add(Messages.IS_OBJECTIVE_QUESTION_UNIQUE.getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE_QUESTION_UNIQUE).getMsg());
 
 			if (qaf.avoidingMuchCode(description) == 0)
-				messages.add(Messages.IS_OBJECTIVE_MUCH_CODE.getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE_MUCH_CODE).getMsg());
 		}
 
-		msg.setMessages(messages);
+		msg.setSubHeaders(messages);
 		return msg;
 	}
 
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
 	public MSG msgExample(String description) {
 		msg = new MSG();
 		if (qaf.analyzerShowExample(description) == 0) {
-			msg.setHeader(Messages.SHOW_EXAMPLE.getMsg());
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.SHOW_EXAMPLE).getMsg());
 		}
 		return msg;
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @param description
+	 * @return
+	 */
 	public MSG msgClarity(String title, String description) {
 		messages = new ArrayList<>();
 		msg = new MSG();
 		if (qaf.analyzerClarity(title, description) == 0) {
-			msg.setHeader(Messages.IS_CLARITY.getMsg());
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.IS_CLARITY).getMsg());
 
 			if (qaf.analyzerObjective(description) == 0)
-				messages.add("Seja mais objetivo.");
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE).getMsg());
 
 			if (qaf.analyzerCoherencyBodyAndTitle(title, description) == 0)
-				messages.add("O Título da pergunta parece não está coerente com a descrição.");
+				messages.add(suggestionService.findByTipo(TSuggestions.COERENCY_BODY_WITH_TITLE).getMsg());
 
 			if (qaf.analyzerShowExample(description) == 0)
-				messages.add("Adicione um trecho de código ou outro de tipo de exemplo na pergunta.");
+				messages.add(suggestionService.findByTipo(TSuggestions.SHOW_EXAMPLE).getMsg());
 
 			if (!qaf.isQuestionUnique(description))
-				messages.add("Resuma a pergunta a um único problema e/ou deixe mais evidente seu prblema.");
+				messages.add(suggestionService.findByTipo(TSuggestions.UNIQUE_QUESTION).getMsg());
 		}
 
-		msg.setMessages(messages);
+		msg.setSubHeaders(messages);
 		return msg;
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @param description
+	 * @return
+	 */
 	public MSG msgUnderstandableDescription(String title, String description) {
 		messages = new ArrayList<>();
 		msg = new MSG();
 		if (qaf.analyzerUnderstandableDescription(title, description) == 0) {
-			msg.setHeader(Messages.UNDESTANDABLE_DESCRTION.getMsg());
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.UNDESTANDABLE_DESCRTION).getMsg());
 
 			if (qaf.analyzerObjective(description) == 0)
-				messages.add("Seja mais objetivo.");
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE).getMsg());
 
 			if (qaf.analyzerClarity(title, description) == 0)
-				messages.add("Seja mais Claro.");
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_CLARITY).getMsg());
 		}
 
-		msg.setMessages(messages);
+		msg.setSubHeaders(messages);
 		return msg;
 	}
 
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
 	public MSG msgBeEducated(String description) {
 		messages = new ArrayList<>();
 		msg = new MSG();
 		if (qaf.analyzerBeEducated(description) == 0) {
-			msg.setHeader(Messages.BE_EDUCADED.getMsg());
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.BE_EDUCADED).getMsg());
 
 			if (qaf.analyzerUsingProperLanguage(description) == 0)
-				messages.add("Use a norma culta da língua.");
+				messages.add(suggestionService.findByTipo(TSuggestions.USING_PROPER_LANGUAGE).getMsg());
 
 			if (qaf.includingGreetings(description) == 0)
-				messages.add("adicione algum tipo de agradecimento.");
+				messages.add(suggestionService.findByTipo(TSuggestions.GREAT).getMsg());
 		}
 
-		msg.setMessages(messages);
+		msg.setSubHeaders(messages);
 		return msg;
 	}
-
+	
+	/**
+	 * 
+	 * @param title
+	 * @param description
+	 * @return
+	 */
 	public MSG msgCoherencyBodyAndTitle(String title, String description) {
 		msg = new MSG();
 		if (qaf.analyzerCoherencyBodyAndTitle(title, description) == 0) {
-			msg.setHeader(Messages.COERENCY_BODY_WITH_TITLE.getMsg());
-		}
-
-		return msg;
-	}
-
-	public MSG msgUsingProperLanguage(String description) {
-		msg = new MSG();
-		if (qaf.analyzerUsingProperLanguage(description) == 0) {
-			msg.setHeader(Messages.USING_PROPER_LANGUAGE.getMsg());
-		}
-
-		return msg;
-	}
-
-	public MSG msgUnderstandableTitle(String title, String description) {
-		messages = new ArrayList<>();
-		msg = new MSG();
-		if (qaf.analyzerUnderstandableTitle(title, description) == 0) {
-			msg.setHeader(Messages.TITULO_BEM_DEFINIDO.getMsg());
-			if (!qaf.isMediumSizeTitle(title))
-				messages.add("Evite escrever titulo muito curto ou muito longo.");
-
-			if (qaf.analyzerCoherencyBodyAndTitle(title, description) == 0)
-				messages.add("O Título da pergunta parece não está coerente com a descrição.");
-		}
-
-		msg.setMessages(messages);
-		return msg;
-	}
-
-	public MSG msgShortDescriptionQuestion(String description) {
-		msg = new MSG();
-		if (qaf.analyzerShortDescriptionQuestion(description) == 0) {
-			msg.setHeader(Messages.SHORT_DESCRIPTION.getMsg());
-		}
-
-		return msg;
-	}
-
-	public MSG msgDoNotCreateHomeworkQuestions(String description) {
-		msg = new MSG();
-		if (qaf.analyzerDoNotCreateHomeworkQuestions(description) == 0) {
-			msg.setHeader(Messages.HOME_WORK_QUESTION.getMsg());
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.COERENCY_BODY_WITH_TITLE).getMsg());
 		}
 
 		return msg;
 	}
 	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	public MSG msgUsingProperLanguage(String description) {
+		msg = new MSG();
+		if (qaf.analyzerUsingProperLanguage(description) == 0) {
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.USING_PROPER_LANGUAGE).getMsg());
+		}
+
+		return msg;
+	}
+
+	/**
+	 * 
+	 * @param title
+	 * @param description
+	 * @return
+	 */
+	public MSG msgUnderstandableTitle(String title, String description) {
+		messages = new ArrayList<>();
+		msg = new MSG();
+		if (qaf.analyzerUnderstandableTitle(title, description) == 0) {
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.TITULO_BEM_DEFINIDO).getMsg());
+			if (!qaf.isMediumSizeTitle(title))
+				messages.add(suggestionService.findByTipo(TSuggestions.TITLE_MEDIO).getMsg());
+
+			if (qaf.analyzerCoherencyBodyAndTitle(title, description) == 0)
+				messages.add(suggestionService.findByTipo(TSuggestions.COERENCY_BODY_WITH_TITLE).getMsg());
+		}
+
+		msg.setSubHeaders(messages);
+		return msg;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	public MSG msgShortDescriptionQuestion(String description) {
+		msg = new MSG();
+		if (qaf.analyzerShortDescriptionQuestion(description) == 0) {
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.SHORT_DESCRIPTION).getMsg());
+		}
+
+		return msg;
+	}
+
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	public MSG msgDoNotCreateHomeworkQuestions(String description) {
+		msg = new MSG();
+		if (qaf.analyzerDoNotCreateHomeworkQuestions(description) == 0) {
+			msg.setHeader(suggestionService.findByTipo(TSuggestions.HOME_WORK_QUESTION).getMsg());
+		}
+
+		return msg;
+	}
 }

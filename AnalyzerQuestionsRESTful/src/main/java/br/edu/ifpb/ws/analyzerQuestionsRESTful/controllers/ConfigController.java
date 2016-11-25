@@ -1,9 +1,8 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Suggestion;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.Config;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.Messages;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.SuggestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 
 /**
@@ -24,6 +24,9 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
  */
 @RestController
 public class ConfigController {
+	
+	@Autowired
+	private SuggestionService service;
 	
 	FileOperationUtil fileOperationUtil = new FileOperationUtil();
 	/**
@@ -56,18 +59,25 @@ public class ConfigController {
 	
 	/**
 	 * 
+	 * @param suggestion
+	 * @return
+	 */
+	@RequestMapping(value="/suggestions", method=RequestMethod.POST)
+	public ResponseEntity<Suggestion> saveSuggestion(@RequestBody Suggestion suggestion){
+		
+		Suggestion suggestionSaved = service.save(suggestion);
+		
+		return new ResponseEntity<Suggestion>(suggestionSaved, HttpStatus.CREATED);
+	}
+	
+	/**
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value="/suggestions", method=RequestMethod.GET)
 	public ResponseEntity<List<String>> getSuggestions(){
-		List<String> values = new ArrayList<>();
-		List<Messages> messages = Arrays.asList(Messages.values());
-		
-		for (Messages messages2 : messages) {
-			values.add(messages2.getMsg());
-		}
-		
-		return new ResponseEntity<List<String>>(values, HttpStatus.OK);
-	}
 
+		
+		return new ResponseEntity<List<String>>(HttpStatus.OK);
+	}
 }

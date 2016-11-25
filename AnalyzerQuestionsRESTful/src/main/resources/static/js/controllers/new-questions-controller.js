@@ -15,7 +15,6 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 	var userStorage = localStorageService.get("aqt-user");
 	var user = {};
-	var config = {};
 
 	/**
 	 * Submete uma nova pergunta à API e obtem sugestões.
@@ -31,7 +30,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 
 		}).then(function onSucces(response) {
 			$scope.suggestions = response.data;
-			config.suggestions = response.data;
+			console.log(response.data);
 		}, function onError(response) {
 		});
 	};

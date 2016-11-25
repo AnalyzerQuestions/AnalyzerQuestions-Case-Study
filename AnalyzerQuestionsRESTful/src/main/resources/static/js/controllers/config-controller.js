@@ -1,6 +1,7 @@
 aqtApp.controller("configController", function($scope, aqtConfig, questionService, userService, growl) {
 
 	$scope.config = {};
+	$scope.suggestion = {};
 	$scope.clicked = {};
 	var isUpdated = false;
 	var isClicked = false;
@@ -111,9 +112,17 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	/**
 	 * 
 	 */
-	aqtConfig.getSuggestions().then(function(response) {
+/*	aqtConfig.getSuggestions().then(function(response) {
 		$scope.config.suggestions = response.data;
-	});
+	});*/
+	
+	$scope.saveSuggestion = function(){
+		aqtConfig.generateSuggestions().forEach(function(sug) {
+			aqtConfig.saveSuggestion(sug).then(function(response){
+				console.log(response);
+			});
+		})
+	};
 	
 
 	/**

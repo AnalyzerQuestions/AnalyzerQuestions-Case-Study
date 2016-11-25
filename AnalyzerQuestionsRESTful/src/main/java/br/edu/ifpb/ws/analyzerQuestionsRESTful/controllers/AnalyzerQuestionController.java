@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
