@@ -1,6 +1,11 @@
 aqtApp.controller("mainController", function($scope, $location, $route, $routeParams, localStorageService){
 	
-	var userStorage = localStorageService.get("aqt-user");
+	$scope.adminLogged = localStorage.getItem("adminToken");  
+	
+	$scope.logout = function(){
+		localStorage.clearAll;
+	};
+	
 	$scope.$location= $location;
 	$scope.$route=$route;
 	$scope.$routeParams= $routeParams;

@@ -7,7 +7,7 @@ aqtApp.factory('resourceService', function($resource) {
 	});
 })
 
-aqtApp.service('userService', function(resourceService){
+aqtApp.service('userService', function(resourceService, $http){
 	
 	this.saveUser = function(user){
 		return resourceService.save(user);
@@ -22,6 +22,6 @@ aqtApp.service('userService', function(resourceService){
 	};
 	
 	this.findAll = function(id) {
-		return resourceService.query();
+		return $http.get('/admin/user');
 	};
 });

@@ -26,8 +26,8 @@ aqtApp.controller("userController",function($scope, userService, $location, loca
 					];
 
 			var findAll = function() {
-				userService.findAll().$promise.then(function(response) {
-					$scope.users = response;
+				userService.findAll().then(function(response) {
+					$scope.users = response.data;
 
 				}, function(response) {
 

@@ -107,7 +107,7 @@ public class AnalyzerQuestionController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/user")
+	@RequestMapping(method = RequestMethod.GET, value = "/admin/user")
 	public ResponseEntity<List<Usuario>> findAll() {
 
 		List<Usuario> users = userService.getAll();

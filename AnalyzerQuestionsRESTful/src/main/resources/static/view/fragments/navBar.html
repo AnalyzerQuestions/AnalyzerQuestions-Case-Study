@@ -15,12 +15,13 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      	<li><a href="#/adminConfig">Configurações</a></li>
       </ul>
       <ul class="nav navbar-right">
       	<li class="active"><a><i class="aqt-position-loading" id="loading-bar-container"></i></a></li>
       </ul>
        <ul class="nav navbar-right">
+	      <a class="navbar-brand" href="#/adminConfig" ng-show="adminLogged">Configurações</a>
+	      <a class="navbar-brand" href="#/" ng-show="adminLogged" ng-click="logout()">Sair</a>
       </ul>
 
     </div>
