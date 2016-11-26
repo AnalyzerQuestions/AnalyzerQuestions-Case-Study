@@ -35,7 +35,7 @@ public class ConfigController {
 	 * @param config
 	 * @return
 	 */
-	@RequestMapping(value = "/config", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/config", method = RequestMethod.POST)
 	public ResponseEntity<Config> updateConfig(@RequestBody Config config) {
 
 		Gson gson = new Gson();
@@ -63,7 +63,7 @@ public class ConfigController {
 	 * @param suggestion
 	 * @return
 	 */
-	@RequestMapping(value = "/suggestions", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/suggestions", method = RequestMethod.POST)
 	public ResponseEntity<Suggestion> saveSuggestion(@RequestBody Suggestion suggestion) {
 
 		Suggestion suggestionSaved = service.save(suggestion);
@@ -71,7 +71,7 @@ public class ConfigController {
 		return new ResponseEntity<Suggestion>(suggestionSaved, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/suggestions", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/admin/suggestions", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeAll() {
 		service.removeAll();
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -82,7 +82,7 @@ public class ConfigController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/suggestions", method = RequestMethod.PUT)
+	@RequestMapping(value = "/admin/suggestions", method = RequestMethod.PUT)
 	public ResponseEntity<Suggestion> updateSuggestion(@RequestBody Suggestion suggestion) {
 
 		Suggestion suggestionUpdated = service.save(suggestion);
@@ -94,7 +94,7 @@ public class ConfigController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/suggestions", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/suggestions", method = RequestMethod.GET)
 	public ResponseEntity<List<Suggestion>> findAllSuggestions() {
 
 		List<Suggestion> suggestions = service.findAll();

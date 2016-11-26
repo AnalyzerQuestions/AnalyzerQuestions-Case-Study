@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
@@ -33,10 +32,10 @@ public class AnalyzerQuestionController {
 
 	@Autowired
 	private QuestionService questionService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	/**
 	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
 	 * perunta.
@@ -47,7 +46,7 @@ public class AnalyzerQuestionController {
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
 	public ResponseEntity<List<MSG>> getSuggestions(@RequestBody Usuario usuario) {
 		usuario.getQuestion().setQuestionType(QuestionType.ORIGINAL);
-		
+
 		userService.updateUser(usuario);
 		List<MSG> suggestions = questionService.getAnalize(usuario.getQuestion());
 		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
@@ -64,69 +63,55 @@ public class AnalyzerQuestionController {
 
 		return new ResponseEntity<List<Question>>(questions, HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = BASE_URI+"/user")
-	public ResponseEntity<Usuario> RegisterUser(@RequestBody Usuario user){
-		
+	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/user")
+	public ResponseEntity<Usuario> RegisterUser(@RequestBody Usuario user) {
+
 		Usuario u = userService.saveUser(user);
 		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
 
 	}
-	
+
 	/**
 	 * 
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.PUT, value = BASE_URI+"/user")
-	public ResponseEntity<Usuario> updateUser(@RequestBody Usuario user){
-		Usuario u = userService.updateUser(user); 
+	@RequestMapping(method = RequestMethod.PUT, value = BASE_URI + "/user")
+	public ResponseEntity<Usuario> updateUser(@RequestBody Usuario user) {
+		Usuario u = userService.updateUser(user);
 		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user/{id}")
-	public ResponseEntity<Usuario> getById(@PathVariable Long id){
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/user/{id}")
+	public ResponseEntity<Usuario> getById(@PathVariable Long id) {
 		Usuario user = userService.getById(id);
-		if(user == null){
+		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user")
-	public ResponseEntity<List<Usuario>> findAll(){
-		
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/user")
+	public ResponseEntity<List<Usuario>> findAll() {
+
 		List<Usuario> users = userService.getAll();
-		
+
 		return new ResponseEntity<List<Usuario>>(users, HttpStatus.OK);
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = BASE_URI+"/user/adminAccess")
-	public ResponseEntity<?> access(@RequestParam("key") String key){
-		System.out.println(key);
-		String keyStore = "adminAqtGQ";
-		
-		if(key.equals(keyStore)){
-			return new ResponseEntity<>(HttpStatus.OK);
-		}else{
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);		
-		}
-		
-	}
-
 }

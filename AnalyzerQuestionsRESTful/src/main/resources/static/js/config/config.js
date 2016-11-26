@@ -5,23 +5,23 @@ aqtApp.service('aqtConfig', function($http) {
 	};
 
 	this.updateTime = function(config) {
-		return $http.post('/config', config);
+		return $http.post('/admin/config', config);
 	};
 
 	this.getSuggestions = function() {
-		return $http.get('/suggestions');
+		return $http.get('/admin/suggestions');
 	};
 
 	this.saveSuggestion = function(suggestion) {
-		return $http.post('/suggestions', suggestion)
+		return $http.post('/admin/suggestions', suggestion)
 	};
 	
 	this.updateSuggestion = function(suggestion) {
-		return $http.put('/suggestions', suggestion)
+		return $http.put('/admin/suggestions', suggestion)
 	};
 	
 	this.removeAllSuggestions = function() {
-		return $http.delete('/suggestions');
+		return $http.delete('/admin/suggestions');
 	};
 
 	this.generateSuggestions = function() {
