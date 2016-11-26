@@ -3,7 +3,7 @@ aqtApp.controller("mainController", function($scope, $location, $route, $routePa
 	$scope.adminLogged = localStorage.getItem("adminToken");  
 	
 	$scope.logout = function(){
-		localStorage.clearAll;
+		localStorage.clear();
 	};
 	
 	$scope.$location= $location;
