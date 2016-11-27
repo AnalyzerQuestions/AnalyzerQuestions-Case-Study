@@ -21,29 +21,29 @@ public class CoGrooUtils {
 	 * href="http://beta.visl.sdu.dk/visl/pt/symbolset-floresta.html">Floresta
 	 * Sintáctica</a> estes atributos são referidos a duas classes utilizadas na
 	 * utilização desta classe
-	 */
-	/**
+	 *//*
+	*//**
 	 * utilizada para identificar um pronome deterministo
-	 */
+	 *//*
 	public static final String PRON = "pron-det";
 
-	/**
+	*//**
 	 * utilizada para identificar um adverbio
-	 */
+	 *//*
 	public static final String ADV = "adv";
 
-	/**
+	*//**
 	 * utilizada para idetificar um verbo[finito, infinito]
-	 */
+	 *//*
 	public static final String[] VERB_CLASSES = { "v-fin", "v-inf" };
 
-	/**
+	*//**
 	 * Método avalia se um texto está gramaticalmente correto
 	 * 
 	 * @param txt
 	 *            - texto
 	 * @return sim ou não
-	 */
+	 *//*
 	public static boolean isCorrectText(String txt) {
 		ComponentFactory factory = ComponentFactory.create(new Locale("pt","BR"));
 		Analyzer cogroo = factory.createPipe();
@@ -57,13 +57,13 @@ public class CoGrooUtils {
 
 	}
 
-	/**
+	*//**
 	 * 
 	 * Realiza a analise do texto e retorna o documento da análise
 	 * 
 	 * @param txt
 	 *            texto correspondente a analise
-	 */
+	 *//*
 	public static Document getDocument(String txt) {
 
 		ComponentFactory factory = ComponentFactory.create(new Locale("pt",
@@ -76,5 +76,5 @@ public class CoGrooUtils {
 		cogroo.analyze(document);
 
 		return document;
-	}
+	}*/
 }
