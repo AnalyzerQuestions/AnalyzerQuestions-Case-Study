@@ -1,12 +1,5 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.util;
 
-import java.util.Locale;
-
-import org.cogroo.analyzer.Analyzer;
-import org.cogroo.analyzer.ComponentFactory;
-import org.cogroo.text.Document;
-import org.cogroo.text.impl.DocumentImpl;
-
 /**
  * Classe utilitaria para extração de informações gramaticais utilizando CoGroo
  * API
