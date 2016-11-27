@@ -28,7 +28,7 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/user/adminAccess")
 	public LoginResponse access(@RequestParam("key") String key) throws ServletException {
-		String keyStore = "";
+		String keyStore = "teste";
 
 		if (key.equals(keyStore)) {
 			String token =  Jwts.builder()
