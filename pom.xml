@@ -6,7 +6,7 @@
 	<groupId>br.edu.ifpb.ws</groupId>
 	<artifactId>analyzerQuestionsRESTful</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>AnalyzerQuestionsRESTful</name>
 	<description>RESTful analizador de perguntas de programação</description>
@@ -30,17 +30,17 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,12 +56,6 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1206-jdbc42</version>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
 		</dependency>
 
 		<dependency>
@@ -83,7 +77,7 @@
 			<version>4.10.2</version>
 		</dependency>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.cogroo.lang.pt_br</groupId>
 			<artifactId>cogroo-ann-pt_br</artifactId>
 			<version>4.0.0</version>
@@ -92,7 +86,7 @@
 			<groupId>org.cogroo.lang.pt_br</groupId>
 			<artifactId>cogroo-gc-pt_br</artifactId>
 			<version>4.0.0</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.languagetool</groupId>
