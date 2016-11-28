@@ -11,6 +11,7 @@ aqtApp.factory("tokenInterceptor", function($q, $location){
 		
 		  'responseError': function (rejection){
 	    	if(rejection.status==401){
+	    		localStorage.clear();
 	    		$location.path("/aqtAdmin");
 	    	}
 	    	return rejection;
