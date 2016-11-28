@@ -42,13 +42,15 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 		var index = $scope.suggestions.indexOf(suggestion);
 		var elementClicked = $(".aqt-close").eq(index);
 		var elementIcon = $('.js-icon').eq(index);
-
 		if (elementClicked.hasClass("alert-success")) {
+		
 			elementClicked.removeClass('alert-success');
 			elementIcon.removeClass('fa-close');
 			elementIcon.addClass('fa-check')
+			
 			var indexChoose = chosenSuggestions.indexOf(suggestion);
 			chosenSuggestions.splice(indexChoose, 1);
+		
 		} else {
 			elementClicked.addClass('alert-success');
 			elementIcon.removeClass('fa-check');

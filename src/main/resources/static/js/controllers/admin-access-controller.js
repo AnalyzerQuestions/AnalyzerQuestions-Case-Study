@@ -11,11 +11,9 @@ aqtApp.controller("adminController", function($scope, $http, userService, $locat
 		 }).then(
 					function(response) {
 						localStorage.setItem("adminToken", response.data.token);
-						console.log(response.data.token);
 						$location.path('/adminUsers');
 
 					}, function(response) {
-						console.log(response);
 						growl.error("Key Inválida");
 					});
 		}

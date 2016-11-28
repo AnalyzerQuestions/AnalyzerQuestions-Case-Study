@@ -33,11 +33,11 @@
 				Selecione as sugestões que você considera importante
 			</div>
 			<div ng-repeat="sug in suggestions">
-				<div class="alert  alert-danger  alert-dismissible aqt-close"
+				<div class="alert  alert-danger  alert-dismissible aqt-close aqt-poiter" ng-click="checkedSuggestion(sug)"
 					role="alert">
 					<button type="button" class="close btn-suggestion">
-						<a><i class="fa fa-check js-icon"
-							ng-click="checkedSuggestion(sug)" aria-hidden="true"></i></a>
+						<i class="fa fa-check js-icon"
+							ng-click="checkedSuggestion(sug)" aria-hidden="true"></i>
 					</button>
 					<p>
 						<span style="font-size: 20px;">{{sug.header}}</span>
