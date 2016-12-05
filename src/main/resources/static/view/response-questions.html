@@ -3,10 +3,12 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="content-header aqt-header">
-			<h2>
-				Perguntas que você mostrou interesse <small>Indique os
-					motivos pelo qual se interessou para cada uma das perguntas a
-					seguir:</small>
+			<h2 ng-if="(vm.question.questionType === 'CLICABLE')">
+				Pergunta que você clicou, mas, optou por não responder 
+				
+			</h2>
+			<h2 ng-if="(vm.question.questionType === 'CHOSEN')">
+				Pergunta que você escolheu responder
 			</h2>
 		</div>
 		<div class="col-md-7">
@@ -21,6 +23,11 @@
 		</div>
 		<div class="col-md-5">
 			<form novalidate name="vm.frmOptions">
+
+				<div ng-if="(vm.question.questionType === 'CLICABLE')"
+					ng-include="'/view/fragments/form-clickable-questions.html'"></div>
+				<div ng-if="(vm.question.questionType === 'CHOSEN')"
+					ng-include="'/view/fragments/form-chosen-questions.html'"></div>
 				<div class="well well-sm">
 					<div class="row">
 						<div class="col-md-3">
@@ -39,10 +46,6 @@
 						</div>
 					</div>
 				</div>
-				<div ng-if="(vm.question.questionType === 'CLICABLE')"
-					ng-include="'/view/fragments/form-clickable-questions.html'"></div>
-				<div ng-if="(vm.question.questionType === 'CHOSEN')"
-					ng-include="'/view/fragments/form-chosen-questions.html'"></div>
 			</form>
 		</div>
 	</div>
