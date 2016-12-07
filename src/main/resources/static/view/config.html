@@ -141,6 +141,32 @@
 								<div class="panel-heading">Configurações das Mensagens de
 									passos</div>
 								<div class="panel-body">
+								
+									<!-- WELCOME -->
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group input-group">
+												<span class="input-group-addon"><i>IN</i></span> <input
+													class="form-control" type="text" name='cro'
+													ng-model="config.welcome.header"
+													placeholder="Tempo em segundos" required /> <span
+													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+													class="form-control alert alert-danger">Campo deve
+													ser informado</span>
+											</div>
+										</div>
+										<div class="col-md-8">
+											<div class="form-group input-group">
+												<span class="input-group-addon"><i>IN</i></span> <textarea
+													class="form-control" type="text" name='cro'
+													ng-model="config.welcome.description"
+													placeholder="Tempo em segundos" required /> <span
+													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+													class="form-control alert alert-danger">Campo deve
+													ser informado</span>
+											</div>
+										</div>
+									</div>
 
 									<!-- STEP 1 -->
 									<div class="row">
@@ -157,7 +183,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S1</i></span> <input
+												<span class="input-group-addon"><i>S1</i></span> <textarea
 													class="form-control" type="text" name='cro'
 													ng-model="config.steps.step1.description"
 													placeholder="Tempo em segundos" required /> <span
@@ -183,7 +209,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S2</i></span> <input
+												<span class="input-group-addon"><i>S2</i></span> <textarea
 													class="form-control" type="text" name='cro'
 													ng-model="config.steps.step2.description"
 													placeholder="Tempo em segundos" required /> <span
@@ -209,7 +235,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S3</i></span> <input
+												<span class="input-group-addon"><i>S3</i></span> <textarea
 													class="form-control" type="text" name='cro'
 													ng-model="config.steps.step3.description"
 													placeholder="Tempo em segundos" required /> <span
@@ -219,6 +245,36 @@
 											</div>
 										</div>
 									</div>
+									
+									
+									<!-- END -->
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group input-group">
+												<span class="input-group-addon"><i>OB</i></span> <input
+													class="form-control" type="text" name='cro'
+													ng-model="config.end.header"
+													placeholder="Tempo em segundos" required /> <span
+													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+													class="form-control alert alert-danger">Campo deve
+													ser informado</span>
+											</div>
+										</div>
+										
+										<div class="col-md-8">
+											<div class="form-group input-group">
+												<span class="input-group-addon"><i>OB</i></span> <textarea
+													class="form-control" type="text" name='cro'
+													ng-model="config.end.description"
+													placeholder="Tempo em segundos" required /> <span
+													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
+													class="form-control alert alert-danger">Campo deve
+													ser informado</span>
+											</div>
+										</div>
+									</div>
+
+
 								</div>
 							</div>
 						</div>

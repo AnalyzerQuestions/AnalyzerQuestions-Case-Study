@@ -195,3 +195,16 @@ body {
 .aqt-poiter{
 	cursor: pointer;
 }
+
+.aqt-panel-logos{
+	margin: 20px;
+}
+
+.aqt-panel-space{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.aqt-logo{
+	margin-top: 22px;
+}
