@@ -1,2 +1,2 @@
-# Analyzer QuestionsRESTful
+# Analyzer Questions (Case Study)
 
