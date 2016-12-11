@@ -6,7 +6,12 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * <p>
+ * 		<b> Question Repository </b>
+ * </p>
+ *
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 public interface QuestionRepository extends JpaRepository<Question, Long>{

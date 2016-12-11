@@ -10,7 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 /**
+ * 
+ * <p>
+ * 		<b> Chosen Question Wrapper </b>
+ * </p>
+ *
+ * <p>
+ *  Class wrapper for questions chosen in step 2 
+ * </p>
+ * 
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *

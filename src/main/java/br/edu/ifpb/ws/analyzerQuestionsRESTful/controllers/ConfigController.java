@@ -19,6 +19,15 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 
 /**
  * 
+ * <p>
+ * <b> Configuration Controller </b>
+ * </p>
+ *
+ * 
+ * <pre>
+ * @see @ConfigController used for case study only
+ * </pre>
+ * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
@@ -28,7 +37,14 @@ public class ConfigController {
 	@Autowired
 	private SuggestionService service;
 
-	FileOperationUtil fileOperationUtil = new FileOperationUtil();
+	private FileOperationUtil fileOperationUtil;
+	
+	/**
+	 * 
+	 */
+	public ConfigController() {
+		fileOperationUtil = new FileOperationUtil();
+	}
 
 	/**
 	 * 
@@ -71,6 +87,10 @@ public class ConfigController {
 		return new ResponseEntity<Suggestion>(suggestionSaved, HttpStatus.CREATED);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/admin/suggestions", method = RequestMethod.DELETE)
 	public ResponseEntity<?> removeAll() {
 		service.removeAll();

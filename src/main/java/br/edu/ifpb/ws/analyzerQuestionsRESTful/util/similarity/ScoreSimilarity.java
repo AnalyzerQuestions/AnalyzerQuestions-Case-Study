@@ -4,8 +4,16 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+
 /**
- * @author franck
+ * 
+ * <p>
+ * 		<b> Score Similarity </b>
+ * </p>
+ *
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
  */
 
 /***

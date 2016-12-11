@@ -8,14 +8,21 @@ import org.springframework.stereotype.Repository;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * <p>
+ * 		<b> Suggestion Repository</b>
+ * </p>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 @Repository
 public interface SuggestionRepository extends JpaRepository<Suggestion, Long>{
 	
+	/**
+	 * 
+	 * @param t
+	 * @return
+	 */
 	Suggestion findByTipo(TSuggestions t);
-	
-	
 
 }

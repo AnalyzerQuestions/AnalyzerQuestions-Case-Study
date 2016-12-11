@@ -12,6 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 
+/**
+ * 
+ * <p>
+ * <b> End point de acesso a métodos de uma pergunta.</b>
+ * </p>
+ *
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 @RestController
 public class QuestionController {
 	
@@ -42,7 +52,4 @@ public class QuestionController {
 		Question questionUpdated = questionService.update(question);
 		return new ResponseEntity<Question>(questionUpdated, HttpStatus.OK);
 	}
-	
-
-
 }

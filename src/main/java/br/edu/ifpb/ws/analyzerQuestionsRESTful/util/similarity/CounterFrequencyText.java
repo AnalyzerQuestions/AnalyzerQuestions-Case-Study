@@ -8,7 +8,12 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.StringUtil;
 
 /**
  * 
- * @author franck
+ * <p>
+ * 		<b> Counter Frequency Text </b>
+ * </p>
+ *
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 public class CounterFrequencyText {

@@ -2,7 +2,7 @@
  * Controller responsável pela manipulação do fragmento de página
  * list-questions.html
  *
- * @created
+ * @created Frank Aragão
  * @date 21-10-16.
  */
 aqtApp.controller("responseQuestionController", function($scope, userService, questionService, aqtConfig, $location, localStorageService, growl) {
@@ -23,14 +23,23 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 	var elemetQuestion = $("#body-detail-description");
 	var user = {};
 	
+	/**
+	 * 
+	 */
 	questionService.getOptionsQuestionsClicked().then(function(response) {
 		vm.optionsQuestionsClicked = response.data.optionsQuestionsClicked;
 	});
 	
+	/**
+	 * 
+	 */
 	questionService.getOptionsQuestionsChosen().then(function(response) {
 		vm.optionsQuestionsChosen = response.data.optionsQuestionsChosen;
 	});
 	
+	/**
+	 * 
+	 */
 	vm.toggleCheck = function (option) {
         if (vm.checkedQuestionsClicked.indexOf(option) === -1) {
         	vm.checkedQuestionsClicked.push(option);
@@ -39,6 +48,9 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
         }
     };
 
+    /**
+     * 
+     */
 	userService.getById(userStorage.id).$promise.then(
 			function(data) {
 				user = data;
@@ -47,6 +59,9 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 			}, function(data) {
 	});
 
+	/**
+	 * 
+	 */
 	vm.nextQuestion = function(){
 		if(vm.other){
 			if(vm.frmOptions.$valid){
@@ -66,6 +81,10 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		}
 	};
 
+	
+	/**
+	 * 
+	 */
 	var cont = 0;
 	var next = function() {
 		cont++;
@@ -74,6 +93,10 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		setQuestionInHtml(cont);
 	};
 
+	
+	/**
+	 * 
+	 */
 	var updateQuestion = function(question){
 		question.motives = vm.checkedQuestionsClicked;
 		
@@ -84,6 +107,9 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		});
 	};
 	
+	/**
+	 * 
+	 */
 	var setQuestionInHtml = function(cont){
 		elemetQuestion.empty();
 		if(!(vm.chosenQuestions.length === cont)){
@@ -92,10 +118,16 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		}
 	};
 	
+	/**
+	 * 
+	 */
 	vm.disableBtnNext = function(){
 		return vm.chosenQuestions.length-1 === cont;
 	};
 
+	/**
+	 * 
+	 */
     var reset = function() {
     	vm.checkedQuestionsClicked = angular.copy(vm.checkedQuestionsClicked = []);
     	vm.other = false;

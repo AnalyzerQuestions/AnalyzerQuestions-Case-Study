@@ -1,8 +1,17 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations;
 
+/**
+ * 
+ * <p>
+ * 		<b> Enum represents tips of messages used in @QuestionAnalyzerMSG</b>
+ * </p>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 public enum TSuggestions {
 
-	TITULO_BEM_DEFINIDO,
+	TITLE_WELL_DEFINED,
 	COERENCY_BODY_WITH_TITLE,
 	IS_OBJECTIVE,
 	IS_OBJECIVE_DC,

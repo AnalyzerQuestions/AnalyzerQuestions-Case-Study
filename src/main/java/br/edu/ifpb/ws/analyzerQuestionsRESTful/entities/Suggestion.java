@@ -15,6 +15,15 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.TSuggestions;
 
 /**
  * 
+ * <p>
+ * 	<b> Suggestion</b>
+ * </p>
+ *
+ * <p>
+ * 	Class used to customization of suggestion in page of configuration.
+ * </p>
+ * 
+ * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */

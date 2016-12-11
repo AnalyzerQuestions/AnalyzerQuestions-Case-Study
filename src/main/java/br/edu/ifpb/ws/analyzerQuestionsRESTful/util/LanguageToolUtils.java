@@ -9,7 +9,19 @@ import org.languagetool.rules.RuleMatch;
 
 /**
  * 
- * @author franck
+ * <p>
+ * 		<b> Language Tool Utils </b>
+ * </p>
+ *
+ * <p>
+ * 	Verificação de ortografia.
+ * </p>
+ * 
+ * <pre>
+ * @see <a href="https://www.languagetool.org/">Language Toll</a>
+ * </pre>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 public class LanguageToolUtils {
@@ -17,7 +29,7 @@ public class LanguageToolUtils {
 	private static List<RuleMatch> matches;
 
 	/**
-	 * Método verifica se um texto tem a ortografia correta
+	 * Método verifica se um texto passado esta com ortografia correta.
 	 * 
 	 * @param text
 	 * @return

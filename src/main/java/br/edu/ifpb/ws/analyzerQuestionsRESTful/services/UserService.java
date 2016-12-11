@@ -8,6 +8,16 @@ import org.springframework.stereotype.Service;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.UserRepository;
 
+/**
+ * 
+ * <p>
+ * <b> User Service </b>
+ * </p>
+ *
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 @Service
 public class UserService {
 	
@@ -55,6 +65,10 @@ public class UserService {
 		return userRepository.getOne(id);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Usuario> getAll(){
 		return userRepository.findAll();
 	}

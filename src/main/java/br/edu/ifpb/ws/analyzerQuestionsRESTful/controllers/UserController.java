@@ -1,61 +1,89 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
 
-import java.util.Date;
+import java.util.List;
 
-import javax.servlet.ServletException;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
 
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
+ * <p>
+ * <b> User Controller</b>
+ * </p>
+ * 
+ * <pre>
+ * 		@see @UserController used for case study only.
+ * </pre>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ * @author <a https://github.com/JoseRafael97">Rafael Feitosa</a>
  *
  */
 @RestController
 public class UserController {
+	
+	public static final String BASE_URI = "/analyzer";
+
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * 
-	 * @param key
+	 * @param user
 	 * @return
-	 * @throws ServletException
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/user/adminAccess")
-	public LoginResponse access(@RequestParam("key") String key) throws ServletException {
-		String keyStore = "teste";
+	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/user")
+	public ResponseEntity<Usuario> RegisterUser(@RequestBody Usuario user) {
 
-		if (key.equals(keyStore)) {
-			String token =  Jwts.builder()
-					.setSubject(keyStore)
-					.signWith(SignatureAlgorithm.HS512, "banana")
-					.setExpiration(new Date(System.currentTimeMillis() + 30 * 60 * 1000))
-					.compact();
-			
-			
-			return	new LoginResponse(token);
-		} else {
-			throw new ServletException("Token inválido.");
-		}
+		Usuario u = userService.saveUser(user);
+		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
 
 	}
 
 	/**
 	 * 
-	 * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
-	 *
+	 * @param user
+	 * @return
 	 */
-	private class LoginResponse {
-		public String token;
+	@RequestMapping(method = RequestMethod.PUT, value = BASE_URI + "/user")
+	public ResponseEntity<Usuario> updateUser(@RequestBody Usuario user) {
+		Usuario u = userService.updateUser(user);
+		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
 
-		public LoginResponse(String token) {
-			this.token = token;
-		}
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = BASE_URI + "/user/{id}")
+	public ResponseEntity<Usuario> getById(@PathVariable Long id) {
+		Usuario user = userService.getById(id);
+		if (user == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/admin/user")
+	public ResponseEntity<List<Usuario>> findAll() {
+
+		List<Usuario> users = userService.getAll();
+
+		return new ResponseEntity<List<Usuario>>(users, HttpStatus.OK);
+	}
 }

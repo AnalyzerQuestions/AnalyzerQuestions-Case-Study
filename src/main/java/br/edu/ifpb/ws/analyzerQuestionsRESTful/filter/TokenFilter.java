@@ -15,7 +15,19 @@ import io.jsonwebtoken.Jwts;
 
 /**
  * 
- * @author franck
+ * <p>
+ * 		<b> Token Filter </b>
+ * </p>
+ *
+ * <p>
+ * 	Inteceptador para verificação de token passado para a API. 
+ * </p>
+ * 
+ * <pre>
+ *	@see <a href="https://github.com/jwtk/jjwt">JWT for java implementation</a>
+ * </pre>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 public class TokenFilter extends GenericFilterBean{

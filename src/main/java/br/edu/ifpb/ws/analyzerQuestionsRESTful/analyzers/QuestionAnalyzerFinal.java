@@ -10,12 +10,18 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderFile;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.WordsUtils;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.similarity.ScoreSimilarity;
 
-
 /**
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>	
- * @author <a href="https://github.com/JoseRafael97">José Rafael</a>	
-
+ * <p>
+ * 		<b> Analyzer Final </b>
+ * </p>
+ *
+ * <p>
+ * Implementação final dos analizadores.
+ * </p>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ * @author <a href="https://github.com/JoseRafael97">José Rafael</a>
  *
  */
 public class QuestionAnalyzerFinal {

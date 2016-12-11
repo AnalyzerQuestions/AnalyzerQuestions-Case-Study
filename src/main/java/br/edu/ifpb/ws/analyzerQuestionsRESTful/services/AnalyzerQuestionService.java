@@ -17,7 +17,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
  *
  */
 @Service
-public class AnalyzerQuestionSuggestion {
+public class AnalyzerQuestionService {
 
 	@Autowired
 	private QuestionAnalyzerMSG analyzerMSG;
@@ -29,10 +29,11 @@ public class AnalyzerQuestionSuggestion {
 	private MSG msg;
 	
 	
-	public AnalyzerQuestionSuggestion() {
+	public AnalyzerQuestionService() {
+		
 	}
 
-	public List<MSG> getSuggestions1(Question question) {
+	public List<MSG> getSuggestions(Question question) {
 		suggestionsMap.clear();
 
 		questionAnalyzer = new QuestionAnalyzerFinal();

@@ -11,12 +11,21 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.filter.TokenFilter;
 
 /**
  * 
+ * <p>
+ * <b> Analyzer Questions RESTful Application </b>
+ * </p>
+ * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 @SpringBootApplication
 public class AnalyzerQuestionsRESTfulApplication extends SpringBootServletInitializer {
 
+	/**
+	 * Registra inteceptador para qualquer end point que tenha "admin".
+	 * 
+	 * @return
+	 */
 	@Bean
 	public FilterRegistrationBean filterJwt() {
 

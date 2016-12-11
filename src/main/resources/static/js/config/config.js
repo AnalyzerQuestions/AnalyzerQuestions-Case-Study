@@ -100,7 +100,7 @@ aqtApp.service('aqtConfig', function($http) {
 				  
 			}, sug = {
 			  msg : 'Descreva melhor o título da pergunta, o título deve ser o resumo da descrição do problema.',
-			  tipo : 'TITULO_BEM_DEFINIDO',
+			  tipo : 'TITLE_WELL_DEFINED',
 			  categoria : ['Título bem definido']
 				  
 			}, sug = {

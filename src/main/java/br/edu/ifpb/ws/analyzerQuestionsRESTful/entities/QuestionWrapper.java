@@ -11,6 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * 
+ * <p>
+ * <b> Question Wrapper</b>
+ * </p>
+ *
+ * <p>
+ * Class wrapper for questions with suggestions chosen in step 1.
+ * </p>
+ * 
+ * <pre>
+ * @see <a href="http://www.linkreferencia.com">Link de Referencia</a>
+ * </pre>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
+ */
 @Entity
 @Table(name="QUESTION_CHANGE_WITH_SUGESTIONS")
 public class QuestionWrapper {

@@ -4,7 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author franck
+ * 
+ * <p>
+ * 		<b> Vector Similarity </b>
+ * </p>
+ *
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ *
  */
 
 /**

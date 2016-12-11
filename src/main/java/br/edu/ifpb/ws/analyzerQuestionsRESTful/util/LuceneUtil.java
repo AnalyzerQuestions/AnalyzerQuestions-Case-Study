@@ -15,7 +15,15 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.WordsUtils;
 
 /**
  * 
- * @author franck
+ * <p>
+ * 		<b> Lucene Util </b>
+ * </p>
+ *
+ * <p>
+ * 	Tratamento de tokenização e estemização de palavras.
+ * </p>
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 public class LuceneUtil {

@@ -38,8 +38,8 @@ public class StackExchangeApi {
                     request.addQueryParam("site", site);
                     request.addQueryParam("sort", "creation");
                     request.addQueryParam("tagged", "java");
-                    request.addQueryParam("key", "KJi1v7aNWJ8aziMts2QEmQ((");
-                    request.addQueryParam("access_token", "gkTDYoP(Ar3ZGk64jkudSg))");
+                    request.addQueryParam("key", "ADD KEY");
+                    request.addQueryParam("access_token", "ADD");
                     request.addQueryParam("filter", "c*65v.ppToRvQ1LyNaG30spXwQLmiAxD*(");
                 }
             })

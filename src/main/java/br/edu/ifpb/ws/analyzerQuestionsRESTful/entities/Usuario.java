@@ -13,9 +13,19 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * Classe modelo de usuário respondente.
- * @author  <a https://github.com/JoseRafael97">Rafael Feitosa</a>
- *	@author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ * 
+ * <p>
+ * 		<b> User </b>
+ * </p>
+ *
+ * <p>
+ * class of user respondent
+ * </p>
+ * 
+ * 
+ * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
+ * @author <a https://github.com/JoseRafael97">Rafael Feitosa</a>
+ *
  */
 @Entity
 @Table(name="USUARIO")
@@ -104,9 +114,5 @@ public class Usuario {
 				+ ", questionWrapper=" + questionWrapper + ", chosenQuestionsWrapper=" + chosenQuestionsWrapper
 				+ ", question=" + question + "]";
 	}
-
-	
-
-	
 
 }
