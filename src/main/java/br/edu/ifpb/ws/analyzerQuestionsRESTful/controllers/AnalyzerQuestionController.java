@@ -47,9 +47,12 @@ public class AnalyzerQuestionController {
 
 	/**
 	 * Analisa a pergunta passada e retorna uma lista de sugestões para esta
-	 * perunta.
+	 * perunta. Registra metadados do usuário no BD para análises posteriomente.
+	 * 
+	 * Método utilizado para estudo de caso apenas.
 	 * 
 	 * @param usuario
+	 * 
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
@@ -58,6 +61,19 @@ public class AnalyzerQuestionController {
 
 		userService.updateUser(usuario);
 		List<MSG> suggestions = questionService.getAnalize(usuario.getQuestion());
+		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
+	}
+	
+	/**
+	 * Endpoint retorna uma lista de sugestões para uma pergunta passada.
+	 * 
+	 * @param question
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "analyzerOnly")
+	public ResponseEntity<List<MSG>> getSugestionOnly(@RequestBody Question question) {
+		
+		List<MSG> suggestions = questionService.getAnalize(question);
 		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
 	}
 
