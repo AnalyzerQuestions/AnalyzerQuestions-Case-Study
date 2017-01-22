@@ -1,5 +1,11 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -414,6 +420,117 @@ public class QuestionAnalyzerFinal {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	public int containsURL(String description) {
+		if(this.getURL(description) != null) return 1;
+		
+		return 0;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	public int combinateURLWithContent(String description) {
+		if(this.getURL(description) == null) return 0;
+		
+		String url = this.getURL(description);
+		String contentPage = this.getContentOfPage(url);
+		
+		contentPage = StringUtil.removerTagsHtml(contentPage);
+		String descriptionReferenceUrl = this.getDescriptionReferentURL(description);
+		int coherency = this.analyzerCoherencyBodyAndTitle(description,descriptionReferenceUrl);
+			
+		return coherency;
+		
+	}
+	
+	private String getURL(String description) {
+		String[] tDescription = StringTokenizerUtils.parseToken(description);
+		for (int i = 0; i < tDescription.length; i++) {
+			if (isURI(tDescription[i])) return tDescription[i];
+		}
+		return null;
+	}
+	
+	private String getDescriptionReferentURL(String description) {
+		String afterParagraph = "";
+		String beforeParagraph = "";
+		
+		String[] tDescription = StringTokenizerUtils.parseToken(description);
+		for (int i = 0; i < tDescription.length; i++) {
+			if (isURI(tDescription[i])) {
+				for (int j = i+1; j < tDescription.length; j++) {
+					afterParagraph += tDescription[j] +" ";
+				}
+
+				for (int j = i-1; j >= 0; j--) {
+					char t = tDescription[j].charAt(tDescription[j].length()-1);
+					if(t == '.'){
+						char in = tDescription[j+1].charAt(0);
+						if(Character.isUpperCase(in)) {
+							for (int k = j+1; k < i; k++) {
+								afterParagraph+= tDescription[k] + " ";
+							}
+						}
+					}
+				}
+			}
+		}
+		return beforeParagraph +" "+ afterParagraph;
+	}
+
+	/**
+	 * 
+	 * @param uri
+	 * @return
+	 */
+	private boolean isURI(String uri) {
+		
+		try {
+			URL url = new URL(uri);
+			return true;
+		} catch (MalformedURLException e) {
+			return false;
+		}
+	}
+	
+	/**
+	 * <pre>
+	 * Adicinar método em classe util
+	 * <pre>
+	 * @param pageURL
+	 * @return
+	 */
+	private String getContentOfPage(String pageURL) {
+
+		StringBuilder sb = new StringBuilder();
+		try {
+			URLConnection connection = new URL(pageURL).openConnection();
+			connection.setRequestProperty("User-Agent",
+					"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+			connection.connect();
+
+		    BufferedReader r = new BufferedReader(new InputStreamReader(connection.getInputStream(),
+		            Charset.forName("UTF-8")));
+	
+		    String line;
+		    while ((line = r.readLine()) != null) {
+		        sb.append(line);
+		    }
+		} catch (Exception e) {
+			return "";
+		}
+		
+		String content = sb.toString(); 
+		return content.equals("")? "":content;
 	}
 
 	/**
