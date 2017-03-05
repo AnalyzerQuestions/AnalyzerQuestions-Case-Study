@@ -30,7 +30,7 @@ aqtApp.service('aqtConfig', function($http) {
 		               
 			sug = {
 //				msg : 'Descreva seu problema de forma simples e direta.',
-				msg : 'Describe your problem in a simple way and direct',
+				msg : 'Describe your problem in a way simple and direct.',
 				tipo : 'IS_OBJECTIVE',
 				categoria :['Objetividade']
 	
@@ -42,7 +42,7 @@ aqtApp.service('aqtConfig', function($http) {
 	
 			}, sug = {
 //				msg : 'Resuma a pergunta a um único problema.',
-				msg : 'Summarize the question in single problem.',
+				msg : 'Summarize the question in a single problem.',
 				tipo : 'IS_OBJECTIVE_QUESTION_UNIQUE',
 				categoria : ['Pergunta única']
 	
@@ -60,7 +60,7 @@ aqtApp.service('aqtConfig', function($http) {
 				  
 			}, sug = {
 //			  msg : 'Resuma a pergunta a um único problema e/ou deixe mais evidente seu prblema.',
-			  msg : 'Summarize the question in single problem and/or let question most evident.',
+			  msg : 'Summarize the question in a single problem and/or let question most evident.',
 			  tipo : 'UNIQUE_QUESTION',
 			  categoria : ['Pergunta única']
 				  
@@ -72,31 +72,31 @@ aqtApp.service('aqtConfig', function($http) {
 					  
 			}, sug = {
 //			  msg : 'Adicione algum tipo de agradecimento ao final de sua pergunta.',
-			  msg : 'Add some kind of thanks at the end of your question.',
+			  msg : 'Add some kind of thanks at the end of the question.',
 			  tipo : 'GREAT',
 			  categoria : ['Agradecimento']
 				  
 			}, sug = {
-//			  msg : 'Evite cirar o título da pergunta muito longo ou curto.',
-			  msg : 'Avoid create question with large or too much short title ',
+//			  msg : 'Evite criar o título da pergunta muito longo ou curto.',
+			  msg : 'Avoid creating a question with large or too much short title.',
 			  tipo : 'TITLE_MEDIO',
 			  categoria : ['Tamanho do título']
 				 
 			}, sug = {
 //			  msg : 'Adicione um trecho de código ou outro de tipo de exemplo na pergunta.',
-			  msg : 'Add a snippet of code or other kind of example.',
+			  msg : 'Add a snippet of code or another kind of example.',
 			  tipo : 'SHOW_EXAMPLE',
 			  categoria : ['Mostrar exemplo']
 				  
 			}, sug = {
 //			  msg : 'Seja educado, use a norma culta da língua e adicione algum tipo de agradecimento.',
-			  msg : 'Be polite, use proper language and add greeting.',
+			  msg : 'Be polite, use proper language and add a greeting.',
 			  tipo : 'BE_EDUCADED',
 			  categoria : ['Ser educado']
 			
 			}, sug = {
 //			  msg : 'Evite criar perguntas sobre trabalhos acadêmicos.',
-			  msg : 'Avoid create homework question.',
+			  msg : 'Avoid creating homework question.',
 			  tipo : 'HOME_WORK_QUESTION',
 			  categoria : ['Perguntas acadêmicas']
 			
@@ -108,19 +108,19 @@ aqtApp.service('aqtConfig', function($http) {
 			
 			}, sug = {
 //			  msg : 'Seja mais objetivo e claro na formulação da pergunta.',
-			  msg : 'Be more objective and clar in question',
+			  msg : 'Be more objective and course on the question',
 			  tipo : 'UNDESTANDABLE_DESCRTION',
 			  categoria : ['Descrição bem definida']
 				  
 			}, sug = {
 //			  msg : 'Descreva melhor o título da pergunta, o título deve ser o resumo da descrição do problema.',
-			  msg : 'Improve title of question, the title should be a summarize to description of problem.',
+			  msg : "Improve the title of the question, it's should be a summarize to the description of the problem.",
 			  tipo : 'TITLE_WELL_DEFINED',
 			  categoria : ['Título bem definido']
 				  
 			}, sug = {
 //			  msg : 'O Título da pergunta parece não está coerente com a descrição.',
-			  msg : 'The title of question not is not consistent with description.',
+			  msg : 'The title of the question is not consistent with the description.',
 			  tipo : 'COERENCY_BODY_WITH_TITLE',
 			  categoria : ['Coerência']
 			}
