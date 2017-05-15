@@ -1,7 +1,6 @@
 body {
 	font-family: 'Abel', sans-serif;
 	font-size: 19px;
-	padding-top: 50px;
 	background: #fdfdfd;
 }
 
@@ -22,6 +21,10 @@ body {
 	margin-top: 80px;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+.aqt-content {
+	padding-top: 50px;
 }
 
 .aqt-jumbotron-q {

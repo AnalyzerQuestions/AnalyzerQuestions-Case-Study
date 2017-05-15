@@ -18,11 +18,10 @@ aqtApp.controller("userController",function($scope, userService, $location, loca
 					.withPaginationType('simple_numbers').withDisplayLength(10).withBootstrap();
 
 			$scope.dtColumnDefs = [
+			        DTColumnDefBuilder.newColumnDef(0).notSortable(),
 					DTColumnDefBuilder.newColumnDef(1).notSortable(),
 					DTColumnDefBuilder.newColumnDef(2).notSortable(),
 					DTColumnDefBuilder.newColumnDef(3).notSortable(),
-					DTColumnDefBuilder.newColumnDef(4).notSortable(),
-					DTColumnDefBuilder.newColumnDef(5).notSortable()
 					];
 
 			var findAll = function() {
