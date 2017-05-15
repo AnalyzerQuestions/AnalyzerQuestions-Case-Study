@@ -3,6 +3,7 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
@@ -50,6 +52,11 @@ public class Question implements Serializable {
 	private QuestionType questionType;
 
 	@ElementCollection
+	  @CollectionTable(
+	        name="motives",
+	        joinColumns=@JoinColumn(name="question_id")
+	  )
+	@Column(name="motive", columnDefinition="TEXT")
 	private List<String> motives;
 
 	public Question() {

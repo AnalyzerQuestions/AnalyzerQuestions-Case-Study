@@ -2,9 +2,8 @@ aqtApp.controller("accessController", function($scope, userService, $location, l
 
 	$scope.user = {};
 	
-	localStorageService.clearAll();
-	localStorage.clear();
-	
+	localStorageService.remove("aqt-user");
+		
 	$scope.register = function() {
 		userService.saveUser($scope.user).$promise.then(
 
