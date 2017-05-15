@@ -98,20 +98,24 @@ aqtApp.controller("listQuestionController",function($scope, userService, aqtConf
 			var chosenQuestion = {};
 
 			chosenQuestion.chosenQuestions = chosenQuestions;
+			
+			if(chosenQuestions.length) {
+				userService.getById(userStorage.id).$promise.then(
+						function(data) {
+							user = data;
+							user.chosenQuestionsWrapper = chosenQuestion;
+							userService.updateUser(user).$promise.then(
+								function onSuccess(response) {
+									$location.path('/step3');
 
-			userService.getById(userStorage.id).$promise.then(
-					function(data) {
-						user = data;
-						user.chosenQuestionsWrapper = chosenQuestion;
-						userService.updateUser(user).$promise.then(
-							function onSuccess(response) {
-								$location.path('/step3')
+								}, function onError(response) {
 
-							}, function onError(response) {
-
-						});
-					}, function(data) {
-			});
+							});
+						}, function(data) {
+				});
+			}else {
+				$location.path('/final');
+			}
 		};
 
 		$scope.loadMore = function() {

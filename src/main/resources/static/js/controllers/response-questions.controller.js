@@ -8,9 +8,7 @@
 aqtApp.controller("responseQuestionController", function($scope, userService, questionService, aqtConfig, $location, localStorageService, growl) {
 
 	var vm = this;
-
 	vm.chosenQuestions = [];
-	
 	vm.optionsQuestionsClicked = [];
 	vm.optionsQuestionsChosen = [];
 	vm.checkedQuestionsClicked = [];
@@ -73,7 +71,7 @@ aqtApp.controller("responseQuestionController", function($scope, userService, qu
 		if(vm.checkedQuestionsClicked.length){
 			if(vm.disableBtnNext()){
 				localStorageService.clearAll();
-				$location.path('/final')
+				$location.path('/final');
 			}
 			next();
 		}else{
