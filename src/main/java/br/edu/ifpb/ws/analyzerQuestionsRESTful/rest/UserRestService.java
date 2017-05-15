@@ -1,4 +1,4 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.rest;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
  *
  */
 @RestController
-public class UserController {
+public class UserRestService {
 	
 	public static final String BASE_URI = "/analyzer";
 

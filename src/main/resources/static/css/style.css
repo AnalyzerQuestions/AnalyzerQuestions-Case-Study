@@ -7,6 +7,7 @@ body {
 
 .jumbotron {
 	width: 800px;
+	background: #fdfdfd;
 	text-align: center;
 	margin-top: 20px;
 	margin-left: auto;
@@ -197,12 +198,12 @@ body {
 }
 
 .aqt-panel-logos{
-	margin: 20px;
+	margin: 10px;
 }
 
 .aqt-panel-space{
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .aqt-logo{

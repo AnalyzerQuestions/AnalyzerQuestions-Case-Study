@@ -8,14 +8,14 @@
 			<div class="col-md-10">
 				<div class="content-header">
 					<h2>
-						Configurações <small></small>
+						Configurações <small>páginas para atualização de informação do app</small>
 					</h2>
 				</div>
 				<form name="frmConfig" novalidate>
 					<div class="row">
 						<div class="col-md-13">
 							<div class="panel panel-primary">
-								<div class="panel-heading">Configurações do cronometro</div>
+								<div class="panel-heading">Tempo do cronometro para página de escolhas de perguntas</div>
 								<div class="panel-body">
 
 									<div class="form-group input-group">
@@ -34,7 +34,7 @@
 							<div class="col-md-6">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
-										Configurações de opções de motivos em visualizar a pergunta
+										Valores que aparecem nos checkbox para perguntas VISUALIZADAS
 										<div style="float: right">
 											<button class="btn  btn-default" data-toggle="modal"
 												data-target="#optionModal"
@@ -84,7 +84,7 @@
 							<div class="col-md-6">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
-										Configurações de opções de motivos para responder a pergunta
+										Valores que aparecem nos checkbox para perguntas ESCOLHIDAS
 										<div style="float: right">
 											<button class="btn  btn-default" data-toggle="modal"
 												data-target="#optionModal"
@@ -138,17 +138,16 @@
 
 						<div class="col-md-13">
 							<div class="panel panel-primary">
-								<div class="panel-heading">Configurações das Mensagens de
-									passos</div>
+								<div class="panel-heading">Valores que aparecerão nas páginas de informação.</div>
 								<div class="panel-body">
 								
 									<!-- WELCOME -->
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>IN</i></span> <input
+												<span class="input-group-addon"><i>H1</i></span> <input
 													class="form-control" type="text" name='cro'
-													ng-model="config.welcome.header"
+													ng-model="config.steps.welcome.header"
 													placeholder="Tempo em segundos" required /> <span
 													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
 													class="form-control alert alert-danger">Campo deve
@@ -157,9 +156,9 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>IN</i></span> <textarea
+												<span class="input-group-addon"><i>P1</i></span> <textarea
 													class="form-control" type="text" name='cro'
-													ng-model="config.welcome.description"
+													ng-model="config.steps.welcome.description"
 													placeholder="Tempo em segundos" required /> <span
 													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
 													class="form-control alert alert-danger">Campo deve
@@ -172,9 +171,9 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S1</i></span> <input
+												<span class="input-group-addon"><i>H2</i></span> <input
 													class="form-control" type="text" name='cro'
-													ng-model="config.steps.step1.head"
+													ng-model="config.steps.step1.header"
 													placeholder="Tempo em segundos" required /> <span
 													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
 													class="form-control alert alert-danger">Campo deve
@@ -183,7 +182,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S1</i></span> <textarea
+												<span class="input-group-addon"><i>P2</i></span> <textarea
 													class="form-control" type="text" name='cro'
 													ng-model="config.steps.step1.description"
 													placeholder="Tempo em segundos" required /> <span
@@ -198,9 +197,9 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S2</i></span> <input
+												<span class="input-group-addon"><i>H3</i></span> <input
 													class="form-control" type="text" name='cro'
-													ng-model="config.steps.step2.head"
+													ng-model="config.steps.step2.header"
 													placeholder="Tempo em segundos" required /> <span
 													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
 													class="form-control alert alert-danger">Campo deve
@@ -209,7 +208,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S2</i></span> <textarea
+												<span class="input-group-addon"><i>P3</i></span> <textarea
 													class="form-control" type="text" name='cro'
 													ng-model="config.steps.step2.description"
 													placeholder="Tempo em segundos" required /> <span
@@ -224,9 +223,9 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S3</i></span> <input
+												<span class="input-group-addon"><i>H4</i></span> <input
 													class="form-control" type="text" name='cro'
-													ng-model="config.steps.step3.head"
+													ng-model="config.steps.step3.header"
 													placeholder="Tempo em segundos" required /> <span
 													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
 													class="form-control alert alert-danger">Campo deve
@@ -235,7 +234,7 @@
 										</div>
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>S3</i></span> <textarea
+												<span class="input-group-addon"><i>P4</i></span> <textarea
 													class="form-control" type="text" name='cro'
 													ng-model="config.steps.step3.description"
 													placeholder="Tempo em segundos" required /> <span
@@ -251,9 +250,9 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>OB</i></span> <input
+												<span class="input-group-addon"><i>H5</i></span> <input
 													class="form-control" type="text" name='cro'
-													ng-model="config.end.header"
+													ng-model="config.steps.end.header"
 													placeholder="Tempo em segundos" required /> <span
 													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
 													class="form-control alert alert-danger">Campo deve
@@ -263,13 +262,13 @@
 										
 										<div class="col-md-8">
 											<div class="form-group input-group">
-												<span class="input-group-addon"><i>OB</i></span> <textarea
-													class="form-control" type="text" name='cro'
-													ng-model="config.end.description"
-													placeholder="Tempo em segundos" required /> <span
-													ng-show="frmConfig.cro.$dirty && frmConfig.cro.$error.required"
-													class="form-control alert alert-danger">Campo deve
-													ser informado</span>
+												<span class="input-group-addon"><i>P5</i></span> <textarea
+													class="form-control" type="text" name='end'
+													ng-model="config.steps.end.description"
+													placeholder="descrição de para pagina última página" required />
+													 <span ng-show="frmConfig.end.$dirty && frmConfig.end.$error.required"
+														class="form-control alert alert-danger">Campo deve ser informado
+													</span>
 											</div>
 										</div>
 									</div>
@@ -283,9 +282,9 @@
 						<div ng-include="'/view/fragments/config-suggestions.html'"></div>
 
 						<div class="well well-sm">
-							<button class="btn  btn-primary" type="button"
+							<button class="btn  btn-primary btn-lg" type="button"
 								ng-click="update()">Salvar</button>
-							<a href="/#/adminUsers" class="btn  btn-default">Cancelar</a>
+							<a href="/#/adminUsers" class="btn  btn-default btn-lg">Cancelar</a>
 						</div>
 					</div>
 				</form>

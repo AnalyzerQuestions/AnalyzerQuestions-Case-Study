@@ -1,13 +1,13 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.dto;
 
 import java.util.List;
 
-public class Config {
+public class ConfigDTO {
 
 	private String time;
 	private List<String> optionsQuestionsClicked;
 	private List<String> optionsQuestionsChosen;
-	private Step steps;
+	private StepDTO steps;
 	private List<String> suggestions;
 
 	public String getTime() {
@@ -34,11 +34,11 @@ public class Config {
 		this.optionsQuestionsChosen = optionsQuestionsChosen;
 	}
 
-	public Step getSteps() {
+	public StepDTO getSteps() {
 		return steps;
 	}
 
-	public void setSteps(Step steps) {
+	public void setSteps(StepDTO steps) {
 		this.steps = steps;
 	}
 

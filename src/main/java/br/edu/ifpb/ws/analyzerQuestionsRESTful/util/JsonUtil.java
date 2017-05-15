@@ -2,13 +2,13 @@ package br.edu.ifpb.ws.analyzerQuestionsRESTful.util;
 
 import com.google.gson.Gson;
 
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.Config;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.ConfigDTO;
 
 public class JsonUtil {
 
-	public static Config loadFromJSONGson(String jsonString) {
+	public static ConfigDTO loadFromJSONGson(String jsonString) {
 		Gson gson = new Gson();
-		Config config = gson.fromJson(jsonString, Config.class);
+		ConfigDTO config = gson.fromJson(jsonString, ConfigDTO.class);
 		return config;
 	}
 }

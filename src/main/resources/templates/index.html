@@ -2,7 +2,7 @@
 <html ng-app="aqtApp">
 <head>
 	<meta charset="UTF-8" />
-	<title>AQT</title>
+	<title>Pesquisa</title>
 	<link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="/vendors/font-awesome-4.6.3/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -13,12 +13,6 @@
 	<link rel="stylesheet" type="text/css" href="/vendors/angular-datatable/css/angular-datatables.css" />
 	<link rel="stylesheet" type="text/css" href="/vendors/angular-datatable/plugins/bootstrap/datatables.bootstrap.min.css" />
 	<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"/>
-</head>
-<body ng-controller="mainController">
-	<div ng-include="'/view/fragments/navBar.html'"></div>
-	<div growl=""></div>
-
-	<div class="aqt-content" ng-view="content"></div>
 	
 	<script src="/vendors/jQuery/jquery-3.1.1.min.js"></script>
 	<script src="/vendors/jquery-datatables/media/js/jquery.dataTables.min.js"></script>
@@ -37,32 +31,41 @@
 	
 	
 	<script src="/js/app.js"></script>
-	<script src="/js/config/route-config.js"></script>
-	<script src="/js/config/loading-bar-config.js"></script>
-	<script src="/js/config/local-store-config.js"></script>
-	<script src="/js/config/growl-config.js"></script>
+	<script src="/js/app.route.js"></script>
+	<script src="/js/config/loading-bar.config.js"></script>
+	<script src="/js/config/local-store.config.js"></script>
+	<script src="/js/config/growl.config.js"></script>
 	<script src="/js/config/config.js"></script>
-	<script src="/js/config/datatables-config.js"></script>
+	<script src="/js/config/datatables.config.js"></script>
 	
 	<script src="/js/interceptor/token-inteceptor.js"></script>
-	<script src="/js/services/user-services.js"></script>
-	<script src="/js/services/question-services.js"></script>
+	<script src="/js/services/user.services.js"></script>
+	<script src="/js/services/question.services.js"></script>
+	<script src="/js/services/analyzer.services.js"></script>
 	
-	<script src="/js/controllers/main-controller.js"></script>
-	<script src="/js/controllers/new-questions-controller.js"></script>
-	<script src="/js/controllers/list-questions-controller.js"></script>
-	<script src="/js/controllers/response-questions-controller.js"></script>
-	<script src="/js/controllers/user-controller.js"></script>
-	<script src="/js/controllers/access-controller.js"></script>
-	<script src="/js/controllers/admin-access-controller.js"></script>
-	<script src="/js/controllers/config-controller.js"></script>
-	<script src="/js/controllers/step-controller.js"></script>
+	<script src="/js/controllers/main.controller.js"></script>
+	<script src="/js/controllers/new-question.controller.js"></script>
+	<script src="/js/controllers/list-questions.controller.js"></script>
+	<script src="/js/controllers/response-questions.controller.js"></script>
+	<script src="/js/controllers/user.controller.js"></script>
+	<script src="/js/controllers/access.controller.js"></script>
+	<script src="/js/controllers/admin-access.controller.js"></script>
+	<script src="/js/controllers/config.controller.js"></script>
+	<script src="/js/controllers/step.controller.js"></script>
 	
 	<script src="/vendors/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 	<script src="/vendors/bootstrap-markdown/locale/bootstrap-markdown.ptBR.js"></script>
 	<script src="/js/vendors/to-markdown.js"></script>
 	<script src="/js/vendors/markdown.js"></script>
 	<script src="/js/config/editor-config.js"></script>
+</head>
+
+<body ng-controller="mainController">
+
+	<div ng-include="'/view/fragments/navBar.html'"></div>
+	<div growl=""></div>
+
+	<div class="aqt-content" ng-view="content"></div>
 	
 </body>
 </html>

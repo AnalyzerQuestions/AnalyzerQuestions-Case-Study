@@ -1,4 +1,4 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.config;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

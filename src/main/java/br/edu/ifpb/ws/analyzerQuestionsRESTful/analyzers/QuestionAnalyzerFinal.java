@@ -19,7 +19,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.similarity.ScoreSimilarity;
 /**
  * 
  * <p>
- * 		<b> Analyzer Final </b>
+ * <b> Analyzer Final </b>
  * </p>
  *
  * <p>
@@ -51,12 +51,12 @@ public class QuestionAnalyzerFinal {
 	 * descrição tenha algo que remeta a palavra exemplo.
 	 */
 	public Integer analyzerShowExample(String description) {
-		
+
 		if (frenquencyOfCode(description, 1) >= 4) {
 			return 1;
-		
+
 		}
-		
+
 		String strSplited[] = StringTokenizerUtils.parseToken(description);
 		for (int i = 0; i < strSplited.length; i++) {
 			for (int j = 0; j < WordsUtils.WORDS_EXAMPLES.length; j++) {
@@ -67,7 +67,7 @@ public class QuestionAnalyzerFinal {
 				}
 			}
 		}
-		
+
 		return containsLog(description);
 	}
 
@@ -126,8 +126,7 @@ public class QuestionAnalyzerFinal {
 	/**
 	 * Descrição bem definida (Objetividade e clareza)
 	 */
-	public Integer analyzerUnderstandableDescription(String title,
-			String description) {
+	public Integer analyzerUnderstandableDescription(String title, String description) {
 
 		if (this.analyzerObjective(description) == 1) {
 
@@ -153,7 +152,6 @@ public class QuestionAnalyzerFinal {
 
 		return 0;
 	}
-	
 
 	/**
 	 * Ser educado (Usar língua apropriada, incluir agradecimento)
@@ -175,8 +173,7 @@ public class QuestionAnalyzerFinal {
 	 * Verifica se o título é coerente com a descrição, isso é feito usando
 	 * calculo de similaridade entre o título e a descrição.
 	 */
-	public Integer analyzerCoherencyBodyAndTitle(String title,
-			String description) {
+	public Integer analyzerCoherencyBodyAndTitle(String title, String description) {
 		ScoreSimilarity scoreSimilarity = new ScoreSimilarity();
 
 		Double similarity = scoreSimilarity.getSimilarity(title, description);
@@ -203,9 +200,9 @@ public class QuestionAnalyzerFinal {
 		s0 = StringUtil.removeCharacterSpecial(s0);
 		String s2 = StringUtil.trim(s0);
 
-/*		if (!CoGrooUtils.isCorrectText(s2)) {
-			return 0;
-		}*/
+		/*
+		 * if (!CoGrooUtils.isCorrectText(s2)) { return 0; }
+		 */
 
 		if (frenquencyOfCode(description, 2) == 0) {
 			if (!LanguageToolUtils.textIsValid(s2, 0)) {
@@ -214,8 +211,7 @@ public class QuestionAnalyzerFinal {
 				return 1;
 			}
 		}
-		if (frenquencyOfCode(description, 2) > 10
-				&& frenquencyOfCode(description, 2) < 60) {
+		if (frenquencyOfCode(description, 2) > 10 && frenquencyOfCode(description, 2) < 60) {
 			if (!LanguageToolUtils.textIsValid(s2, 80)) {
 				return 0;
 			} else {
@@ -261,15 +257,15 @@ public class QuestionAnalyzerFinal {
 	 */
 	public Integer analyzerAvoidCreateDuplicateQuestion(List<String> comments) {
 		String[] duplicates = WordsUtils.WORDS_DUPLICATE_CODE;
-		
+
 		for (int i = 0; i < duplicates.length; i++) {
 			for (String comment : comments) {
-				if(comment.contains(duplicates[i])){
+				if (comment.contains(duplicates[i])) {
 					return 1;
 				}
 			}
 		}
-		
+
 		return 0;
 	}
 
@@ -329,8 +325,7 @@ public class QuestionAnalyzerFinal {
 	 * </p>
 	 */
 	public Integer includingGreetings(String description) {
-		String s0 = StringUtil
-				.removeCharacterSpecial(description.toLowerCase());
+		String s0 = StringUtil.removeCharacterSpecial(description.toLowerCase());
 		String s1 = StringUtil.removeConnective(s0);
 
 		for (int i = 0; i < WordsUtils.WORDS_GREETINGS.length; i++) {
@@ -381,10 +376,8 @@ public class QuestionAnalyzerFinal {
 
 	private String removeAllCode(String description) {
 		String result = "";
-		String tStr[] = StringTokenizerUtils.parseToken(description
-				.toLowerCase());
-		String[] tJavaClasses = StringTokenizerUtils.parseToken(javaClasses
-				.toLowerCase());
+		String tStr[] = StringTokenizerUtils.parseToken(description.toLowerCase());
+		String[] tJavaClasses = StringTokenizerUtils.parseToken(javaClasses.toLowerCase());
 
 		for (int i = 0; i < tStr.length; i++) {
 
@@ -421,70 +414,73 @@ public class QuestionAnalyzerFinal {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * 
 	 * @param description
 	 * @return
 	 */
 	public int containsURL(String description) {
-		if(this.getURL(description) != null) return 1;
-		
+		if (this.getURL(description) != null)
+			return 1;
+
 		return 0;
 	}
-	
+
 	/**
 	 * 
 	 * @param description
 	 * @return
 	 */
 	public int combinateURLWithContent(String description) {
-		if(this.getURL(description) == null) return 0;
-		
+		if (this.getURL(description) == null)
+			return 0;
+
 		String url = this.getURL(description);
 		String contentPage = this.getContentOfPage(url);
-		
+
 		contentPage = StringUtil.removerTagsHtml(contentPage);
 		String descriptionReferenceUrl = this.getDescriptionReferentURL(description);
-		int coherency = this.analyzerCoherencyBodyAndTitle(description,descriptionReferenceUrl);
-			
+		int coherency = this.analyzerCoherencyBodyAndTitle(description, descriptionReferenceUrl);
+
 		return coherency;
-		
+
 	}
-	
+
 	private String getURL(String description) {
 		String[] tDescription = StringTokenizerUtils.parseToken(description);
 		for (int i = 0; i < tDescription.length; i++) {
-			if (isURI(tDescription[i])) return tDescription[i];
+			if (isURI(tDescription[i]))
+				return tDescription[i];
 		}
 		return null;
 	}
-	
+
 	private String getDescriptionReferentURL(String description) {
 		String afterParagraph = "";
 		String beforeParagraph = "";
-		
+
 		String[] tDescription = StringTokenizerUtils.parseToken(description);
 		for (int i = 0; i < tDescription.length; i++) {
 			if (isURI(tDescription[i])) {
-				for (int j = i+1; j < tDescription.length; j++) {
-					afterParagraph += tDescription[j] +" ";
+				for (int j = i + 1; j < tDescription.length; j++) {
+					afterParagraph += tDescription[j] + " ";
 				}
 
-				for (int j = i-1; j >= 0; j--) {
-					char t = tDescription[j].charAt(tDescription[j].length()-1);
-					if(t == '.'){
-						char in = tDescription[j+1].charAt(0);
-						if(Character.isUpperCase(in)) {
-							for (int k = j+1; k < i; k++) {
-								afterParagraph+= tDescription[k] + " ";
+				for (int j = i - 1; j >= 0; j--) {
+					char t = tDescription[j].charAt(tDescription[j].length() - 1);
+					if (t == '.') {
+						char in = tDescription[j + 1].charAt(0);
+						if (Character.isUpperCase(in)) {
+							for (int k = j + 1; k < i; k++) {
+								afterParagraph += tDescription[k] + " ";
 							}
 						}
 					}
 				}
 			}
 		}
-		return beforeParagraph +" "+ afterParagraph;
+		return beforeParagraph + " " + afterParagraph;
 	}
 
 	/**
@@ -492,8 +488,9 @@ public class QuestionAnalyzerFinal {
 	 * @param uri
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private boolean isURI(String uri) {
-		
+
 		try {
 			URL url = new URL(uri);
 			return true;
@@ -501,11 +498,13 @@ public class QuestionAnalyzerFinal {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * <pre>
 	 * Adicinar método em classe util
+	 * 
 	 * <pre>
+	 * 
 	 * @param pageURL
 	 * @return
 	 */
@@ -518,19 +517,19 @@ public class QuestionAnalyzerFinal {
 					"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
 			connection.connect();
 
-		    BufferedReader r = new BufferedReader(new InputStreamReader(connection.getInputStream(),
-		            Charset.forName("UTF-8")));
-	
-		    String line;
-		    while ((line = r.readLine()) != null) {
-		        sb.append(line);
-		    }
+			BufferedReader r = new BufferedReader(
+					new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8")));
+
+			String line;
+			while ((line = r.readLine()) != null) {
+				sb.append(line);
+			}
 		} catch (Exception e) {
 			return "";
 		}
-		
-		String content = sb.toString(); 
-		return content.equals("")? "":content;
+
+		String content = sb.toString();
+		return content.equals("") ? "" : content;
 	}
 
 	/**
@@ -546,10 +545,8 @@ public class QuestionAnalyzerFinal {
 
 		int flag = 0;
 
-		String[] tJavaClasses = StringTokenizerUtils.parseToken(javaClasses
-				.toLowerCase());
-		String[] strSplited = StringTokenizerUtils.parseToken(description
-				.toLowerCase());
+		String[] tJavaClasses = StringTokenizerUtils.parseToken(javaClasses.toLowerCase());
+		String[] strSplited = StringTokenizerUtils.parseToken(description.toLowerCase());
 
 		if (type == 1) {
 			for (int j = 0; j < strSplited.length; j++) {
@@ -584,48 +581,47 @@ public class QuestionAnalyzerFinal {
 	}
 
 	/**
-	 * método auxiliar para carregar os nomes das classes exception do java. Deve ser
-	 * executado antes para não ter que fazer conexão com a pagina toda vez.
+	 * método auxiliar para carregar os nomes das classes exception do java.
+	 * Deve ser executado antes para não ter que fazer conexão com a pagina toda
+	 * vez.
 	 */
-	private void setClassesJavaExceptions(){
+	private void setClassesJavaExceptions() {
 		ReaderFile rf = new ReaderFile();
 		javaClassesException = rf.readerTxt("classOnlyExceptionJava.txt");
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se a descrição contém uma exception java e se contém algum palavra restrita a logs
+	 * Verifica se a descrição contém uma exception java e se contém algum
+	 * palavra restrita a logs
 	 * </p>
 	 * 
 	 */
 	private Integer containsLog(String description) {
 
 		String s1 = StringUtil.replaceByDot(description).toLowerCase();
-		
+
 		String[] tJavaExceptionClasses = StringTokenizerUtils.parseToken(javaClassesException);
-		
+
 		int countFreq = 0;
-		
-		for (int i = 0 ; i < tJavaExceptionClasses.length; i++){
-			if(s1.contains(tJavaExceptionClasses[i].toLowerCase())){
+
+		for (int i = 0; i < tJavaExceptionClasses.length; i++) {
+			if (s1.contains(tJavaExceptionClasses[i].toLowerCase())) {
 				countFreq = 1;
 			}
 		}
-		
-		for(int i = 0 ; i < WordsUtils.WORDS_LOG.length ; i++){
-			if(s1.contains(WordsUtils.WORDS_LOG[i])){
-				countFreq ++;
+
+		for (int i = 0; i < WordsUtils.WORDS_LOG.length; i++) {
+			if (s1.contains(WordsUtils.WORDS_LOG[i])) {
+				countFreq++;
 			}
 		}
-		
+
 		if (countFreq > 1) {
 			return 1;
 		}
-		
+
 		return 0;
 	}
-	
-	
-	
-	
+
 }

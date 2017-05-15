@@ -1,4 +1,4 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
  *
  */
 @RestController
-public class QuestionController {
+public class QuestionRestService {
 	
 	public static final String BASE_URI = "/questions";
 	

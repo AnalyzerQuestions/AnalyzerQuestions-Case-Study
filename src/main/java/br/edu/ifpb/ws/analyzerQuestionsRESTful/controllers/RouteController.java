@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * </p>
  * 
  * <pre>
- *		 @see utilizado paara definir o indez como página inicial no angularJS. 
+ *		 @see utilizado paara definir o index como página inicial no angularJS. 
  * </pre>
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>

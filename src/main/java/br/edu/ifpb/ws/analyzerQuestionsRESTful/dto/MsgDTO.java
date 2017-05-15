@@ -1,8 +1,8 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.dto;
 
 import java.util.List;
 
-public class MSG {
+public class MsgDTO {
 
 	private String header;
 	private List<String> subHeaders;

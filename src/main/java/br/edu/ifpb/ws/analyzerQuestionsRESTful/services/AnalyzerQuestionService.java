@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerFinal;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerMSG;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.MsgDTO;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
 
 /**
  * 
@@ -24,16 +24,16 @@ public class AnalyzerQuestionService {
 	
 	private QuestionAnalyzerFinal questionAnalyzer;
 	
-	private List<MSG> suggestionsMap = new ArrayList<>();
+	private List<MsgDTO> suggestionsMap = new ArrayList<>();
 	
-	private MSG msg;
+	private MsgDTO msg;
 	
 	
 	public AnalyzerQuestionService() {
 		
 	}
 
-	public List<MSG> getSuggestions(Question question) {
+	public List<MsgDTO> getSuggestions(Question question) {
 		suggestionsMap.clear();
 
 		questionAnalyzer = new QuestionAnalyzerFinal();

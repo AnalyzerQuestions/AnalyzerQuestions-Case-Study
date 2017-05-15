@@ -1,4 +1,4 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.rest;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.MsgDTO;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.QuestionType;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.QuestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
@@ -35,7 +35,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
  *
  */
 @RestController
-public class AnalyzerQuestionController {
+public class AnalyzerQuestionRestService {
 
 	public static final String BASE_URI = "/analyzer";
 
@@ -56,12 +56,12 @@ public class AnalyzerQuestionController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI)
-	public ResponseEntity<List<MSG>> getSuggestions(@RequestBody Usuario usuario) {
+	public ResponseEntity<List<MsgDTO>> getSuggestions(@RequestBody Usuario usuario) {
 		usuario.getQuestion().setQuestionType(QuestionType.ORIGINAL);
 
 		userService.updateUser(usuario);
-		List<MSG> suggestions = questionService.getAnalize(usuario.getQuestion());
-		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
+		List<MsgDTO> suggestions = questionService.getAnalize(usuario.getQuestion());
+		return new ResponseEntity<List<MsgDTO>>(suggestions, HttpStatus.OK);
 	}
 	
 	/**
@@ -71,10 +71,10 @@ public class AnalyzerQuestionController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "analyzerOnly")
-	public ResponseEntity<List<MSG>> getSugestionOnly(@RequestBody Question question) {
+	public ResponseEntity<List<MsgDTO>> getSugestionOnly(@RequestBody Question question) {
 		
-		List<MSG> suggestions = questionService.getAnalize(question);
-		return new ResponseEntity<List<MSG>>(suggestions, HttpStatus.OK);
+		List<MsgDTO> suggestions = questionService.getAnalize(question);
+		return new ResponseEntity<List<MsgDTO>>(suggestions, HttpStatus.OK);
 	}
 
 	/**

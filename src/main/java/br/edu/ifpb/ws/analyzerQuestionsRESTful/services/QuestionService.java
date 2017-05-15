@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.MsgDTO;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.QuestionRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.ReaderQuestions;
 
@@ -44,7 +44,7 @@ public class QuestionService {
 		return questions;
 	}
 	
-	public List<MSG> getAnalize(Question question) {
+	public List<MsgDTO> getAnalize(Question question) {
 		return analyzer.getSuggestions(question);
 	}
 }

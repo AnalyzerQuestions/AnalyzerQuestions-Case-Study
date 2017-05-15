@@ -1,9 +1,10 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.rest;
 
 import java.util.Date;
 
 import javax.servlet.ServletException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
  *
  */
 @RestController
-public class AdminController {
+public class AdminRestService {
+	
+	@Value("${aqt.jwt.sc}")
+	private String keyStore;
+	
+	@Value("${aq.jwt.secret}")
+	private String keySecret;
 
 	/**
 	 * 
@@ -49,9 +56,8 @@ public class AdminController {
 			String token =  Jwts.builder()
 					.setSubject(keyStore)
 					.signWith(SignatureAlgorithm.HS512, "banana")
-					.setExpiration(new Date(System.currentTimeMillis() + 30 * 60 * 1000))
+					.setExpiration(new Date(System.currentTimeMillis() + 180 * 60 * 1000))
 					.compact();
-			
 			
 			return	new LoginResponse(token);
 		} else {
@@ -70,6 +76,7 @@ public class AdminController {
  *
  */
 	private class LoginResponse {
+		@SuppressWarnings("unused")
 		public String token;
 
 		/**

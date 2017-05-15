@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.MSG;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.MsgDTO;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.enumerations.TSuggestions;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.SuggestionService;
 
 /**
  * 
  * <p>
- * 		<b> Analizadores com Mensagens de feed back.</b>
+ * 		<b> Analizadores com Mensagens de feedback.</b>
  * </p>
  *
  * <p>
@@ -43,10 +43,10 @@ public class QuestionAnalyzerMSG {
 	/**
 	 * 
 	 */
-	private MSG msg;
+	private MsgDTO msg;
 	
 	/**
-	 * Injection custom menssages
+	 * Injection custom messages
 	 */
 	@Autowired
 	private SuggestionService suggestionService;
@@ -64,9 +64,9 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgObjective(String description) {
+	public MsgDTO msgObjective(String description) {
 		messages = new ArrayList<>();
-		msg = new MSG();
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerObjective(description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE).getMsg());
@@ -90,8 +90,8 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgExample(String description) {
-		msg = new MSG();
+	public MsgDTO msgExample(String description) {
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerShowExample(description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.SHOW_EXAMPLE).getMsg());
@@ -105,9 +105,9 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgClarity(String title, String description) {
+	public MsgDTO msgClarity(String title, String description) {
 		messages = new ArrayList<>();
-		msg = new MSG();
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerClarity(title, description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.IS_CLARITY).getMsg());
@@ -135,9 +135,9 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgUnderstandableDescription(String title, String description) {
+	public MsgDTO msgUnderstandableDescription(String title, String description) {
 		messages = new ArrayList<>();
-		msg = new MSG();
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerUnderstandableDescription(title, description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.UNDESTANDABLE_DESCRTION).getMsg());
@@ -158,9 +158,9 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgBeEducated(String description) {
+	public MsgDTO msgBeEducated(String description) {
 		messages = new ArrayList<>();
-		msg = new MSG();
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerBeEducated(description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.BE_EDUCADED).getMsg());
@@ -182,8 +182,8 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgCoherencyBodyAndTitle(String title, String description) {
-		msg = new MSG();
+	public MsgDTO msgCoherencyBodyAndTitle(String title, String description) {
+		msg = new MsgDTO();
 		if (qaf.analyzerCoherencyBodyAndTitle(title, description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.COERENCY_BODY_WITH_TITLE).getMsg());
 		}
@@ -196,8 +196,8 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgUsingProperLanguage(String description) {
-		msg = new MSG();
+	public MsgDTO msgUsingProperLanguage(String description) {
+		msg = new MsgDTO();
 		if (qaf.analyzerUsingProperLanguage(description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.USING_PROPER_LANGUAGE).getMsg());
 		}
@@ -211,9 +211,9 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgUnderstandableTitle(String title, String description) {
+	public MsgDTO msgUnderstandableTitle(String title, String description) {
 		messages = new ArrayList<>();
-		msg = new MSG();
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerUnderstandableTitle(title, description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.TITLE_WELL_DEFINED).getMsg());
@@ -233,8 +233,8 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgShortDescriptionQuestion(String description) {
-		msg = new MSG();
+	public MsgDTO msgShortDescriptionQuestion(String description) {
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerShortDescriptionQuestion(description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.SHORT_DESCRIPTION).getMsg());
@@ -248,8 +248,8 @@ public class QuestionAnalyzerMSG {
 	 * @param description
 	 * @return
 	 */
-	public MSG msgDoNotCreateHomeworkQuestions(String description) {
-		msg = new MSG();
+	public MsgDTO msgDoNotCreateHomeworkQuestions(String description) {
+		msg = new MsgDTO();
 		
 		if (qaf.analyzerDoNotCreateHomeworkQuestions(description) == 0) {
 			msg.setHeader(suggestionService.findByTipo(TSuggestions.HOME_WORK_QUESTION).getMsg());

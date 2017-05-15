@@ -1,4 +1,4 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.controllers;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.rest;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.ConfigDTO;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Suggestion;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.pojos.Config;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.SuggestionService;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 
@@ -32,7 +32,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
  *
  */
 @RestController
-public class ConfigController {
+public class ConfigRestService {
 
 	@Autowired
 	private SuggestionService service;
@@ -42,7 +42,7 @@ public class ConfigController {
 	/**
 	 * 
 	 */
-	public ConfigController() {
+	public ConfigRestService() {
 		fileOperationUtil = new FileOperationUtil();
 	}
 
@@ -52,7 +52,7 @@ public class ConfigController {
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/config", method = RequestMethod.POST)
-	public ResponseEntity<Config> updateConfig(@RequestBody Config config) {
+	public ResponseEntity<ConfigDTO> updateConfig(@RequestBody ConfigDTO config) {
 
 		Gson gson = new Gson();
 		String json = gson.toJson(config);
