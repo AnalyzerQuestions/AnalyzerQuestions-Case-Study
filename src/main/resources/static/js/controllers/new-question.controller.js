@@ -71,7 +71,7 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 				user.questionWrapper = questionWrapper;
 				userService.updateUser(user).$promise.then(
 					function onSuccess() {
-						$location.path('/step2')
+						$location.path('/feedback')
 
 					}, function onError() {
 				});

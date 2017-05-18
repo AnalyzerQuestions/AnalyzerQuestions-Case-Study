@@ -22,25 +22,27 @@ import javax.persistence.Table;
  * </p>
  * 
  * <pre>
- * @see <a href="http://www.linkreferencia.com">Link de Referencia</a>
+ * &#64;see <a href="http://www.linkreferencia.com">Link de Referencia</a>
  * </pre>
  * 
- * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
  *
  */
 @Entity
-@Table(name="QUESTION_CHANGE_WITH_SUGESTIONS")
+@Table(name = "QUESTION_CHANGE_WITH_SUGESTIONS")
 public class QuestionWrapper {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Question question;
-	
+
 	@ElementCollection
 	private List<String> suggestions;
+
+	@OneToOne
+	private FeedBackSuggestion feedback;
 
 	public Question getQuestion() {
 		return question;
@@ -58,9 +60,20 @@ public class QuestionWrapper {
 		this.suggestions = suggestions;
 	}
 
-	@Override
-	public String toString() {
-		return "QuestionWrapper [question=" + question + ", suggestions=" + suggestions + "]";
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public FeedBackSuggestion getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(FeedBackSuggestion feedback) {
+		this.feedback = feedback;
 	}
 
 }

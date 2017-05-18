@@ -19,17 +19,17 @@
 						ng-model="question.description">
 					</textarea>
 				</div>
-				<button id="btn-get-sug" class="btn  btn-primary" type="submit" ng-show="suggestions.length === 0"
+				<button id="btn-get-sug" class="btn  btn-primary btn-lg" type="submit" ng-show="suggestions.length === 0"
 					ng-click="getSuggestions()">Obter Sugestões</button>
-				<button id="btn-completter" class="btn  btn-danger" type="submit"
-					ng-show="suggestions.length > 0" ng-click="registerChosenSuggestions()">Finalizar</button>
+				<button id="btn-completter" class="btn  btn-danger btn-lg" type="submit"
+					ng-show="suggestions.length > 0" ng-click="registerChosenSuggestions()">Reenviar Pergunta</button>
 
 				<div style="height: 300px;"></div>
 			</div>
 		</form>
 		<div class="col-sm-6">
-			<div class="aqt-suggestions" ng-show="suggestions.length > 0">
-				Clique nas sugestões que você acha que são condizentes para a pergunta
+			<div class="aqt-suggestions-label" ng-show="suggestions.length > 0">
+				Clique nas sugestões que você acha que são condizentes para a pergunta e altere a mesma (Caso necessário).
 			</div>
 			<div ng-repeat="sug in suggestions">
 				<div class="alert  alert-danger  alert-dismissible aqt-close aqt-poiter" ng-click="checkedSuggestion(sug)"
@@ -39,9 +39,9 @@
 							ng-click="checkedSuggestion(sug)" aria-hidden="true"></i>
 					</button>
 					<p>
-					<span style="font-size: 20px;">{{sug.header}}</span>
+					<span>{{sug.header}}</span>
 					<div ng-repeat="m in sug.subHeaders">
-						<li style="font-size: 15px;">{{m}}</li>
+						<li style="font-size: 12px;">{{m}}</li>
 					</div>
 					</p>
 				</div>

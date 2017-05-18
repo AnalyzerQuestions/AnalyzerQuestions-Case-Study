@@ -1,7 +1,42 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 body {
-	font-family: 'Abel', sans-serif;
-	font-size: 19px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
 	background: #fdfdfd;
+	line-height: 28px;
+	font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	color: #333;
+}
+
+h1 {
+	display: block;
+	font-size: 2em;
+	-webkit-margin-before: 0.67em;
+	-webkit-margin-after: 0.67em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+
+p {
+	display: block;
+	line-height: 28px;
+	margin-bottom: 25px;
+	font-size: 16px;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
 }
 
 .jumbotron {
@@ -140,7 +175,6 @@ body {
 	padding: 4px;
 }
 
-
 .aqt-load-more {
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -154,61 +188,66 @@ body {
 }
 
 .Absolute-Center {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
 
 .Absolute-Center.is-Responsive {
-  width: 50%; 
-  height: 50%;
-  min-width: 300px;
-  max-width: 600px;
-  padding: 40px;
+	width: 50%;
+	height: 50%;
+	min-width: 300px;
+	max-width: 600px;
+	padding: 40px;
 }
 
 .growl-container {
 	margin-top: 50px !important;
 }
-.growl-container > .growl-item.ng-enter,
-.growl-container > .growl-item.ng-leave {
-  -webkit-transition:1s linear all;
-  -moz-transition:1s linear all;
-  -o-transition:1s linear all;
-  transition:1s linear all;
+
+.growl-container>.growl-item.ng-enter, .growl-container>.growl-item.ng-leave
+	{
+	-webkit-transition: 1s linear all;
+	-moz-transition: 1s linear all;
+	-o-transition: 1s linear all;
+	transition: 1s linear all;
 }
 
-.acoes{
+.acoes {
 	text-align: center;
 }
-.aqt-header{
+
+.aqt-header {
 	text-align: center;
 	margin-bottom: 20px;
 }
 
-.aqt-progress{
+.aqt-progress {
 	margin-top: 7px !important;
 }
 
-.aqt-suggestions{
+.aqt-suggestions-label {
 	text-align: center;
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
 
-.aqt-poiter{
+.aqt-poiter {
 	cursor: pointer;
 }
 
-.aqt-panel-logos{
+.aqt-panel-logos {
 	margin: 10px;
 }
 
-.aqt-panel-space{
+.aqt-panel-space {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
-.aqt-logo{
+.aqt-logo {
 	margin-top: 22px;
 }

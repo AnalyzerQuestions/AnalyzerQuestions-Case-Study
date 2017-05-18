@@ -3,6 +3,10 @@ aqtApp.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when("/newQuestion", {
 		templateUrl : 'view/new-question.html',
 		controller : 'newQuestionController'
+			
+	}).when("/feedback", {
+		templateUrl : 'view/feedback-suggestions.html',
+		controller : 'FeedbackController'
 
 	}).when("/listQuestions", {
 		templateUrl : 'view/list-questions.html',
