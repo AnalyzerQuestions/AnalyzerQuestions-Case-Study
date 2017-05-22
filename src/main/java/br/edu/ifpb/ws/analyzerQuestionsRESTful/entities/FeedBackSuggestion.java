@@ -23,7 +23,7 @@ public class FeedBackSuggestion {
 	 * 
 	 */
 	@Column(name = "is_important")
-	private boolean isImportant;
+	private boolean important;
 
 	/**
 	 * 
@@ -40,11 +40,11 @@ public class FeedBackSuggestion {
 	}
 
 	public boolean isImportant() {
-		return isImportant;
+		return important;
 	}
 
-	public void setImportant(boolean isImportant) {
-		this.isImportant = isImportant;
+	public void setImportant(boolean important) {
+		this.important = important;
 	}
 
 	public String getJustification() {

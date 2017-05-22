@@ -41,7 +41,7 @@ public class QuestionWrapper {
 	@ElementCollection
 	private List<String> suggestions;
 
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private FeedBackSuggestion feedback;
 
 	public Question getQuestion() {

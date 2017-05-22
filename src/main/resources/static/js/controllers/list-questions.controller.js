@@ -2,7 +2,6 @@
  * Controller responsável pela manipulação do fragmento de página
  * list-questions.html
  * 
- * @created by Franck Aragão
  * @date 21-10-16.
  */
 aqtApp.controller("listQuestionController",function($scope, userService, aqtConfig, $http, $location,localStorageService) {

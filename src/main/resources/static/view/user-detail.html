@@ -59,6 +59,27 @@
 				</div>
 			</div>
 			<div class="panel panel-default">
+				<div class="panel-heading">FEEDBACK (Adição de passo de sugestões após a formulação da pergunta)</div>
+				<div class="panel-body"></div>
+				<div class="table-responsive">
+					<table
+						class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+						<thead>
+							<tr>
+								<th width="20%">É Importante</th>
+								<th width="80%">Justificativa</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{user.questionWrapper.feedback.important? 'Sim':'Não'}}</td>
+								<td>{{user.questionWrapper.feedback.justification}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="panel panel-default">
 				<div class="panel-heading">PERGUNTAS ESCOLHIDAS/CLICADAS</div>
 				<div class="panel-body"></div>
 				<div class="table-responsive">
