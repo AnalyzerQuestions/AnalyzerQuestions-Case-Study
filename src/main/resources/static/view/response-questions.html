@@ -30,14 +30,14 @@
 					ng-include="'/view/fragments/form-chosen-questions.html'"></div>
 				<div class="well well-sm">
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-5">
 							<button type="reset" class="btn btn-primary"
 								ng-show="!vm.disableBtnNext()" ng-click="vm.nextQuestion()">PRÓXIMA
 								PERGUNTA</button>
 							<button type="reset" class="btn btn-danger"
 								ng-show="vm.disableBtnNext()" ng-click="vm.nextQuestion()">FINALIZAR</button>
 						</div>
-						<div class="col-md-7 aqt-progress">
+						<div class="col-md-7 aqt-progress pull-right">
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" aria-valuenow="{{vm.progress}}"
 									aria-valuemin="0" aria-valuemax="{{vm.chosenQuestions.length}}" style="width: {{(vm.progress/vm.chosenQuestions.length)*100}}%;">

@@ -1,17 +1,19 @@
-aqtApp.controller("accessController", function($scope, userService, $location, localStorageService) {
+aqtApp.controller("accessController", function($scope, userService, $location, localStorageService, growl) {
 
 	$scope.user = {};
 	
 	localStorageService.remove("aqt-user");
 		
 	$scope.register = function() {
-		userService.saveUser($scope.user).$promise.then(
+		userService.saveUser($scope.user).then(
 
-		function(value) {
-			$location.path('/step1');
-			return localStorageService.set("aqt-user", value);
-
-		}, function(error) {
+		function(response) {
+			if(response.status == 422){
+				growl.error("Usuário com este e-mail já respondeu esta pesquisa.");
+			}else{
+				$location.path('/step1');
+				localStorageService.set("aqt-user", response.data);
+			}
 
 		});
 	};	

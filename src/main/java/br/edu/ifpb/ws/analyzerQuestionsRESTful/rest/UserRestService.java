@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.exception.UniqueConstraintException;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
 
 /**
@@ -21,7 +22,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
  * </p>
  * 
  * <pre>
- * 		@see @UserController used for case study only.
+ * 		&#64;see @UserController used for case study only.
  * </pre>
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
@@ -30,7 +31,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
  */
 @RestController
 public class UserRestService {
-	
+
 	public static final String BASE_URI = "/analyzer";
 
 	@Autowired
@@ -40,12 +41,13 @@ public class UserRestService {
 	 * 
 	 * @param user
 	 * @return
+	 * @throws UniqueConstraintException 
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/user")
-	public ResponseEntity<Usuario> RegisterUser(@RequestBody Usuario user) {
+	public ResponseEntity<?> registerUser(@RequestBody Usuario user) throws UniqueConstraintException {
 
-		Usuario u = userService.saveUser(user);
-		return new ResponseEntity<Usuario>(u, HttpStatus.OK);
+		Usuario userSaved = userService.saveUser(user);
+		return new ResponseEntity<>(userSaved, HttpStatus.OK);
 
 	}
 

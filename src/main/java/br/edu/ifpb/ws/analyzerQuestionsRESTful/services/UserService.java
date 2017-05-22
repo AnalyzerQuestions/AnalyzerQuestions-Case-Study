@@ -1,11 +1,13 @@
 package br.edu.ifpb.ws.analyzerQuestionsRESTful.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.exception.UniqueConstraintException;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.UserRepository;
 
 /**
@@ -28,9 +30,13 @@ public class UserService {
 	 * Método responsável por salvar um usário no banco de dados
 	 * @param user
 	 * @return
+	 * @throws UniqueConstraintException 
 	 */
-	public Usuario saveUser(Usuario user){
-		
+	public Usuario saveUser(Usuario user) throws UniqueConstraintException{
+		Optional<Usuario> userOp = userRepository.findOneByEmail(user.getEmail());
+		if(userOp.isPresent()) {
+			throw new UniqueConstraintException("Usuário com este e-mail já respondeu.");
+		}
 		this.userRepository.save(user);
 		return user;
 	}
@@ -42,7 +48,6 @@ public class UserService {
 	 * @return
 	 */
 	public Usuario findUserById(Long id){
-		
 		return this.userRepository.findOne(id);
 	}
 	

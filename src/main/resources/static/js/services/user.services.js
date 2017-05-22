@@ -1,27 +1,27 @@
-aqtApp.factory('resourceService', function($resource) {
+aqtApp.factory('userService', function($http) {
 	
-	return $resource('/analyzer/user/:userId', null, {
-		update : {
-			method: 'PUT'
-		}
-	});
-})
-
-aqtApp.service('userService', function(resourceService, $http){
-	
-	this.saveUser = function(user){
-		return resourceService.save(user);
+	var service = {
+			saveUser: saveUser,
+			updateUser: updateUser,
+			getById: getById,
+			findAll: findAll
 	};
 	
-	this.updateUser = function(user) {
-		return resourceService.update(user);
+	return service;
+	
+	function saveUser(user){
+		return $http.post("analyzer/user",user);
+	};
+	
+	function updateUser(user) {
+		return $http.put("analyzer/user", user);
 	};	
 	
-	this.getById = function(id) {
-		return resourceService.get({userId: id});
+	 function getById(id) {
+		return $http.get("analyzer/user/"+ id);
 	};
 	
-	this.findAll = function(id) {
+	function findAll() {
 		return $http.get('/admin/user');
 	};
 });
