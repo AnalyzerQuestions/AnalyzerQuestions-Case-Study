@@ -1,29 +1,36 @@
 <div class="container-fluid">
-	<div class="page-header">
+	<div class="page-header text-center">
 		<h3>Feedback para sugestões da pergunta</h3>
 	</div>
 
 	<div class="row">
-		<form name="feedbackForm" ng-submit="feedbackForm.$valid && registerFeedback()" role="form" novalidate>
+		<div class="col-sm-4"></div>
+		<form name="feedbackForm"
+			ng-submit="feedbackForm.$valid && registerFeedback()" role="form"
+			novalidate>
 			<div class="col-sm-4">
 				<div class="form-group">
-					<span>Você acha importante adicionar este passo de sugestões
+					<span class="text-center">Você acha importante adicionar este passo de sugestões
 						de melhorias após a formulação da pergunta?</span><br /> <label
-						class="radio-inline"> <input type="radio" ng-checked="true" name="important"
-						ng-model="feedback.important" id="rbSim" ng-value="true">Sim
+						class="radio-inline"> <input type="radio"
+						ng-checked="true" name="important" ng-model="feedback.important"
+						id="rbSim" ng-value="true">Sim
 					</label> <label class="radio-inline"> <input type="radio"
-						ng-model="feedback.important" name="important" id="rbNao" ng-value="false">Não
+						ng-model="feedback.important" name="important" id="rbNao"
+						ng-value="false">Não
 					</label>
 				</div>
-				<div class="form-group" ng-class="{ 'has-error': feedbackForm.$submitted && feedbackForm.justification.$invalid }">
+				<div class="form-group"
+					ng-class="{ 'has-error': feedbackForm.$submitted && feedbackForm.justification.$invalid }">
 					<span> Justificativa</span>
 					<textarea rows="5" class="form-control" type="text"
-						name="justification" ng-model="feedback.justification" required/>
+						name="justification" ng-model="feedback.justification" required />
 				</div>
 
 				<button id="btn-get-sug" class="btn  btn-primary btn-block"
 					type="submit">finalizar</button>
 			</div>
 		</form>
+		<div class="col-sm-3"></div>
 	</div>
 </div>
