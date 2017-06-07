@@ -5,12 +5,11 @@ aqtApp.controller("userController",function($scope, userService, $location, loca
 			$scope.user = {};
 
 			if ($routeParams.userId) {
-				userService.getById($routeParams.userId).$promise.then(
+				userService.getById($routeParams.userId).then(
 						function(response) {
-							$scope.user = response;
+							$scope.user = response.data;
 
 						}, function(response) {
-							console.log("Erro na requisição " + response);
 						});
 			};
 

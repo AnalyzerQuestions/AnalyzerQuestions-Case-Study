@@ -99,11 +99,11 @@ aqtApp.controller("listQuestionController",function($scope, userService, aqtConf
 			chosenQuestion.chosenQuestions = chosenQuestions;
 			
 			if(chosenQuestions.length) {
-				userService.getById(userStorage.id).$promise.then(
-						function(data) {
-							user = data;
+				userService.getById(userStorage.id).then(
+						function(response) {
+							user = response.data;
 							user.chosenQuestionsWrapper = chosenQuestion;
-							userService.updateUser(user).$promise.then(
+							userService.updateUser(user).then(
 								function onSuccess(response) {
 									$location.path('/step3');
 

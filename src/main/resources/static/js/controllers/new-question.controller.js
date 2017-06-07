@@ -65,11 +65,11 @@ aqtApp.controller('newQuestionController', function($scope, userService, $http,
 		questionWrapper.question = $scope.question;
 		
 		
-		userService.getById(userStorage.id).$promise.then(
-			function(data) {
-				user = data;
+		userService.getById(userStorage.id).then(
+			function(response) {
+				user = response.data;
 				user.questionWrapper = questionWrapper;
-				userService.updateUser(user).$promise.then(
+				userService.updateUser(user).then(
 					function onSuccess() {
 						$location.path('/feedback')
 

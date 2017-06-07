@@ -52,9 +52,9 @@ aqtApp.controller("responseQuestionController", function($scope, userService,
 	/**
 	 * 
 	 */
-	userService.getById(userStorage.id).$promise.then(function(data) {
-		user = data;
-		vm.chosenQuestions = data.chosenQuestionsWrapper.chosenQuestions;
+	userService.getById(userStorage.id).then(function(response) {
+		user = response.data;
+		vm.chosenQuestions = response.data.chosenQuestionsWrapper.chosenQuestions;
 		setQuestionInHtml(cont);
 	}, function(data) {
 	});
