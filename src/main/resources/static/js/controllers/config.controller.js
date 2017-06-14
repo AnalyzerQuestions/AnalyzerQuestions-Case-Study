@@ -113,6 +113,7 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	 */
 	$scope.update = function() {
 		aqtConfig.updateTime($scope.config).then(function(response) {
+			$scope.config = response.data;
 			growl.success("Configurações salvas");
 			reset();
 		});

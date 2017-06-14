@@ -15,19 +15,19 @@ public class StepConfig {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long Id;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubStepConfig welcome;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubStepConfig step1;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubStepConfig step2;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubStepConfig step3;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubStepConfig end;
 
@@ -41,6 +41,14 @@ public class StepConfig {
 
 	public SubStepConfig getStep2() {
 		return step2;
+	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
 	}
 
 	public void setStep2(SubStepConfig step2) {

@@ -46,9 +46,9 @@ public class ConfigRestService {
 	@RequestMapping(value = "/admin/config", method = RequestMethod.POST)
 	public ResponseEntity<Config> updateConfig(@RequestBody Config config) {
 
-		configRepository.save(config);
+		Config configSaved = configRepository.save(config);
 
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(configSaved, HttpStatus.OK);
 	}
 
 	/**

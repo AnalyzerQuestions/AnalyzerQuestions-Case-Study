@@ -31,6 +31,14 @@ public class Config {
 	@ElementCollection
 	private List<String> suggestions;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getTime() {
 		return time;
 	}
