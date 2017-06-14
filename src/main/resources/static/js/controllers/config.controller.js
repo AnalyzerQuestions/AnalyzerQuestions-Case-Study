@@ -55,6 +55,9 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	 * 
 	 */
 	var saveMotiveClicked = function(motive){
+		if(!$scope.config.optionsQuestionsClicked) {
+			$scope.config.optionsQuestionsClicked = [];
+		}
 		$scope.config.optionsQuestionsClicked.push(motive);
 		$('#optionModal').modal('hide');
 	};
@@ -80,6 +83,9 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	 * 
 	 */
 	var saveMotiveChosen = function(motive){
+		if(!$scope.config.optionsQuestionsChosen) {
+			$scope.config.optionsQuestionsChosen = [];
+		}
 		$scope.config.optionsQuestionsChosen.push(motive);
 		$('#optionModal').modal('hide');
 	};

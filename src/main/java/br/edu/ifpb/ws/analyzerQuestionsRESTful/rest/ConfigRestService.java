@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.dto.ConfigDTO;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Config;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Suggestion;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.ConfigRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.SuggestionService;
-import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
 
 /**
  * 
@@ -25,7 +23,7 @@ import br.edu.ifpb.ws.analyzerQuestionsRESTful.util.data.FileOperationUtil;
  *
  * 
  * <pre>
- * @see @ConfigController used for case study only
+ * &#64;see @ConfigController used for case study only
  * </pre>
  * 
  * @author <a href="https://github.com/FranckAJ">Franck Aragão</a>
@@ -37,14 +35,8 @@ public class ConfigRestService {
 	@Autowired
 	private SuggestionService service;
 
-	private FileOperationUtil fileOperationUtil;
-	
-	/**
-	 * 
-	 */
-	public ConfigRestService() {
-		fileOperationUtil = new FileOperationUtil();
-	}
+	@Autowired
+	private ConfigRepository configRepository;
 
 	/**
 	 * 
@@ -52,11 +44,9 @@ public class ConfigRestService {
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/config", method = RequestMethod.POST)
-	public ResponseEntity<ConfigDTO> updateConfig(@RequestBody ConfigDTO config) {
+	public ResponseEntity<Config> updateConfig(@RequestBody Config config) {
 
-		Gson gson = new Gson();
-		String json = gson.toJson(config);
-		fileOperationUtil.writer(json, "config.json");
+		configRepository.save(config);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -67,11 +57,14 @@ public class ConfigRestService {
 	 * @return
 	 */
 	@RequestMapping(value = "/config", method = RequestMethod.GET)
-	public ResponseEntity<String> getConfig() {
+	public ResponseEntity<Config> getConfig() {
+		Config config = null;
+		List<Config> configs = configRepository.findAll();
+		if(configs != null && !configs.isEmpty()) {
+			config = configs.get(0);
+		}
 
-		String json = fileOperationUtil.reader("config.json");
-
-		return new ResponseEntity<>(json, HttpStatus.OK);
+		return new ResponseEntity<>(config, HttpStatus.OK);
 	}
 
 	/**

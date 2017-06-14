@@ -1,13 +1,34 @@
-package br.edu.ifpb.ws.analyzerQuestionsRESTful.dto;
+package br.edu.ifpb.ws.analyzerQuestionsRESTful.entities;
 
 import java.util.List;
 
-public class ConfigDTO {
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Config {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
 	private String time;
+
+	@ElementCollection
 	private List<String> optionsQuestionsClicked;
+
+	@ElementCollection
 	private List<String> optionsQuestionsChosen;
-	private StepDTO steps;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private StepConfig steps;
+
+	@ElementCollection
 	private List<String> suggestions;
 
 	public String getTime() {
@@ -34,11 +55,11 @@ public class ConfigDTO {
 		this.optionsQuestionsChosen = optionsQuestionsChosen;
 	}
 
-	public StepDTO getSteps() {
+	public StepConfig getSteps() {
 		return steps;
 	}
 
-	public void setSteps(StepDTO steps) {
+	public void setSteps(StepConfig steps) {
 		this.steps = steps;
 	}
 

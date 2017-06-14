@@ -36,6 +36,28 @@ public class FileOperationUtil {
 		return sb.toString();
 	}
 	
+	public String parseFile(File file) {
+
+		BufferedReader br;
+		StringBuilder sb = null;
+		try {
+			FileReader fileReader = new FileReader(file);
+			br = new BufferedReader(fileReader);
+			sb = new StringBuilder();
+			String line = br.readLine();
+
+			while (line != null) {
+				sb.append(line);
+				sb.append(System.lineSeparator());
+				line = br.readLine();
+			}
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
+	}
+	
 	/**
 	 * 
 	 * @param content
