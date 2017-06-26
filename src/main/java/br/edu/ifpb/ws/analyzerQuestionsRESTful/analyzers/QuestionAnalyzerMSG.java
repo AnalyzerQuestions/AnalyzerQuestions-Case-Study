@@ -75,7 +75,7 @@ public class QuestionAnalyzerMSG {
 				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECIVE_DC).getMsg());
 
 			if (!qaf.isQuestionUnique(description))
-				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE_QUESTION_UNIQUE).getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.UNIQUE_QUESTION).getMsg());
 
 			if (qaf.avoidingMuchCode(description) == 0)
 				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE_MUCH_CODE).getMsg());
