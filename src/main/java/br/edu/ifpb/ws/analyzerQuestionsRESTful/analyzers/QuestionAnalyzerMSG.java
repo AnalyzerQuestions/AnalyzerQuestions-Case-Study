@@ -129,16 +129,16 @@ public class QuestionAnalyzerMSG {
 				messages.add(suggestionService.findByTipo(TSuggestions.IS_CLARITY).getMsg());
 			
 			if (qaf.analyzerShowExample(description) == 0) {
-				msg.setHeader(suggestionService.findByTipo(TSuggestions.SHOW_EXAMPLE).getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.SHOW_EXAMPLE).getMsg());
 			}
 			
 			if(qaf.avoidingMuchCode(description) == 0) {
-				msg.setHeader(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE_MUCH_CODE).getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.IS_OBJECTIVE_MUCH_CODE).getMsg());
 			}
 			
 			if(qaf.containsURL(description) == 1) {
 				if(qaf.combinateURLWithContent(description) == 0) {
-					msg.setHeader(suggestionService.findByTipo(TSuggestions.COMBINATE_URL).getMsg());					
+					messages.add(suggestionService.findByTipo(TSuggestions.COMBINATE_URL).getMsg());					
 				}
 			}
 		}
@@ -166,7 +166,7 @@ public class QuestionAnalyzerMSG {
 				messages.add(suggestionService.findByTipo(TSuggestions.GREAT).getMsg());
 			
 			if (qaf.analyzerDoNotCreateHomeworkQuestions(description) == 0) {
-				msg.setHeader(suggestionService.findByTipo(TSuggestions.HOME_WORK_QUESTION).getMsg());
+				messages.add(suggestionService.findByTipo(TSuggestions.HOME_WORK_QUESTION).getMsg());
 			}
 		}
 
