@@ -85,10 +85,8 @@ public class QuestionAnalyzerFinal {
 			cont++;
 		if (this.isQuestionUnique(description))
 			cont++;
-		if (avoidingMuchCode(description) == 1)
-			cont++;
 
-		if (cont >= 3)
+		if (cont >= 2)
 			return 1;
 		return 0;
 	}
@@ -106,8 +104,6 @@ public class QuestionAnalyzerFinal {
 			count++;
 		if (analyzerCoherencyBodyAndTitle(title, description) == 1)
 			count++;
-		if (analyzerShowExample(description) == 1)
-			count++;
 
 		if (isQuestionUnique(description)) {
 			count++;
@@ -117,7 +113,7 @@ public class QuestionAnalyzerFinal {
 			}
 		}
 
-		if (count >= 4)
+		if (count >= 3)
 			return 1;
 		return 0;
 
@@ -127,14 +123,40 @@ public class QuestionAnalyzerFinal {
 	 * Descrição bem definida (Objetividade e clareza)
 	 */
 	public Integer analyzerUnderstandableDescription(String title, String description) {
-
-		if (this.analyzerObjective(description) == 1) {
-
-			if (this.analyzerClarity(title, description) == 1) {
-				return 1;
+		Integer count = 0;
+		boolean url = false;
+		if (this.analyzerObjective(description) == 1) 
+			count++;
+		
+		if (this.analyzerClarity(title, description) == 1) 
+			count++;
+		
+		if (analyzerShowExample(description) == 1)
+			count++;
+		
+		if(avoidingMuchCode(description) == 1)
+			count ++;
+		
+		if(containsURL(description) == 1){
+			url = true;
+			if(combinateURLWithContent(description) == 1) {
+				count ++;
 			}
 		}
-		return 0;
+		
+		if(url) {
+			if(count >= 5){
+				return 1;
+			} else {
+				return 0;
+			}
+		}else {
+			if (count >= 4){
+				return 1;				
+			}else{
+				return 0;	
+			}
+		}
 	}
 
 	/**
@@ -157,13 +179,18 @@ public class QuestionAnalyzerFinal {
 	 * Ser educado (Usar língua apropriada, incluir agradecimento)
 	 */
 	public Integer analyzerBeEducated(String description) {
-
-		if (this.analyzerUsingProperLanguage(description) == 1) {
-
-			if (this.includingGreetings(description) == 1) {
-				return 1;
-			}
-		}
+		Integer count = 0;
+		if (this.analyzerUsingProperLanguage(description) == 1)
+			count++;
+		
+		if (this.includingGreetings(description) == 1)
+			count++;
+		
+		if(this.analyzerDoNotCreateHomeworkQuestions(description) == 1)
+			count++;
+		
+		if (count >= 3)
+			return 1;
 		return 0;
 	}
 

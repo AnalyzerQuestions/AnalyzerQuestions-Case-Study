@@ -29,34 +29,34 @@ aqtApp.service('aqtConfig', function($http) {
 		suggestions = [ 
 		               
 	   			sug = {
-		   			msg : 'Descreva seu problema de forma simples e direta.',
+		   			msg : 'Seja Objetivo',
 //	   				msg : 'Describe your problem in a way simple and direct.',
 	   				tipo : 'IS_OBJECTIVE',
-	   				categoria :['Objetividade', 'Clareza']
+	   				categoria :['Objetividade', 'HEADER']
 	   	
 	   			}, sug = {
-		   			msg : 'Descrição curta.',
+		   			msg : 'Evite adicionar muita informação na descrição da pergunta, seja sucinto.',
 //	   				msg : 'Short description',
-	   				tipo : 'IS_OBJECIVE_DC',
+	   				tipo : 'SHOT_DESCRIPTION',
 	   				categoria : ['Objetividade']
-	   	
-	   			}, sug = {
-		   		  msg : 'Evite pergunta com muito código.',
-//	   			  msg : 'Avoid a large amount of code',
-	   			  tipo : 'IS_OBJECTIVE_MUCH_CODE',
-	   			  categoria : ['Objetividade']
+
 	   			
 	   			}, sug = {
 		   		  msg : 'Seja Objetivo e deixe a pergunta mais evidente possível.',
 //	   			  msg : 'Be objective and let the question most evident.',
 	   			  tipo : 'IS_CLARITY',
-	   			  categoria : ['Clara']
+	   			  categoria : ['Clarreza', 'HEADER']
 	   				  
 	   			}, sug = {
-		   		  msg : 'Resuma a pergunta a um único problema e/ou deixe mais evidente seu prblema.',
+		   		  msg : 'Resuma a pergunta a um único problema.',
 //	   			  msg : 'Summarize the question in a single problem and/or let question most evident.',
 	   			  tipo : 'UNIQUE_QUESTION',
-	   			  categoria : ['Objetividade', 'Clareza']
+	   			  categoria : ['Objetividade']
+
+	   			}, sug = {
+	  		   		  msg : 'Resuma a pergunta a um único problema e o deixe mais evidente possível.',
+	  	   			  tipo : 'EVIDENT_QUESTION',
+	  	   			  categoria : ['Clareza']
 	   				  
 	   			}, sug = {
 		   		  msg : 'Use a norma culta da língua.',
@@ -69,48 +69,40 @@ aqtApp.service('aqtConfig', function($http) {
 //	   			  msg : 'Add some kind of thanks at the end of the question.',
 	   			  tipo : 'GREAT',
 	   			  categoria : ['Ser educado']
-	   				  
-	   			}, sug = {
-		   		  msg : 'Evite criar o título da pergunta muito longo ou curto.',
-//	   			  msg : 'Avoid creating a question with large or too much short title.',
-	   			  tipo : 'TITLE_MEDIO',
-	   			  categoria : ['Tamanho do título']
 	   				 
 	   			}, sug = {
 		   		  msg : 'Adicione um trecho de código ou outro de tipo de exemplo na pergunta.',
 //	   			  msg : 'Add a snippet of code or another kind of example.',
 	   			  tipo : 'SHOW_EXAMPLE',
-	   			  categoria : ['Clareza']
+	   			  categoria : ['Descrição bem definida']
+	   			
+	   			}, sug = {
+	  		   		  msg : 'Evite adicionar links a pergunta sem especificar o seu conteúdo.',
+	  	   			  tipo : 'COMBINATE_URL',
+	  	   			  categoria : ['Descrição bem definida']	   			
 	   				  
 	   			}, sug = {
-		   		  msg : 'Seja educado, use a norma culta da língua e adicione algum tipo de agradecimento.',
+		   		  msg : 'Seja educado',
 //	   			  msg : 'Be polite, use proper language and add a greeting.',
 	   			  tipo : 'BE_EDUCADED',
-	   			  categoria : ['Ser educado']
+	   			  categoria : ['Ser educado', 'HEADER']
 	   			
 	   			}, sug = {
 		   		  msg : 'Evite criar perguntas sobre trabalhos acadêmicos.',
 //	   			  msg : 'Avoid creating homework question.',
 	   			  tipo : 'HOME_WORK_QUESTION',
-	   			  categoria : ['Perguntas acadêmicas']
-	   			
-	   			}, sug = {
-		   		  msg : 'Evite adicionar muita informação na descrição da pergunta, seja sucinto.',
-//	   			  msg : 'Avoid long description, be objective.',
-	   			  tipo : 'SHORT_DESCRIPTION',
-	   			  categoria : ['Descrição curta']
+	   			  categoria : ['Ser educado']
 	   			
 	   			}, sug = {
 		    	  msg : 'Seja mais objetivo e claro na formulação da pergunta.',
 //	   			  msg : 'Be more objective and course on the question',
 	   			  tipo : 'UNDESTANDABLE_DESCRTION',
-	   			  categoria : ['Descrição bem definida']
-	   				  
+	   			  categoria : ['Descrição bem definida', 'HEADER']
+
 	   			}, sug = {
-		    	  msg : 'Descreva melhor o título da pergunta, o título deve ser o resumo da descrição do problema.',
-//	   			  msg : "Improve the title of the question, it's should be a summarize to the description of the problem.",
-	   			  tipo : 'TITLE_WELL_DEFINED',
-	   			  categoria : ['Título bem definido']
+	  		    	  msg : 'Evite adicionar muito código a pergunta.',
+	  	   			  tipo : 'IS_OBJECTIVE_MUCH_CODE',
+	  	   			  categoria : ['Descrição bem definida']	   			
 	   				  
 	   			}, sug = {
 		   		  msg : 'O Título da pergunta parece não está coerente com a descrição.',
