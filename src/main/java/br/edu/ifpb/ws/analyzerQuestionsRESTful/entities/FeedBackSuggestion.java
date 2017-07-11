@@ -28,6 +28,12 @@ public class FeedBackSuggestion {
 	/**
 	 * 
 	 */
+	@Column(name = "suggestions_ok")
+	private boolean suggestionsOk;
+
+	/**
+	 * 
+	 */
 	@Column(columnDefinition = "TEXT")
 	private String justification;
 
@@ -53,6 +59,14 @@ public class FeedBackSuggestion {
 
 	public void setJustification(String justification) {
 		this.justification = justification;
+	}
+
+	public boolean isSuggestionsOk() {
+		return suggestionsOk;
+	}
+
+	public void setSuggestionsOk(boolean suggestionsOk) {
+		this.suggestionsOk = suggestionsOk;
 	}
 
 }

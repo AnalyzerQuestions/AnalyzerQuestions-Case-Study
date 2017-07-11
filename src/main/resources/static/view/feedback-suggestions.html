@@ -1,28 +1,43 @@
 <div class="container-fluid">
 	<div class="page-header text-center">
-		<h3>Feedback para sugestões da pergunta</h3>
+		<h3>O motor de sugestões tem objetivo de oferecer, ao usuário,
+			sugestões de como melhorar sua pergunta.</h3>
 	</div>
 
 	<div class="row">
-		<div class="col-sm-4"></div>
+		<div class="col-sm-3"></div>
 		<form name="feedbackForm"
 			ng-submit="feedbackForm.$valid && registerFeedback()" role="form"
 			novalidate>
-			<div class="col-sm-4">
+			<div class="col-sm-5">
 				<div class="form-group">
-					<span class="text-center">Você acha importante adicionar este passo de sugestões
-						de melhorias após a formulação da pergunta?</span><br /> <label
-						class="radio-inline"> <input type="radio"
-						ng-checked="true" name="important" ng-model="feedback.important"
-						id="rbSim" ng-value="true">Sim
+					<div class="form-group">
+						<span class="text-center">Na sua opinião, as recomendações
+							do motor de sugestões foram pertinentes? </span><br /> <label
+							class="radio-inline"> <input type="radio"
+							ng-checked="true" name="suggestionsOk"
+							ng-model="feedback.suggestionsOk" id="rbSSim" ng-value="true">Sim
+						</label> <label class="radio-inline"> <input type="radio"
+							ng-model="feedback.suggestionsOk" name="suggestionsOk"
+							id="rbSNao" ng-value="false">Não
+						</label>
+					</div>
+
+					<span class="text-center">Na sua opinião, a inclusão desta
+						etapa de recebimento de sugestões é importante para melhorar a
+						pergunta? </span><br /> <label class="radio-inline"> <input
+						type="radio" ng-checked="true" name="important"
+						ng-model="feedback.important" id="rbSim" ng-value="true">Sim
 					</label> <label class="radio-inline"> <input type="radio"
 						ng-model="feedback.important" name="important" id="rbNao"
 						ng-value="false">Não
 					</label>
+
 				</div>
 				<div class="form-group"
 					ng-class="{ 'has-error': feedbackForm.$submitted && feedbackForm.justification.$invalid }">
-					<span> Justificativa</span>
+					<span> Justifique (se desejar você pode explicar melhor suas
+						respostas)</span>
 					<textarea rows="5" class="form-control" type="text"
 						name="justification" ng-model="feedback.justification" required />
 				</div>
