@@ -31,7 +31,7 @@ public class AnalyzerQuestionsRESTfulApplication extends SpringBootServletInitia
 
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
 		filterRegistrationBean.setFilter(new TokenFilter());
-		//filterRegistrationBean.addUrlPatterns("/admin/*");
+		filterRegistrationBean.addUrlPatterns("/admin/*");
 
 		return filterRegistrationBean;
 	}
