@@ -9,7 +9,7 @@ aqtApp.service('aqtConfig', function($http) {
 	};
 
 	this.getSuggestions = function() {
-		return $http.get('/suggestions');
+		return $http.get('/admin/suggestions');
 	};
 
 	this.saveSuggestion = function(suggestion) {

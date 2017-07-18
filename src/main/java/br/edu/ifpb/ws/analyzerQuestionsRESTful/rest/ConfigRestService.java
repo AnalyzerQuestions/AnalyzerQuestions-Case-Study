@@ -107,7 +107,7 @@ public class ConfigRestService {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/suggestions", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/suggestions", method = RequestMethod.GET)
 	public ResponseEntity<List<Suggestion>> findAllSuggestions() {
 
 		List<Suggestion> suggestions = service.findAll();
