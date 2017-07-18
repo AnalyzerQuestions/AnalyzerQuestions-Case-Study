@@ -25,6 +25,7 @@ aqtApp.controller("listQuestionController",function($scope, userService, aqtConf
 			}).then(function onSuccess(response) {
 				$scope.questions = response.data;
 				$scope.loadMore();
+				startTmp();
 
 			}, function onError(response) {
 
@@ -126,24 +127,26 @@ aqtApp.controller("listQuestionController",function($scope, userService, aqtConf
 		 * inicia cronometro, quando a tela de lista de pergunta é
 		 * iniciada.
 		 */
-		aqtConfig.getConfig().then(function(response){
-			timer = new Timer();
-			timer.start({
-				countdown : true,
-				startValues : {seconds : Number(response.data.time)}
+		var startTmp = function() {
+			aqtConfig.getConfig().then(function(response){
+				timer = new Timer();
+				timer.start({
+					countdown : true,
+					startValues : {seconds : Number(response.data.time)}
+				});
+	
+				$('.cronometer').html(timer.getTimeValues().toString());
+				timer.addEventListener('secondsUpdated', function(e) {
+					$('.cronometer').html(
+						timer.getTimeValues().toString());
+				});
+	
+				timer.addEventListener('targetAchieved', function(e) {
+					$('.cronometer').html('');
+					$('#end-time').modal('toggle')
+				});
 			});
-
-			$('.cronometer').html(timer.getTimeValues().toString());
-			timer.addEventListener('secondsUpdated', function(e) {
-				$('.cronometer').html(
-					timer.getTimeValues().toString());
-			});
-
-			timer.addEventListener('targetAchieved', function(e) {
-				$('.cronometer').html('');
-				$('#end-time').modal('toggle')
-			});
-		});
+		}
 
 		/**
 		 * Remove classes do componente modal do bootstrap. Forma
