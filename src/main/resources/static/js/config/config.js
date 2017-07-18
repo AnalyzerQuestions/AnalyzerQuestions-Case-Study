@@ -17,7 +17,7 @@ aqtApp.service('aqtConfig', function($http) {
 	};
 	
 	this.updateSuggestion = function(suggestion) {
-		return $http.put('/admin/suggestions', suggestion)
+		return $http.put('/suggestions', suggestion)
 	};
 	
 	this.removeAllSuggestions = function() {
