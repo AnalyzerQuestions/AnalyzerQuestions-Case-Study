@@ -16,6 +16,13 @@ aqtApp.controller("configController", function($scope, aqtConfig, questionServic
 	aqtConfig.getConfig().then(function(response) {
 		$scope.config = response.data;
 	});
+	
+	
+	$scope.resetAllUsers = function() {
+		userService.reset().then(function(response) {
+			growl.success("Usuários removidos");
+		})
+	};
 
 	/**
 	 * 

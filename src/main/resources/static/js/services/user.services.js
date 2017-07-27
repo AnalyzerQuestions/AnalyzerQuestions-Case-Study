@@ -4,7 +4,8 @@ aqtApp.factory('userService', function($http) {
 			saveUser: saveUser,
 			updateUser: updateUser,
 			getById: getById,
-			findAll: findAll
+			findAll: findAll,
+			reset: reset
 	};
 	
 	return service;
@@ -24,4 +25,8 @@ aqtApp.factory('userService', function($http) {
 	function findAll() {
 		return $http.get('/admin/user');
 	};
+	
+	function reset() {
+		return $http.delete('/admin/user');
+	}
 });

@@ -4,6 +4,8 @@ aqtApp.controller('FeedbackController', function($scope, userService, $http,
 		$location, localStorageService) {
 
 	$scope.feedback = {};
+	$scope.feedback.suggestionsOk = true;
+	$scope.feedback.important = true;
 	var userStorage = localStorageService.get("aqt-user");
 	var user = {};
 
@@ -13,9 +15,9 @@ aqtApp.controller('FeedbackController', function($scope, userService, $http,
 	$scope.registerFeedback = function() {
 		userService.getById(userStorage.id).then(function(response) {
 			user = response.data;
-			if(user.questionWrapper) {
-				user.questionWrapper.feedback = $scope.feedback;				
-			}else {
+			if (user.questionWrapper) {
+				user.questionWrapper.feedback = $scope.feedback;
+			} else {
 				user.questionWrapper = {};
 				user.questionWrapper.feedback = $scope.feedback;
 			}

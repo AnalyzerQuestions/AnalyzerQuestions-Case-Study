@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Usuario;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.exception.UniqueConstraintException;
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.repository.UserRepository;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.services.UserService;
 
 /**
@@ -37,11 +38,14 @@ public class UserRestService {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	/**
 	 * 
 	 * @param user
 	 * @return
-	 * @throws UniqueConstraintException 
+	 * @throws UniqueConstraintException
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = BASE_URI + "/user")
 	public ResponseEntity<?> registerUser(@RequestBody Usuario user) throws UniqueConstraintException {
@@ -87,5 +91,13 @@ public class UserRestService {
 		List<Usuario> users = userService.getAll();
 
 		return new ResponseEntity<List<Usuario>>(users, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/admin/user")
+	public ResponseEntity<Usuario> removeAll() {
+		userRepository.deleteAll();
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+
 	}
 }

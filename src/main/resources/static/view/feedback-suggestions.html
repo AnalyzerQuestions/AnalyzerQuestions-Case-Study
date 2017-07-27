@@ -32,20 +32,17 @@
 						ng-model="feedback.important" name="important" id="rbNao"
 						ng-value="false">Não
 					</label>
-
 				</div>
 				<div class="form-group"
 					ng-class="{ 'has-error': feedbackForm.$submitted && feedbackForm.justification.$invalid }">
 					<span> Justifique (se desejar você pode explicar melhor suas
 						respostas)</span>
 					<textarea rows="5" class="form-control" type="text"
-						name="justification" ng-model="feedback.justification" required />
+						name="justification" ng-model="feedback.justification" />
 				</div>
 
 				<button id="btn-get-sug" class="btn  btn-danger btn-block"
 					type="submit">finalizar</button>
-				<a id="btn-get-sug" class="btn  btn-default btn-block"
-					href="#/step2">Pular</a>
 			</div>
 		</form>
 		<div class="col-sm-3"></div>
