@@ -50,7 +50,7 @@ public class AdminRestService {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/user/adminAccess")
 	public LoginResponse access(@RequestParam("key") String key) throws ServletException {
-		String keyStore = "teste";
+		String keyStore = "!fpb@dsPesQuisA";
 
 		if (key.equals(keyStore)) {
 			String token =  Jwts.builder()
