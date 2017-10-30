@@ -1,4 +1,67 @@
+<div ng-include="'/view/fragments/modal-explanation.html'"></div>
+
 <div class="container-fluid">
+
+
+	<div class="modal fade" data-backdrop="static" data-keyboard="false"
+		id="modalExplicativo" tabindex="-1" role="dialog">
+		<div class="modal-dialog aqt-modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h3 class="modal-title">
+						<strong>Sobre esta etapa.</strong>
+					</h3>
+				</div>
+				<div class="modal-body">
+					<div id="body-detail-description"></div>
+					<p>
+					<div style="margin-top: 8px;">
+						Nesta etapa você deve elaborar uma pergunta de programação. Onde
+						você irá:
+						<p>1 - Informar um título para sua pergunta.</p>
+						<p>2 - Contextualizar/descrever sua pergunta.</p>
+						
+						<strong>Você pode utilizar exemplos(perguntas) de outros sites, como por exemplo, o GUJ ou STACKOVERFLOW.</strong></p>
+
+						Você não deve colocar a resposta da pergunta. Imagine-se em um
+						dado momento em que você não consegue resolver algum problema de
+						programação, então você resolve fazer uma pergunta em um site de
+						perguntas e respostas de programação. Por exemplo:
+						
+						<p>Título: <strong>Fatorial em Java.</strong></p>
+						
+						<p>Descrição:</p>						
+						Boa noite!! Sou novo aqui no Forum e estou aprendendo Java Também... 
+						Estou na minha segunda aula de java e o professor pediu para calcular um fatorial de 
+						algum nº n. eu fiz da seguinte maneira só que está acontecendo um erro de cálculo.
+						<pre>public class Fatorial {
+	public static void main (String [] args){
+							
+		int i, Fat = 4;
+							
+		for (i=1;i<=Fat;i+1){
+							
+			Fat=Fat*i;
+							
+		}System.out.print(Fat);
+							
+	}
+}
+						</pre>		
+						Por favor se alguém souber alguma maneira simples de calcular o Fatorial, e que possa me explicar, serei muito grato!!!
+						
+					</div>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="page-header">
 		<h3>
 			Faça sua Pergunta <small>Qual sua pergunta de programação?</small>
@@ -9,37 +72,43 @@
 		<form name="form-question">
 			<div class="col-sm-6">
 				<div class="form-group">
-					Título da Pergunta <input class="form-control" type="text"
-						name="title" ng-model="question.title" />
+					Título da Pergunta <input id="titulo-input" class="form-control"
+						type="text" name="title" ng-model="question.title"
+						onkeyup="habi()" />
 				</div>
 				<div class="form-group">
 					Descrição da Pergunta
 					<textarea id="editor-f" data-iconlibrary="fa" name="content"
-						data-width="50%" data-provide="markdown" rows="13"
-						ng-model="question.description">
+						data-width="50%" data-provide="markdown" rows="8"
+						ng-model="question.description" onkeyup="habi()">
 					</textarea>
 				</div>
-				<button id="btn-get-sug" class="btn  btn-primary btn-lg" type="submit" ng-show="suggestions.length === 0"
-					ng-click="getSuggestions()">Obter Sugestões</button>
-				<button id="btn-completter" class="btn  btn-danger btn-lg" type="submit"
-					ng-show="suggestions.length > 0" ng-click="registerChosenSuggestions()">Reenviar Pergunta</button>
+				<button id="btn-get-sug" class="btn  btn-primary btn-lg"
+					type="submit" ng-click="getSuggestions()" data-toggle="modal"
+					data-target="#modalInformativo" ng-show="suggestions.length === 0"
+					disabled>Obter Sugestões</button>
+				<button id="btn-completter" class="btn  btn-danger btn-lg"
+					type="submit" ng-show="suggestions.length > 0"
+					ng-click="registerChosenSuggestions()">Reenviar Pergunta</button>
 
 				<div style="height: 300px;"></div>
 			</div>
 		</form>
 		<div class="col-sm-6">
 			<div class="aqt-suggestions-label" ng-show="suggestions.length > 0">
-				Clique nas sugestões que você acha que são condizentes para a pergunta e altere a mesma (Caso julgue necessário).
-			</div>
+				Clique nas sugestões que você acha que são condizentes para a
+				pergunta e altere a mesma de acordo com a(s) sugestão(ões) que você
+				clicou (Caso julgue necessário).</div>
 			<div ng-repeat="sug in suggestions">
-				<div class="alert  alert-danger  alert-dismissible aqt-close aqt-poiter" ng-click="checkedSuggestion(sug)"
-					role="alert">
+				<div
+					class="alert  alert-danger  alert-dismissible aqt-close aqt-poiter"
+					ng-click="checkedSuggestion(sug)" role="alert">
 					<button type="button" class="close btn-suggestion">
-						<i class="fa fa-check js-icon"
-							ng-click="checkedSuggestion(sug)" aria-hidden="true"></i>
+						<i class="fa fa-check js-icon" ng-click="checkedSuggestion(sug)"
+							aria-hidden="true"></i>
 					</button>
 					<p>
-					<span>{{sug.header}}</span>
+						<span>{{sug.header}}</span>
 					<div ng-repeat="m in sug.subHeaders">
 						<li style="font-size: 12px;">{{m}}</li>
 					</div>
@@ -50,3 +119,30 @@
 	</div>
 </div>
 <script src="/js/config/editor.config.js"></script>
+
+
+<script>
+	$(document).ready(function() {
+		$('#modalExplicativo').modal('show');
+	});
+
+	function habi() {
+		//se os dois campos estiverem preenchidos, o botao sera habilitado.
+		if (document.getElementById('titulo-input').value != ''
+				&& document.getElementById('editor-f').value != '') {
+			document.getElementById("btn-get-sug").disabled = false;
+			document.getElementById("btn-completter").disabled = false;
+		}
+		//se qualquer um dos campos estiver em branco, o botao ficara desabilitado.
+		if (document.getElementById('titulo-input').value == '') {
+			document.getElementById("btn-get-sug").disabled = true;
+			document.getElementById("btn-completter").disabled = true;
+		}
+		if (document.getElementById('editor-f').value == '') {
+			document.getElementById("btn-get-sug").disabled = true;
+			document.getElementById("btn-completter").disabled = true;
+		}
+	}
+</script>
+
+
