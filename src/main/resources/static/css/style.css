@@ -118,6 +118,11 @@ p {
 	width: 80%;
 }
 
+.aqt-modal-dialog-info{
+	max-width:800px; 
+	margin:0 auto;
+}
+
 .list-group {
 	margin: 5px;
 }

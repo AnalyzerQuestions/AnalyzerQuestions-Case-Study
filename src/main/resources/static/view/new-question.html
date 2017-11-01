@@ -3,15 +3,11 @@
 <div class="container-fluid">
 
 
-	<div class="modal fade" data-backdrop="static" data-keyboard="false"
+	<div class="modal fade aqt-modal-dialog-info" data-backdrop="static" data-keyboard="false"
 		id="modalExplicativo" tabindex="-1" role="dialog">
 		<div class="modal-dialog aqt-modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
 					<h3 class="modal-title">
 						<strong>Sobre esta etapa.</strong>
 					</h3>
@@ -19,43 +15,14 @@
 				<div class="modal-body">
 					<div id="body-detail-description"></div>
 					<p>
-					<div style="margin-top: 8px;">
-						Nesta etapa você deve elaborar uma pergunta de programação. Onde
-						você irá:
-						<p>1 - Informar um título para sua pergunta.</p>
-						<p>2 - Contextualizar/descrever sua pergunta.</p>
-						
-						<strong>Você pode utilizar exemplos(perguntas) de outros sites, como por exemplo, o GUJ ou STACKOVERFLOW.</strong></p>
-
-						Você não deve colocar a resposta da pergunta. Imagine-se em um
-						dado momento em que você não consegue resolver algum problema de
-						programação, então você resolve fazer uma pergunta em um site de
-						perguntas e respostas de programação. Por exemplo:
-						
-						<p>Título: <strong>Fatorial em Java.</strong></p>
-						
-						<p>Descrição:</p>						
-						Boa noite!! Sou novo aqui no Forum e estou aprendendo Java Também... 
-						Estou na minha segunda aula de java e o professor pediu para calcular um fatorial de 
-						algum nº n. eu fiz da seguinte maneira só que está acontecendo um erro de cálculo.
-						<pre>public class Fatorial {
-	public static void main (String [] args){
-							
-		int i, Fat = 4;
-							
-		for (i=1;i<=Fat;i+1){
-							
-			Fat=Fat*i;
-							
-		}System.out.print(Fat);
-							
-	}
-}
-						</pre>		
-						Por favor se alguém souber alguma maneira simples de calcular o Fatorial, e que possa me explicar, serei muito grato!!!
-						
-					</div>
+					<div style="margin-top: 8px;">Nesta etapa, você deve elaborar
+						uma pergunta sobre programação: informe um título para ela e
+						descreva seu problema. Se preferir, você pode copiar o título e a
+						descrição de alguma pergunta online.</div>
 					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-success" data-dismiss="modal">ENTENDI</button>
 				</div>
 			</div>
 		</div>
@@ -119,30 +86,7 @@
 	</div>
 </div>
 <script src="/js/config/editor.config.js"></script>
+<script src="/js/vendors/new-question.js"></script>
 
-
-<script>
-	$(document).ready(function() {
-		$('#modalExplicativo').modal('show');
-	});
-
-	function habi() {
-		//se os dois campos estiverem preenchidos, o botao sera habilitado.
-		if (document.getElementById('titulo-input').value != ''
-				&& document.getElementById('editor-f').value != '') {
-			document.getElementById("btn-get-sug").disabled = false;
-			document.getElementById("btn-completter").disabled = false;
-		}
-		//se qualquer um dos campos estiver em branco, o botao ficara desabilitado.
-		if (document.getElementById('titulo-input').value == '') {
-			document.getElementById("btn-get-sug").disabled = true;
-			document.getElementById("btn-completter").disabled = true;
-		}
-		if (document.getElementById('editor-f').value == '') {
-			document.getElementById("btn-get-sug").disabled = true;
-			document.getElementById("btn-completter").disabled = true;
-		}
-	}
-</script>
 
 
