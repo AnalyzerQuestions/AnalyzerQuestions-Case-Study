@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
+import br.edu.ifpb.ws.analyzerQuestionsRESTful.analyzers.QuestionAnalyzerFinal;
 import br.edu.ifpb.ws.analyzerQuestionsRESTful.entities.Question;
 
 
@@ -16,13 +17,12 @@ public class CSVUtils {
     private static final String NEW_LINE_SEPARATOR = "\n";
     
 	private CSVPrinter csvPrinter;
+	
+	private static QuestionAnalyzerFinal questionAnalyzer;
     
     private static final Object [] FILE_HEADER = {
     	"TITLE",
-    	"DESCRIÇAO",
-    	"DESCRICAO HTML",
-    	"TAGS", 
-    	"FOI RESPONDIDA", 
+    	"QTD"
     	
 	};
     
@@ -30,7 +30,7 @@ public class CSVUtils {
  
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public void writeCSV(String fileName, List<Question> list){
-    	
+    	questionAnalyzer = new QuestionAnalyzerFinal();
     	FileWriter fWriter = null;
     	
     	CSVFormat csvFormat = CSVFormat.DEFAULT.withRecordSeparator(NEW_LINE_SEPARATOR);
@@ -41,12 +41,10 @@ public class CSVUtils {
 			csvPrinter.printRecord(FILE_HEADER);
 			
 			for (Question q : list) {
+				
 		    	List recordQuestions = new ArrayList();
 		    	recordQuestions.add(String.valueOf(q.getTitle()));
-				recordQuestions.add(String.valueOf(q.getDescription()));
-				recordQuestions.add(String.valueOf(q.getDescritptionHtml()));
-				recordQuestions.add(String.valueOf(q.getTags()));
-				recordQuestions.add(String.valueOf(q.isAnswered()));
+				recordQuestions.add(String.valueOf(getGoodQuestionAnalyzer(q)));
 		
 				csvPrinter.printRecord(recordQuestions);
 			}
@@ -64,4 +62,72 @@ public class CSVUtils {
 			}
 		}
     }
+    
+public static Integer getGoodQuestionAnalyzer(Question question) {
+		
+		int cont = 0;
+
+		cont = cont + analyseUnderstandableTitle(question.getTitle(), question.getDescription());
+		cont = cont + analyseCoherencyBodyAndTitle(question.getTitle(), question.getDescription());
+		cont = cont + analyzerObjective(question.getDescription());
+		cont = cont + analyzerClarity(question.getTitle(), question.getDescription());
+		cont = cont + analyseShowingExample(question.getDescription());
+		cont = cont + analyzerUnderstandableDescription(question.getTitle(), question.getDescription());
+		cont = cont + analyzerBeEducated(question.getDescription());
+		cont = cont + analyzerShortDescriptionQuestion(question.getDescription());
+		cont = cont + analyzerDoNotCreateHomeworkQuestions(question.getDescription());
+		cont = cont + analyzerUsingProperLanguage(question.getDescription());
+		cont = cont + analyzerDetailAboutContext(question.getDescription());
+		
+		return cont;
+	}
+	
+
+	
+	public static Integer analyseUnderstandableTitle(String title, String description) {
+		return questionAnalyzer.analyzerUnderstandableTitle(title, description);
+	}
+	
+	
+	public static Integer analyseCoherencyBodyAndTitle(String title, String description){
+		return questionAnalyzer.analyzerCoherencyBodyAndTitle(title, description);
+	}
+	
+	public static Integer analyzerObjective(String description){
+		return questionAnalyzer.analyzerObjective(description);
+	}
+	
+	public static Integer analyzerClarity(String title, String description){
+		return questionAnalyzer.analyzerClarity(title, description);
+	}
+	
+	public static Integer analyseShowingExample(String description){
+		return questionAnalyzer.analyzerShowExample(description);
+	}
+	
+	
+	public static Integer analyzerUnderstandableDescription(String title, String description){
+		return questionAnalyzer.analyzerUnderstandableDescription(title, description);
+	}
+	
+	public static Integer analyzerDetailAboutContext(String description){
+		return questionAnalyzer.analyzerDetailAboutContext(description);
+	}
+	
+	public static Integer analyzerUsingProperLanguage(String description){
+		return questionAnalyzer.analyzerUsingProperLanguage(description);
+	}
+	
+	public static Integer analyzerBeEducated(String description){
+		return questionAnalyzer.analyzerBeEducated(description);
+	}
+	
+	public static Integer analyzerShortDescriptionQuestion(String description){
+		return questionAnalyzer.analyzerShortDescriptionQuestion(description);
+	}
+	
+	public static Integer analyzerDoNotCreateHomeworkQuestions(String description){
+		return questionAnalyzer.analyzerDoNotCreateHomeworkQuestions(description);
+	}
+
 }

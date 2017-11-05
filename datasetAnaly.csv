@@ -1,0 +1,301 @@
+TITLE,QTD
+Erro no eclipse de não reconhecimento dos modificadores static e default,9
+Problema conexão com Banco de dados,9
+Do While entra em loop infinito,10
+Qual a melhor maneira de enviar meu projeto Spring Boot para o servidor?,10
+O que acontece quando atribuímos um valor float a uma variável double?,8
+Adapter modificado em tempo real,9
+Criação de arquivo txt a partir de um outro arquivo txt,7
+Pegar sql Hibernate,8
+Escrever os dados de um inputText em outro inputText,8
+Salvando objeto inteiro em vez de somente nome,5
+Apagar item do gridview de fotos da galeria,4
+Ordenar array alfabeticamente e mostrar apenas primeiro nome de cada item,8
+Como passo um a url de um servidor no java,9
+Contar o número de notas,10
+"Qual o motivo do erro ""The operator / is undefined for the argument"" neste código?",8
+Como transformar os atributos em propriedades?,10
+Formato JSON em campo LocalDate,9
+Como alterar a cor de um JMenuBar?,5
+Como posso tratar string com dados de Telnet com caracteres diferentes/desconhecidos em java?,5
+"Dois Erros - ""Invalid resource"" e ""Failed to deploy EJB modules""",5
+Atualizar página insere novamente,7
+Como alterar o Look and Feel de uma aplicação?,7
+"Error:(1, 0) Plugin with id 'com.android.application' not found ao fazer Sync do projeto",9
+Diferença de null e outra proposição usando esse objeto null,9
+Número de repetições dentro de um array,9
+Modificar símbolo de tag <Li> no PDF gerado através do iText,8
+Como corrigir problemas de acentuação em Strings no JTextPane?,10
+Configurar SessionFactory Hibernate 5.2,10
+Pegar posição de view na tela e aplicar em outra view,4
+Erro ao iniciar Android Studio após update,7
+Erro: RuntimeException ao tentar montar caso de teste,5
+Como manipular o subtotal para não aparecer quando só tem uma linha?,7
+O método excedeu o limite de 65.535 bytes,8
+Por que arrays são covariantes e genéricos são invariantes?,10
+Como utilizar o foreach para imprimir as informações de um array de objeto? (Java),8
+"Erro Exception in thread ""main"" java.lang.NullPointerException",9
+Pegar um array em JAVA,10
+Erro de parsing,9
+Aplicação não cria arquivo na memória externa,8
+"Como modificar/evoluir um cache distribuído Infinispan ""a quente"" sem perder entradas?",4
+Exibir String completa no modal,8
+Como converter a requisição curl em java (Android),5
+AlertDialog a partir de outra classe,8
+"Enviar registro selecionado de uma p:dataTable para o formulário, JSF primefaces",2
+Erro no retorno do Cursor Android,9
+Switch case Java finaliza sem motivo,10
+JLabel da bug visual quando uso setBackground(),9
+Como posso pegar um EntityManager a partir de uma org.hibernate.Session,8
+Como colocar 2 loop dentro de uma lista? ou um segundo loop para uma segunda lista,9
+"Como desserializar uma lista com itens do tipo { ""chave"": ""valor"" }?",8
+Alterar ícone da barra de títulos e da janela,7
+Como fazer um form com JSF com um campo que pode ter quantos valores forem necessários?,4
+Query com coluna dinâmica spring data,6
+Problemas com chave estrangeira,5
+Preciso fazer testes unitários das entidades do sistema?,7
+Envio de arquivo Websocket,9
+Erro ao compilar Android,9
+Erro invaliduseofmatchersexception ao tentar realizar o build no Jenkins,10
+Erro ao remover Objeto de uma ArrayList,9
+Como criar video através de uma sequencia de imagem?,10
+Java: Pegar nome e número de série de celular conectado ao computador,9
+Erro NoSuchElementException ao executar aplicação,5
+Problema com inserção de TIMER na tabela MySQL usando JDBC,6
+Clicar na foto do GridView e mostrar em outra Activity,5
+Como criar o docker file de um programa maven java SE?,5
+Extensão php_java não funciona,7
+Consumo de memoria em java,9
+Duvidas com carrossel jssor,8
+Diferenca entre List e e Retornar em Entidade,10
+Problema de palavras com mesmas letras,9
+Preencher dados automáticos - JSF,8
+JSF - Como passar uma função do Bean como argumento de uma função em JavaScript?,8
+Problemas em projeto Java com CDI (Weld) + Hibernate + PrimeFaces,3
+Usar Campo tipo Date no Java com MySQL,5
+Como utilizar java.time.LocalDateTime como parametro em consultas no JaspersoftStudio?,8
+Definir path para salvar arquivos no Linux,7
+"Projeto não executa, erro ""404 - Not Found""",7
+Como imprimir uma informação que esteja no formato json mas que seja impresso de uma forma que dê para o usuário ler?,9
+"É possível armazenar inputs do usuário pela Classe Scanner em um banco de dados?",8
+Comparar o nome dos arquivos,9
+Pegar informações de vários arquivos em um diretório,11
+Erro no código para popular JList com nomes de Arquivos de uma pasta,8
+Problemas com objetos usando sockets em java,9
+Método para verificar três objetos de cada vez,8
+Comunicar Node JS com java via socket,5
+Erro em classes que implementam java.io.Serializable,7
+Erro ao criar tabela com o flyway usando maven,5
+Como verificar se no final da String é um ou zero?,6
+Como funciona um método dentro de outro? E.g: service.metodo(argumentos).execute();,9
+Problemas com Arquivos de conta eletrônica de celular(febraban),9
+Problemas com palavra reservada do PostgreSQL,9
+Tendo Stream<Stream> como podemos obter a Stream que contém mais elementos na outra Stream,8
+URI Online Judge - 1168 - Java,11
+SimpleFormatData retornando null HH:mm:ss,9
+Erro reclycer view vazia,5
+Como criar um método com parâmetros opcionais em Java puro?,6
+O separador está atravessando o botão reset,4
+Sobre SelectOneRadio,4
+Como adicionar um evento ao balão de notificação do TrayIcon?,6
+Conexão portal serial balança utilizando JSSC,9
+Aplicação com Tomcat e Spring Boot,11
+Como ler página por página de um PDF com PDFBox,10
+Problema com Selenium Dependencias,9
+Jasper não abre fora da IDE,10
+EntityListeners @Transactional do Demoiselle - Id null,8
+Attribute drawableTint is only used in API level 23 and higher,5
+Mapa do Google Maps não abre depois do app lançado,8
+"É possível criar uma lista de Objeto genérico",5
+Qual arquitetura utilizar para desenvolver Chat em Java?,7
+Automatizar navegação em sites para atividades de teste de software,7
+Problemas com GlassFish PermGen Space,9
+Como modificar uma série de funções em Long para BigInteger?,9
+Exportar Projeto com Imagens,10
+Como faço para alterar o incremento de um botão atraves de outro botão?,9
+Ler todos os arquivos txt em uma pasta,9
+download jsf não volta para o brower,8
+PanelGrid não divide colunas com Repeat,7
+Pegar linha da JTable após Filtrar Dados,5
+Por que o compilador cria arquivos .class repetidos?,5
+Como mudar a cor do texto de uma coluna de uma JTable,5
+Android - Como desativar iluminação automática da câmera?,7
+Qual o erro na última linha de uso de UPDATE na linguagem MySQL?,9
+"Implementando framework Zk,mas Zul não reconhece elementos",8
+Apagar arquivos criados antes de 10 dias atrás a partir da data atual,8
+Threads compartilham o mesmo endereço de memória de um método de um objeto?,10
+Como resgatar uma variável de um Actor no Libgdx?,8
+Verificar hora atual do smartphone,10
+Criteria trazendo dados duplicados do hibernate ao JSF,5
+Pegar uma classe que tem um determinada interface implementada nos generics,5
+Como verificar se já é outro dia?,4
+Falha ao buildar aplicação Spring MVC ao configurar bean AOP,5
+Thread em estado WAIT,8
+"Criptografar uma frase/palavra invertendo e trocando as vogais, pelas vogais seguintes",9
+Spring Boot [ Maven (Multi-Modules) ] Gerenciamento do application.properties,9
+Salvando ID de uma tabela com duas Primary Keys com Hibernate,8
+Diferença na execução de threads em Java,9
+Não repetir letras (char) numa matriz ASCII,9
+Como redimensiona um JPanel dentro de um JScrollPane automaticamente,9
+"É possível enviar todas as Exceptions java por email?",6
+Há algum problema em usar Java para aplicação de automação comercial no dektop? Ou é melhor fazer para web usando PHP?,7
+commandLink não cria link na tela,6
+Erro ao retornar HashMap para o JavaScript,6
+"Como imprimir um número decimal com ponto, não com vírgula?",6
+pool de conexões com JBoss - não gera conexão,10
+Montando updates em tempo de execução,8
+Validar se método existe no webservice e customizar mensagem de retorno,9
+Dúvida exercício Java (operações matemáticas na notação pós-fixada),9
+"Como criar um classe e que possua uma propriedade do tipo ""método""?",9
+Como desativar determinados períodos de tempo do datepicker? JavaFX,9
+Autenticação e permissões dinâmicas,7
+Inserção no banco Vraptor e Hibernate,5
+Ajuda com conexão ao banco de dados sql server 2008 e android,5
+Solução gratuita e de código aberto para reconhecimento de voz,8
+Adição em um autocomplete,6
+backup de dados de conteúdos específicos mysql via java,11
+"É possível preencher uma lista de arvore de forma inversa utilizando stream?",8
+"Erro java.lang.NumberFormatException: Invalid double: """"",9
+Salvar imagem na pasta da aplicação(File upload) usando EJB+Servlet JSP,9
+Apagar arquivo (foto) da pasta quando realizar update,9
+erro em comparação usando substring,9
+Problema ao chamar classe dentro do Switch,4
+Como obter quantidade de itens de uma ArrayList?,7
+Carregar applet através de javascript,8
+Insert pelo soapui em um webservice,5
+Ajuda com LibGdx,4
+Qual a função para ver a distância de tanque à parede no robocode?,10
+como fazer combobox modificar uma combobox com itens do banco de dados java desktop?,8
+Iniciar uma thread novamente,9
+Como buscar a Session no Hibernate 5.2.3.Final,10
+como fazer para abrir a câmera do android e tirar a foto e fazer um upload da foto para o servidor?,8
+Grafico Primefaces,8
+Como guardar qual item do Navigation Drawe selecionei,6
+Validações de Strings,7
+Função em java equivalente ao map() do c++,8
+Como restringir para que não se coloque uma data maior e depois uma data menor usando o Calendar Restrict?,4
+Desenhar linhas em representação gráfica de árvore binária,5
+Chamar função em intervalos de tempo usando Thread.sleep,9
+Envio de sms por Java,9
+Ler ficheiros JList e apresentar conteúdo numa JTextArea,9
+Como fazer RequestContext thread-safe?,10
+Como substituir o Volley pelo Retrofit2?,8
+Executar audio em uma WebView Android,10
+"É possível alterar o valor de uma anotação em tempo de execução?",7
+Associação de várias classes em Java,5
+Como armazenar o valor de uma variável em java após do fim do programa?,6
+Comparar dados de um Matcher.group,7
+Impressao DocPrintJob - Erro,5
+Como dividir um número armazenado em uma string e verificar se é divisível por 495?,8
+Retornando um Objeto Method,8
+Como transformar este Json num ArrayList de objetos?,10
+Erro no Hadoop ao procurar classe Java,9
+duvida bloquear transição de paginas via URL,10
+Anotação @Get não funciona no controller,10
+The module has not been deployed. See the server log for details. NetBeans 7.4 Glassfish 4,5
+Método estático com objeto como parâmetro,5
+"Criar template Bootstrap para ser usado em todas as páginas JSP de sua app Java, implementando somente o ""content/conteúdo""",7
+Servidor Socket Multi Thread e seus Clients conversando entre si,6
+"Exception in thread ""main"" java.lang.NullPointerException: Calculadora",6
+Salvar foto via URL no banco de dados,9
+Devolver o foco a um JFormatedTextField depois de clique em botão,9
+Como adicionar AsyncTask nessa tarefa?,8
+Espaço em Branco selectOneMenu,10
+"Menu dinâmico com JSF e Primefaces, quando fica responsivo não funciona",8
+Capturar imagem da webcam e salvar a cada 1 segundo?,9
+Collection para uso em estoque,7
+Redirecionamento em Looping,6
+Como colocar o for para rodar a cada 1 segundo?,5
+Dificuldade em Utilizar API jInstagram,5
+Metodos do managedBean não são processados,6
+Erro com HtmlUnit / WebClient / WildFly10,9
+Abrir arquivo em Modal Dialog,9
+java.lang.IllegalStateException: Cannot create a session after the response has been committed,8
+Transformar vídeo em objeto Blob?,9
+Adicionar funções em botoes de aplicação gráfica,9
+Erro na aplicação,8
+Driver do Firebird,3
+Impressão direta em Java,5
+Qual melhor forma de se fazer uma tabela de espalhamento,6
+Mover pontos com Graphics e MouseEvent,2
+Pasta home para páginas xhtml,6
+Como abrir um JFrame passado como parâmetro?,10
+Erro simples ao tentar utilizar Hibernate + JPA,10
+Preencher Serie xls com POI java,9
+Como armazenar dados na memória RAM e fazer com que eles ficam disponiveis para qualquer módulo ou classe da minha aplicação?,8
+JButton como pegar o Text do Botão dentro de evento,9
+Formatar palavra caso esteja em um datatable,9
+Errro no método Alterar - Java e MySQL,5
+Não consigo corrigir esse erro java.lang.NullPointerException,5
+Hibernate retorna muitas consultas e sobrescreve minhas alterações,5
+JList - não atualiza quando inicio novamente sessão,6
+"Erro ""Please configure your build for VectorDrawableCompat""",5
+Como ordenar horas,9
+Personalizar mensagem de erro,11
+Como gravar um arquivo txt com o nome de cada paciente?,8
+Excluir entidade criada de uma relação ManyToMany,8
+Não consigo encontra o caminho do meu método GET no WebService Rest,8
+Não consigo escrever em JTextArea,11
+FileWriter e FileOutputStream: quando devo trabalhar com cada um deles?,6
+Proteger Vídeos HTML5 contra Download,7
+Organizar palavras acentuadas em uma lista,4
+Mensagens do JSF,5
+Como trabalhar com SharedPreferences?,3
+Desabilitar cache na navegação com Wildfly,9
+Close na transação com hibernate,8
+Nao encontro o menor numero,10
+Formatar campo CPF ou CNPJ usando REGEX [JAVA],10
+como chamar a mesma tarefa mas de 1 vez,10
+Abrir url em um webview,9
+Qual a diferença entre RMI e JRMP?,5
+Como fazer um expansor de consultas utilizando o Lucene?,8
+Como usar vetores/arrays em Java?,5
+"Erro: ""Unable to find valid certification path to requested target""",8
+Acessar aplicação JAVA web de outras máquinas,7
+Movimentação baseada em tempo Java2D,11
+Ler Ficheiro java com delimitador,8
+Chamar outra classe (Java),9
+Clico no botão mas não acontece nada,9
+"Porque ""meu programa"" não incrementou o valor 5 sendo que ele menor que 5.5",8
+Como Imprimir uma lista de números somados em sequência?,9
+Como mapear uma coluna que não existe no banco?,7
+Comparar geopontos com geolocalização do usuário,6
+Insertion Sort (Ordenação por inserção),7
+Como faço para um dialog fechar quando a condição for verdadeira?,7
+NullPointerException ao fazer query no SQLite,4
+Erro ao fazer deploy no weblogic 12c,10
+"JSONP quebra nos dois pontos ("" : "")",9
+Persistindo no Banco a partir de um arquivo,9
+Dúvida na implementação de ActionListener,9
+Trabalhando com dois arquivos txt,8
+Problema na impressão de um vetor,8
+Exception na remoção do ultimo elemento da ArrayList,5
+Chamando Servlet de Página PHP,7
+Problemas com conexão com banco de dados,5
+Enviando um arquivo CSV para um servidor ftp,5
+App feito com lib gdx está com a tela azul,8
+Loop em intervalo de hora,10
+"Perdendo conexão com banco de dados. Postgress, Glassfish",9
+Consulta Entidade sem suas Associações,9
+Criar projeto JPA sem o persistence.xml?,9
+Navegador não recarrega a última página,10
+Exercício de implementação de lista sequencial,8
+SmsManager em telefones Dual Sim,7
+Chamar um método através de linhas do datatable,5
+"Por que não devo alterar os ""getter""s e ""setter""s?",7
+Como minimizar Frame principal ao abrir um novo frame,8
+Abrir uma outra atividade silenciosamente,7
+Acrescentar juros por parcela com BigDecimal?,9
+Como criar notificações?,10
+Primefaces - RequestContext Update,10
+Especificação e Implementação Java Socket,9
+"Apagar formulário de cadastro, JSF Primefaces",9
+Executar recursos do windows com Java,9
+Repetir objeto com itext,6
+Salvar um arquivo csv,5
+"Excepção no Thread ""Main"" java.land.NullPointerException em com.Login.Login.mai(Login.java:18)",6
+Como devo acessar o conteúdo de um JTextField?,7
+Spring Web MVC - Controller não funcionando,5
+Nenhum bean corresponde ao ponto de injeção CDI,9
+Migração de projeto feito no Eclipse para o Android Studio - FATAL EXCEPTION,8
+Quicksort em Java não funciona,9
