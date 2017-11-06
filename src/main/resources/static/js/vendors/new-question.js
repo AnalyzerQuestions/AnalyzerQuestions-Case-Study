@@ -1,7 +1,7 @@
 // modais
 
 $(document).ready(function() {
-	$('#modalExplicativo').modal('show');
+	$('#modalInformativo1').modal('show');
 });
 
 

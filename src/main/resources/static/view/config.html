@@ -249,12 +249,59 @@
 												<span class="input-group-addon"><i>P5</i></span>
 												<textarea class="form-control" type="text" name='p5'
 													ng-model="config.steps.end.description"
-													placeholder="descrição para última página" required />
+													placeholder="Descrição para última página" required />
+											</div>
+										</div>
+									</div>
+
+									
+									<!-- MODAL 1 -->
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group input-group"
+												ng-class="{'has-error': frmConfig.$submitted && frmConfig.h6.$invalid}">
+												<span class="input-group-addon"><i>H6</i></span> <input
+													class="form-control" type="text" name='h6'
+													ng-model="config.steps.popup1.header"
+													placeholder="header do primeiro modal" required />
+											</div>
+										</div>
+
+										<div class="col-md-8">
+											<div class="form-group input-group"
+												ng-class="{'has-error': frmConfig.$submitted && frmConfig.p6.$invalid}">
+												<span class="input-group-addon"><i>P6</i></span>
+												<textarea class="form-control" type="text" name='p6'
+													ng-model="config.steps.popup1.description"
+													placeholder="Descrição para o primeiro modal" required />
 											</div>
 										</div>
 									</div>
 
 
+									<!-- MODAL 2 -->
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group input-group"
+												ng-class="{'has-error': frmConfig.$submitted && frmConfig.h7.$invalid}">
+												<span class="input-group-addon"><i>H7</i></span> <input
+													class="form-control" type="text" name='h7'
+													ng-model="config.steps.popup2.header"
+													placeholder="header do segundo modal" required />
+											</div>
+										</div>
+
+										<div class="col-md-8">
+											<div class="form-group input-group"
+												ng-class="{'has-error': frmConfig.$submitted && frmConfig.p7.$invalid}">
+												<span class="input-group-addon"><i>P7</i></span>
+												<textarea class="form-control" type="text" name='p7'
+													ng-model="config.steps.popup2.description"
+													placeholder="Descrição para o segundo modal" required />
+											</div>
+										</div>
+									</div>
+									
 								</div>
 							</div>
 						</div>

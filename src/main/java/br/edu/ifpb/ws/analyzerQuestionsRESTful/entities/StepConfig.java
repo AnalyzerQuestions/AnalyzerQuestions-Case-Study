@@ -31,6 +31,12 @@ public class StepConfig {
 	@OneToOne(cascade = CascadeType.ALL)
 	private SubStepConfig end;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private SubStepConfig popup1;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private SubStepConfig popup2;
+	
 	public SubStepConfig getStep1() {
 		return step1;
 	}
@@ -77,6 +83,22 @@ public class StepConfig {
 
 	public void setEnd(SubStepConfig end) {
 		this.end = end;
+	}
+
+	public SubStepConfig getPopup1() {
+		return popup1;
+	}
+
+	public void setPopup1(SubStepConfig popup1) {
+		this.popup1 = popup1;
+	}
+
+	public SubStepConfig getPopup2() {
+		return popup2;
+	}
+
+	public void setPopup2(SubStepConfig popup2) {
+		this.popup2 = popup2;
 	}
 
 }
